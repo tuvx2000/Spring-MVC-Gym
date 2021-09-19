@@ -8,6 +8,9 @@
 	<decorator name="home" page="admin.jsp">
 		<pattern>/home</pattern>
 	</decorator>
+	<decorator name="covid-class" page="web.jsp">
+		<pattern>/covid-class</pattern>
+	</decorator>
 	
 	
 </decorators>

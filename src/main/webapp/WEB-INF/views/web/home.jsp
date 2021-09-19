@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
 
 <html>
@@ -12,12 +13,15 @@
 </head>
 
 <body>
-
 	
 	<!-- ***** Main Banner Area Start ***** -->
 	<div class="main-banner" id="top">
 		<video autoplay muted loop id="bg-video">
-			<source src="assets/images/gym-video.mp4" type="video/mp4" />
+			<source src="<c:url value='/template/web/assets/images/gym-video.mp4'/>" type="video/mp4" />
+			
+			
+			
+			
 		</video>
 
 		<div class="video-overlay header-text">
@@ -43,7 +47,7 @@
 						<h2>
 							Choose <em>Program</em>
 						</h2>
-						<img src="assets/images/line-dec.png" alt="waves">
+						<img src="<c:url value='/template/web/assets/images/line-dec.png'/>" alt="waves">
 						<p>Training Studio is free CSS template for gyms and fitness
 							centers. You are allowed to use this layout for your business
 							website.</p>
@@ -53,7 +57,7 @@
 					<ul class="features-items">
 						<li class="feature-item">
 							<div class="left-icon">
-								<img src="assets/images/features-first-icon.png" alt="First One">
+								<img src="<c:url value='/template/web/assets/images/features-first-icon.png'/>" alt="First One">
 							</div>
 							<div class="right-content">
 								<h4>Basic Fitness</h4>

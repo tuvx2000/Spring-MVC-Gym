@@ -49,9 +49,13 @@ https://templatemo.com/tm-548-training-studio
 
 	<%@ include file="/common/web/header.jsp" %>
 
+
+		<dec:body/>
+
+
+
 	<%@ include file="/common/web/footer.jsp" %>
 	
-		<dec:body/>
 
 
 	<!-- jQuery -->
