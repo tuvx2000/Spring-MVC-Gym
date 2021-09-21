@@ -8,11 +8,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.ManagedBean;
+
 import com.mysql.cj.jdbc.Driver;
 import com.mysql.cj.xdevapi.Result;
 import com.xuantujava.dao.ICategoryDAO;
 import com.xuantujava.model.CategoryModel;
 
+
+@ManagedBean
 public class CategoryDAO implements ICategoryDAO {
 	public Connection getConnection() {
 		try {
