@@ -11,6 +11,7 @@ import com.xuantujava.service.ICategoryService;
 
 public class CategoryService implements ICategoryService {
 
+
 	@Inject
 	private ICategoryDAO categoryDao;
 	
@@ -20,6 +21,8 @@ public class CategoryService implements ICategoryService {
 	
 	@Override
 	public List<CategoryModel> findAll() {
+		/// note
+	//	CategoryDAO categoryDAO = new CategoryDAO();
 		
 		return categoryDao.findAll();
 	}
