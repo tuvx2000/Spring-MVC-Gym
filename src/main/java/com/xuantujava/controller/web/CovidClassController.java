@@ -12,6 +12,7 @@ import com.xuantujava.dao.ICategoryDAO;
 import com.xuantujava.dao.impl.CategoryDAO;
 import com.xuantujava.model.UserModel;
 import com.xuantujava.service.ICategoryService;
+import com.xuantujava.service.INewService;
 
 
 @Controller(value ="covidclassControllerOfWeb")
@@ -19,19 +20,27 @@ public class CovidClassController {
 
 	
 	@Inject
-	ICategoryService CategoryService;
+	ICategoryService categoryService;
+	
+	@Inject
+	INewService newService;
+
 
 
 	@RequestMapping(value = "/covid-class", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
+		Long categoryId = 1L; 
 		
 		
-		//truyen static information
+		//start static parameter
 		UserModel userModel = new UserModel();
 		userModel.setFullName("Vo Xuan Tu");
 		request.setAttribute("model",userModel);
+		// end static parameter
 
-		request.setAttribute("categories",CategoryService.findAll().get(1));
+		request.setAttribute("categories",categoryService.findAll());
+		request.setAttribute("news",newService.findByCategoryId(categoryId));
+
 
 		ModelAndView mav = new ModelAndView("web/covidClass");
 		return mav;
