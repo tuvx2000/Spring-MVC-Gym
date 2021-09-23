@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<H1> Gia tri test: ${model.fullName }</H1>
+	<H1> Gia tri test: ${model }</H1>
 	<!-- ***** Main Banner Area Start ***** -->
 	<div class="main-banner" id="top">
 		<video autoplay muted loop id="bg-video">

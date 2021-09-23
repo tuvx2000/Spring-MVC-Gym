@@ -39,7 +39,7 @@ public class CovidClassController {
 		// end static parameter
 
 		request.setAttribute("categories",categoryService.findAll());
-		request.setAttribute("news",newService.findByCategoryId(categoryId));
+		request.setAttribute("news",newService.findByCategoryId(categoryId).toString());
 
 
 		ModelAndView mav = new ModelAndView("web/covidClass");

@@ -62,20 +62,20 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
 	}
 
 	private void setParameter(PreparedStatement statement, Object... parameters) {
-		
 		try {
-			for( int i = 0 ; i <= parameters.length ; i++) {
-				 Object parameter = parameters[i];
-				 int index = i+1; /// index in table start 1 and in array parameter start 0
-				 if ( parameter instanceof Long) {
-					 statement.setLong(index, (Long)parameter);
-				 } else if ( parameter instanceof String) {
-					 statement.setString(index, (String)parameter);
-				 }
-				 
-	 		}	
-		}catch (SQLException e) {
-			// TODO: handle exception
-		}		
+			for (int i = 0; i < parameters.length; i++) {
+				Object parameter = parameters[i];
+				int index = i + 1;
+				if (parameter instanceof Long) {
+					statement.setLong(index, (Long) parameter);
+				} else if (parameter instanceof String) {
+					statement.setString(index, (String) parameter);
+				} else if (parameter instanceof Integer) {
+					statement.setInt(index, (Integer) parameter);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

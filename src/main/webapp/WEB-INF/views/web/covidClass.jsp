@@ -11,8 +11,7 @@
 
 <H1> day la lop hoc covid</H1>
 
-<H1> Gia tri test: ${model.fullName }</H1>
-<H1> Gia tri test: ${categories.code }</H1>
+<H1> Gia tri test: ${news }</H1>
 
 
 </body>
