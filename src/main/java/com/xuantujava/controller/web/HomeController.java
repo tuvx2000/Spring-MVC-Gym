@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xuantujava.model.CategoryModel;
+import com.xuantujava.model.NewsModel;
 import com.xuantujava.model.UserModel;
 import com.xuantujava.service.ICategoryService;
 import com.xuantujava.service.INewService;
@@ -30,18 +31,21 @@ public class HomeController {
 	@Inject
 	ICategoryService categoryService;
 	
+	@Inject
+	INewService newService;
 
 
 	@RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 		
-		//CategoryService CategoryService = new CategoryService();
-		
-		//request.setAttribute("categories",CategoryService.findAll());
-		
-		
-		
-		
+		String title = "bai viet so 5";
+		String content ="bai viet so 5";
+		Long categoryId = 1L;	 
+		NewsModel newsModel = new NewsModel();
+		newsModel.setTitle(title);
+		newsModel.setContent(content);
+		newsModel.setCategoryId(categoryId);
+		newService.save(newsModel);
 
 		request.setAttribute("model",categoryService.findAll().get(1).getName().toString());
 		
