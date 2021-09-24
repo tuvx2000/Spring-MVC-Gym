@@ -4,25 +4,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.xuantujava.model.CategoryModel;
-import com.xuantujava.model.NewsModel;
 
-public class CategoryMapper implements IRowMapper<CategoryModel>{
+public class CategoryMapper implements RowMapper<CategoryModel> {
 
 	@Override
-	public CategoryModel mapRow(ResultSet resultset) {
-
+	public CategoryModel mapRow(ResultSet resultSet) {
 		try {
-			CategoryModel category = new CategoryModel();			
-			category.setId(resultset.getLong("id"));
-			category.setCode(resultset.getString("code"));
-			category.setName(resultset.getString("name"));
+			CategoryModel category = new CategoryModel();
+			category.setId(resultSet.getLong("id"));
+			category.setCode(resultSet.getString("code"));
+			category.setName(resultSet.getString("name"));
 			return category;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			return null;
-
 		}
 	}
-	
 }
