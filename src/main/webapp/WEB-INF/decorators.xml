@@ -2,15 +2,12 @@
 <decorators defaultdir="/decorators">
 
 	<decorator name="trang-chu" page="web.jsp">
-		<pattern>/trang-chu</pattern>
+		<pattern>/</pattern>
 	</decorator>
-	
-	<decorator name="home" page="admin.jsp">
-		<pattern>/home</pattern>
+
+	<decorator name="admin" page="admin.jsp">
+		<pattern>/quan-tri*</pattern>
 	</decorator>
-	<decorator name="covid-class" page="web.jsp">
-		<pattern>/covid-class</pattern>
-	</decorator>
-	
-	
+
+
 </decorators>
