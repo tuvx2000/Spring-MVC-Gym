@@ -11,8 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
 	
-
-
+	
 	@RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 		/*

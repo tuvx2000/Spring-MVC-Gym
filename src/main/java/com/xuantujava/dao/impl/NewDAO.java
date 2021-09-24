@@ -2,15 +2,27 @@ package com.xuantujava.dao.impl;
 
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Repository;
 
 import com.xuantujava.dao.INewDAO;
 import com.xuantujava.mapper.NewMapper;
 import com.xuantujava.model.NewsModel;
-import com.xuantujava.paging.Pageble;
 
+@Repository
 public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
 	
+	
+	@Override
+	public List<NewsModel> findAll() {
+		StringBuilder sql = new StringBuilder("SELECT * FROM news");
+	
+		
+		return query(sql.toString(), new NewMapper());
+	}
+	
+	
+	
+	/*
 	@Override
 	public List<NewsModel> findByCategoryId(Long categoryId) {
 		String sql = "SELECT * FROM news WHERE categoryid = ?";
@@ -67,5 +79,9 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
 	public int getTotalItem() {
 		String sql = "SELECT count(*) FROM news";
 		return count(sql);
-	}
+	}*/
+	
+
+	
+	
 }
