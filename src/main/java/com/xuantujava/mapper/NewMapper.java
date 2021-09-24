@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import com.xuantujava.model.NewsModel;
 
-public class NewMapper implements RowMapper<NewsModel> {
+public class NewMapper implements IRowMapper<NewsModel> {
 
 	@Override
 	public NewsModel mapRow(ResultSet resultSet) {

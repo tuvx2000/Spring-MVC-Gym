@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import com.xuantujava.model.CategoryModel;
 
-public class CategoryMapper implements RowMapper<CategoryModel> {
+public class CategoryMapper implements IRowMapper<CategoryModel> {
 
 	@Override
 	public CategoryModel mapRow(ResultSet resultSet) {

@@ -11,19 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.xuantujava.dao.GenericDAO;
-import com.xuantujava.mapper.RowMapper;
+import com.xuantujava.dao.IGenericDAO;
+import com.xuantujava.mapper.IRowMapper;
 
-public class AbstractDAO<T> implements GenericDAO<T> {
+public class AbstractDAO<T> implements IGenericDAO<T> {
 
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
 	
 	public Connection getConnection() {
 		try {
-			Class.forName(resourceBundle.getString("driverName"));
-			String url = resourceBundle.getString("url");
-			String user = resourceBundle.getString("user");
-			String password = resourceBundle.getString("password");
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost/xuantudbspringmvc?";
+			String user = "root";
+			String password = "xuantudb";
 			return DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException | SQLException e) {
 			return null;
@@ -31,7 +31,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 	}
 
 	@Override
-	public <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
+	public <T> List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters) {
 		List<T> results = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement statement = null;
