@@ -10,29 +10,22 @@ import java.util.List;
 
 import javax.annotation.ManagedBean;
 
+import org.springframework.stereotype.Repository;
+
 import com.xuantujava.dao.INewDAO;
 import com.xuantujava.mapper.NewMapper;
 import com.xuantujava.model.CategoryModel;
 import com.xuantujava.model.NewsModel;
 
-@ManagedBean
+@Repository
 public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
 
 
 	@Override
-	public List<NewsModel> findByCategoryId(Long categoryId) {
-
-		String sql = "SELECT * FROM news WHERE categoryid = ?";
-
-		return query(sql,new NewMapper(), categoryId);
-	}
-
-	@Override
-	public Long save(NewsModel newsModel) {
-
-		String sql = "INSERT INTO news (title,content,categoryid) VALUES (?,?,?)";
+	public List<NewsModel> findAll() {
+		StringBuilder sql = new StringBuilder("SELECT * FROM news");
+	
 		
-		return insert(sql, newsModel.getTitle(), newsModel.getContent(), newsModel.getCategoryId());
-
+		return query(sql.toString(), new NewMapper());
 	}
 }

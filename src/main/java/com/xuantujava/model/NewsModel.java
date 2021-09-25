@@ -1,15 +1,13 @@
 package com.xuantujava.model;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-
-public class NewsModel extends AbstractModel {
+public class NewsModel extends AbstractModel<NewsModel> {
 	
 	private String title;
 	private String thumbnail;
 	private String shortDescription;
 	private String content;
 	private Long categoryId;
+	private String categoryCode;
 	
 	public String getTitle() {
 		return title;
@@ -42,9 +40,11 @@ public class NewsModel extends AbstractModel {
 		this.categoryId = categoryId;
 	}
 
-	
-	
+	public String getCategoryCode() {
+		return categoryCode;
+	}
 
-	
-
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
 }
