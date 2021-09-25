@@ -9,6 +9,7 @@
 <body>
 <div style="color:red;background-color:grey;width:100%;height:200px;">xxx</div>
 
+<H1> Gia tri test: ${model.fullName }</H1>
 <H1> day la lop hoc covid</H1>
 
 
