@@ -3,6 +3,7 @@
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,10 +20,10 @@ import com.xuantujava.service.INewService;
 public class CovidClassController {
 
 	
-	@Inject
+	@Autowired
 	ICategoryService categoryService;
 	
-	@Inject
+	@Autowired
 	INewService newService;
 
 
@@ -39,7 +40,7 @@ public class CovidClassController {
 		// end static parameter
 
 		request.setAttribute("categories",categoryService.findAll());
-		request.setAttribute("news",newService.findByCategoryId(categoryId).toString());
+		request.setAttribute("model1",newService.findAll().get(1).getTitle());
 
 
 		ModelAndView mav = new ModelAndView("web/covidClass");

@@ -10,6 +10,8 @@ import java.util.List;
 
 import javax.annotation.ManagedBean;
 
+import org.springframework.stereotype.Repository;
+
 import com.mysql.cj.jdbc.Driver;
 import com.mysql.cj.xdevapi.Result;
 import com.xuantujava.dao.ICategoryDAO;
@@ -18,7 +20,7 @@ import com.xuantujava.mapper.IRowMapper;
 import com.xuantujava.model.CategoryModel;
 
 
-@ManagedBean
+@Repository
 public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategoryDAO {
 	
 	

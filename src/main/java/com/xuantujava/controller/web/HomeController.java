@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.omg.CORBA.Request;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,10 +29,12 @@ import com.xuantujava.service.impl.CategoryService;
 @Controller(value ="homeControllerOfWeb")
 public class HomeController {
 
-	@Inject
+	@Autowired
+
 	ICategoryService categoryService;
 	
-	@Inject
+	@Autowired
+
 	INewService newService;
 
 
@@ -40,14 +43,15 @@ public class HomeController {
 		
 		String title = "bai viet so 5";
 		String content ="bai viet so 5";
-		Long categoryId = 1L;	 
+		Long categoryId = 1L;	
+		
 		NewsModel newsModel = new NewsModel();
 		newsModel.setTitle(title);
 		newsModel.setContent(content);
 		newsModel.setCategoryId(categoryId);
-		newService.save(newsModel);
+		//newService.save(newsModel);
 
-		request.setAttribute("model",categoryService.findAll().get(1).getName().toString());
+		request.setAttribute("model",newsModel);
 		
 		
 
