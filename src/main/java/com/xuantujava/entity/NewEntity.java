@@ -16,11 +16,11 @@ public class NewEntity {
 	private long id;
 	@Column(name = "title")
 	private String title;
-	@Column(name = "shortdecription")
+	@Column(name = "shortdecription", columnDefinition = "TEXT")
 	private String shortDecription;
 	@Column(name = "thumbnail")
 	private String thumbnail;
-	@Column(name = "content")
+	@Column(name = "content", columnDefinition = "TEXT")
 	private String content;
 	
 	public long getId() {
