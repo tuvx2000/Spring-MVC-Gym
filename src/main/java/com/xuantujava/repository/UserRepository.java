@@ -1,9 +1,10 @@
 package com.xuantujava.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.xuantujava.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-	UserEntity findOneByUserNameAndByStatus(String name, int status);
-}	
+	UserEntity findOneByUserNameAndStatus(String name, int status);
+}

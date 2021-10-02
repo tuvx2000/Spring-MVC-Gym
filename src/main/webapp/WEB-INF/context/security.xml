@@ -30,6 +30,6 @@
     
     <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
     <beans:bean id="customUserDetailsService" class="com.xuantujava.service.impl.CustomUserDetailsService" />
-    <beans:bean id="CustomSuccessHandler" class="com.xuantujava.security.CustomSuccessHandler" />
+    <beans:bean id="customSuccessHandler" class="com.xuantujava.security.CustomSuccessHandler" />
     
 </beans:beans>
