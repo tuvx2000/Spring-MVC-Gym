@@ -16,6 +16,13 @@ public class CovidClassController {
 
 	@RequestMapping(value = "/covid-class", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
+		Long categoryId = 1L; 
+		
+		
+		//start static parameter
+		UserModel userModel = new UserModel();
+		userModel.setFullName("Vo Xuan Tu");
+		request.setAttribute("model",userModel);
 
 
 		ModelAndView mav = new ModelAndView("web/covidClass");
