@@ -23,9 +23,7 @@ public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
 
 	@Override
 	public List<NewsModel> findAll() {
-		StringBuilder sql = new StringBuilder("SELECT * FROM news");
-	
-		
+		StringBuilder sql = new StringBuilder("SELECT * FROM new");
 		return query(sql.toString(), new NewMapper());
 	}
 }

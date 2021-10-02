@@ -37,10 +37,6 @@ public class CovidClassController {
 		UserModel userModel = new UserModel();
 		userModel.setFullName("Vo Xuan Tu");
 		request.setAttribute("model",userModel);
-		// end static parameter
-
-		request.setAttribute("categories",categoryService.findAll());
-		request.setAttribute("model1",newService.findAll().get(1).getTitle());
 
 
 		ModelAndView mav = new ModelAndView("web/covidClass");
