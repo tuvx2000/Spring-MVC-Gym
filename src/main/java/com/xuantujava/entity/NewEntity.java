@@ -8,10 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "new")
-public class NewEntity extends BaseEntity{
-
-@Entity
 @Table(name= "new")
 public class NewEntity extends BaseEntity{
 	
