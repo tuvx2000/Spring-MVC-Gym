@@ -135,6 +135,16 @@
 		</dependency>
 
 
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects       spring-aspects  -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>5.3.9</version>
+		</dependency>
+
+
+
 		<!-- spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
