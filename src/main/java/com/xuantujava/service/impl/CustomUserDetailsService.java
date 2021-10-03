@@ -3,6 +3,7 @@ package com.xuantujava.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,14 +15,15 @@ import com.xuantujava.DTO.MyUser;
 import com.xuantujava.constant.SystemConstant;
 import com.xuantujava.entity.RoleEntity;
 import com.xuantujava.entity.UserEntity;
+import com.xuantujava.repository.UserRepository;
 
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 	
-//	
-////	@Autowired
-////	private UserRepository userRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	
 	@Override

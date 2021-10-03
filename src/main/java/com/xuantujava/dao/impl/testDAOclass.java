@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.xuantujava.dao.INewDAO;
+import com.xuantujava.dao.testDAO;
 import com.xuantujava.mapper.NewMapper;
 import com.xuantujava.model.NewsModel;
 
 @Repository
-public class NewDAO extends AbstractDAO<NewsModel> implements INewDAO {
+public class testDAOclass extends AbstractDAO<NewsModel> implements testDAO {
 
 
 	@Override
