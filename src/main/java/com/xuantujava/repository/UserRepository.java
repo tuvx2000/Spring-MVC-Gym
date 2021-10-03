@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.xuantujava.entity.UserEntity;
 
 
-@Repository
+//@Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	UserEntity findOneByUserNameAndStatus(String name, int status);
 }
