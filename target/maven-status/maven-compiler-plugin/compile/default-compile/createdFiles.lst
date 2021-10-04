@@ -1,14 +1,1 @@
-com\xuantujava\entity\RoleEntity.class
-com\xuantujava\security\CustomSuccessHandler.class
-com\xuantujava\config\JpaAuditingConfig.class
-com\xuantujava\util\SecurityUtils.class
-com\xuantujava\DTO\MyUser.class
-com\xuantujava\DTO\AbstractDTO.class
-com\xuantujava\entity\UserEntity.class
-com\xuantujava\repository\NewRepository.class
-com\xuantujava\constant\SystemConstant.class
-com\xuantujava\entity\BaseEntity.class
-com\xuantujava\DTO\NewDTO.class
-com\xuantujava\config\JpaAuditingConfig$AuditorAwareImpl.class
-com\xuantujava\dao\testDAO.class
-com\xuantujava\dao\impl\testDAOclass.class
+com\xuantujava\controller\HomeController.class
