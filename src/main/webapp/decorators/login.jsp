@@ -4,6 +4,8 @@
 <html>
 <head>
     <title><dec:title default="Đăng nhập" /></title>
+    <link rel="icon" href="https://previews.123rf.com/images/vectorgalaxy/vectorgalaxy1805/vectorgalaxy180500457/101156842-gym-logo-png-isolated-on-white-background-for-your-web-and-mobile-app-design-colorful-vector-icon-br.jpg">
+    
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
