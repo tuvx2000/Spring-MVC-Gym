@@ -57,7 +57,8 @@ public class JPAConfig {
 		Properties properties = new Properties();
 //		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		//properties.setProperty("hibernate.hbm2ddl.auto", "create");
-		
+		properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
+
 		properties.setProperty("hibernate.hbm2ddl.auto", "none");
 
 		return properties;
