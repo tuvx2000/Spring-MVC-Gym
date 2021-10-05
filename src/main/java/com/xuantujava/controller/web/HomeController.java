@@ -52,6 +52,13 @@ public class HomeController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/dang-ky", method = RequestMethod.GET)
+	public ModelAndView registrationPage() {
+
+		ModelAndView mav = new ModelAndView("registration");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/dang-xuat", method = RequestMethod.GET)
 	public ModelAndView logoutPage(HttpServletRequest request, HttpServletResponse response) {
 		
