@@ -38,7 +38,7 @@
 
 						<security:authorize  access="isAuthenticated()">
 						<li class="main-button"><a href="#">Wellcome <%= SecurityUtils.getPrincipal().getFullName() %></a></li>
-						<li class="main-button"><a href="<c:url value='/dang-xuat'/>">Sign Out</a></li>
+						<li class="main-button"  onclick="signOut();" ><a href="<c:url value='/dang-xuat'/>">Sign Out</a></li>
 						</security:authorize >
 
 
@@ -54,4 +54,13 @@
 		</div>
 	</div>
 </header>
+
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 <!-- ***** Header Area End ***** -->

@@ -10,8 +10,19 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="<c:url value='/template/login/style.css' />" rel="stylesheet" type="text/css" media="all"/>
+	
+	
+	  <meta name="google-signin-client_id" content="841081615376-3hbsvqkqpj1u4p943gpj93v0ki62tmjo.apps.googleusercontent.com">
 </head>
-<body id="LoginForm">
+<body >
     <dec:body/>
+    
+    
+    
+    
+     
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
+
+
 </html>

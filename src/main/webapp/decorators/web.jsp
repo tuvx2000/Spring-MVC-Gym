@@ -52,7 +52,7 @@ https://templatemo.com/tm-548-training-studio
 
 
 </head>
-<body>
+<body style="background-color:#c7ecee;">
 
 	<%@ include file="/common/web/header.jsp"%>
 
