@@ -13,12 +13,20 @@
 		<div class="login-form">
 			<div class="main-div">
 				<c:if test="${param.incorrectAccount != null}">
-					<div class="alert alert-danger">Username or Password is incorrect!</div>
+					<div class="alert alert-danger">Username or Password is
+						incorrect!</div>
 				</c:if>
 				<c:if test="${param.accessDenied != null}">
-					<div class="alert alert-danger">AccessDenied, You are not Authorized!</div>
+					<div class="alert alert-danger">AccessDenied, You are not
+						Authorized!</div>
 				</c:if>
-				<form action="j_spring_security_check" id="formLogin" method="post">
+				<form action="<c:url value='/dang-ky'/>" id="formLogin"
+					method="POST" name="frmRegister">
+
+					<div class="form-group">
+						<input type="text" class="form-control" id="fullName"
+							name="j_fullname" placeholder="Tên người dùng">
+					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" id="userName"
 							name="j_username" placeholder="Tên đăng nhập">

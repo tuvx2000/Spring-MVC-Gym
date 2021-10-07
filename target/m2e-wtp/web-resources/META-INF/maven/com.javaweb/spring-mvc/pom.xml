@@ -136,7 +136,8 @@
 
 
 
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects       spring-aspects  -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects 
+			spring-aspects -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
@@ -161,14 +162,29 @@
 			<artifactId>spring-security-acl</artifactId>
 			<version>${springsecurity.version}</version>
 		</dependency>
-		
-			<!-- spring secuirty taglibs -->
+
+		<!-- spring secuirty taglibs -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${springsecurity.version}</version>
 		</dependency>
 
+
+
+		<!-- aws dependence -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-bom</artifactId>
+			<version>1.11.1000</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>1.11.1000</version>
+		</dependency>
 
 	</dependencies>
 

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/common/taglib.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 
 <html>
@@ -13,15 +14,22 @@
 </head>
 
 <body>
+	${model.title } 
 	
+	<hr><hr><hr><hr><hr><hr><hr>
+	<hr>
+	${model1.title }
+
 	<!-- ***** Main Banner Area Start ***** -->
 	<div class="main-banner" id="top">
 		<video autoplay muted loop id="bg-video">
-			<source src="<c:url value='/template/web/assets/images/gym-video.mp4'/>" type="video/mp4" />
-			
-			
-			
-			
+			<source
+				src="<c:url value='/template/web/assets/images/gym-video.mp4'/>"
+				type="video/mp4" />
+
+
+
+
 		</video>
 
 		<div class="video-overlay header-text">
@@ -37,7 +45,7 @@
 		</div>
 	</div>
 	<!-- ***** Main Banner Area End ***** -->
-	<H1> Gia tri test: ${model }</H1>
+
 	<!-- ***** Features Item Start ***** -->
 	<section class="section" id="features">
 		<div class="container">
@@ -47,7 +55,9 @@
 						<h2>
 							Choose <em>Program</em>
 						</h2>
-						<img src="<c:url value='/template/web/assets/images/line-dec.png'/>" alt="waves">
+						<img
+							src="<c:url value='/template/web/assets/images/line-dec.png'/>"
+							alt="waves">
 						<p>Training Studio is free CSS template for gyms and fitness
 							centers. You are allowed to use this layout for your business
 							website.</p>
@@ -57,7 +67,9 @@
 					<ul class="features-items">
 						<li class="feature-item">
 							<div class="left-icon">
-								<img src="<c:url value='/template/web/assets/images/features-first-icon.png'/>" alt="First One">
+								<img
+									src="<c:url value='/template/web/assets/images/features-first-icon.png'/>"
+									alt="First One">
 							</div>
 							<div class="right-content">
 								<h4>Basic Fitness</h4>
@@ -66,9 +78,11 @@
 								<a href="#" class="text-button">Discover More</a>
 							</div>
 						</li>
+
 						<li class="feature-item">
 							<div class="left-icon">
-								<img src="assets/images/features-first-icon.png"
+								<img
+									src="/spring-mvc/template/web/assets/images/features-first-icon.png"
 									alt="second one">
 							</div>
 							<div class="right-content">
@@ -80,7 +94,8 @@
 						</li>
 						<li class="feature-item">
 							<div class="left-icon">
-								<img src="assets/images/features-first-icon.png"
+								<img
+									src="/spring-mvc/template/web/assets/images/features-first-icon.png"
 									alt="third gym training">
 							</div>
 							<div class="right-content">
@@ -99,7 +114,8 @@
 					<ul class="features-items">
 						<li class="feature-item">
 							<div class="left-icon">
-								<img src="assets/images/features-first-icon.png"
+								<img
+									src="/spring-mvc/template/web/assets/images/features-first-icon.png"
 									alt="fourth muscle">
 							</div>
 							<div class="right-content">
@@ -116,7 +132,8 @@
 						</li>
 						<li class="feature-item">
 							<div class="left-icon">
-								<img src="assets/images/features-first-icon.png"
+								<img
+									src="/spring-mvc/template/web/assets/images/features-first-icon.png"
 									alt="training fifth">
 							</div>
 							<div class="right-content">
@@ -128,7 +145,8 @@
 						</li>
 						<li class="feature-item">
 							<div class="left-icon">
-								<img src="assets/images/features-first-icon.png"
+								<img
+									src="/spring-mvc/template/web/assets/images/features-first-icon.png"
 									alt="gym training">
 							</div>
 							<div class="right-content">
@@ -176,7 +194,8 @@
 						<h2>
 							Our <em>Classes</em>
 						</h2>
-						<img src="assets/images/line-dec.png" alt="">
+						<img src="/spring-mvc/template/web/assets/images/line-dec.png"
+							alt="">
 						<p>Nunc urna sem, laoreet ut metus id, aliquet consequat
 							magna. Sed viverra ipsum dolor, ultricies fermentum massa
 							consequat eu.</p>
@@ -187,17 +206,17 @@
 				<div class="col-lg-4">
 					<ul>
 						<li><a href='#tabs-1'><img
-								src="assets/images/tabs-first-icon.png" alt="">First
-								Training Class</a></li>
+								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
+								alt="">First Training Class</a></li>
 						<li><a href='#tabs-2'><img
-								src="assets/images/tabs-first-icon.png" alt="">Second
-								Training Class</a></a></li>
+								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
+								alt="">Second Training Class</a></a></li>
 						<li><a href='#tabs-3'><img
-								src="assets/images/tabs-first-icon.png" alt="">Third
-								Training Class</a></a></li>
+								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
+								alt="">Third Training Class</a></a></li>
 						<li><a href='#tabs-4'><img
-								src="assets/images/tabs-first-icon.png" alt="">Fourth
-								Training Class</a></a></li>
+								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
+								alt="">Fourth Training Class</a></a></li>
 						<div class="main-rounded-button">
 							<a href="#">View All Schedules</a>
 						</div>
@@ -206,7 +225,9 @@
 				<div class="col-lg-8">
 					<section class='tabs-content'>
 						<article id='tabs-1'>
-							<img src="assets/images/training-image-01.jpg" alt="First Class">
+							<img
+								src="/spring-mvc/template/web/assets/images/training-image-01.jpg"
+								alt="First Class">
 							<h4>First Training Class</h4>
 							<p>Phasellus convallis mauris sed elementum vulputate. Donec
 								posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit
@@ -218,7 +239,8 @@
 							</div>
 						</article>
 						<article id='tabs-2'>
-							<img src="assets/images/training-image-02.jpg"
+							<img
+								src="/spring-mvc/template/web/assets/images/training-image-02.jpg"
 								alt="Second Training">
 							<h4>Second Training Class</h4>
 							<p>Integer dapibus, est vel dapibus mattis, sem mauris luctus
@@ -232,7 +254,9 @@
 							</div>
 						</article>
 						<article id='tabs-3'>
-							<img src="assets/images/training-image-03.jpg" alt="Third Class">
+							<img
+								src="/spring-mvc/template/web/assets/images/training-image-03.jpg"
+								alt="Third Class">
 							<h4>Third Training Class</h4>
 							<p>Fusce laoreet malesuada rhoncus. Donec ultricies diam
 								tortor, id auctor neque posuere sit amet. Aliquam pharetra,
@@ -244,7 +268,8 @@
 							</div>
 						</article>
 						<article id='tabs-4'>
-							<img src="assets/images/training-image-04.jpg"
+							<img
+								src="/spring-mvc/template/web/assets/images/training-image-04.jpg"
 								alt="Fourth Training">
 							<h4>Fourth Training Class</h4>
 							<p>Pellentesque habitant morbi tristique senectus et netus et
@@ -270,7 +295,8 @@
 						<h2>
 							Classes <em>Schedule</em>
 						</h2>
-						<img src="assets/images/line-dec.png" alt="">
+						<img src="/spring-mvc/template/web/assets/images/line-dec.png"
+							alt="">
 						<p>Nunc urna sem, laoreet ut metus id, aliquet consequat
 							magna. Sed viverra ipsum dolor, ultricies fermentum massa
 							consequat eu.</p>
@@ -350,7 +376,8 @@
 						<h2>
 							Expert <em>Trainers</em>
 						</h2>
-						<img src="assets/images/line-dec.png" alt="">
+						<img src="/spring-mvc/template/web/assets/images/line-dec.png"
+							alt="">
 						<p>Nunc urna sem, laoreet ut metus id, aliquet consequat
 							magna. Sed viverra ipsum dolor, ultricies fermentum massa
 							consequat eu.</p>
@@ -361,7 +388,9 @@
 				<div class="col-lg-4">
 					<div class="trainer-item">
 						<div class="image-thumb">
-							<img src="assets/images/first-trainer.jpg" alt="">
+							<img
+								src="/spring-mvc/template/web/assets/images/first-trainer.jpg"
+								alt="">
 						</div>
 						<div class="down-content">
 							<span>Strength Trainer</span>
@@ -381,7 +410,9 @@
 				<div class="col-lg-4">
 					<div class="trainer-item">
 						<div class="image-thumb">
-							<img src="assets/images/second-trainer.jpg" alt="">
+							<img
+								src="/spring-mvc/template/web/assets/images/second-trainer.jpg"
+								alt="">
 						</div>
 						<div class="down-content">
 							<span>Muscle Trainer</span>
@@ -401,7 +432,9 @@
 				<div class="col-lg-4">
 					<div class="trainer-item">
 						<div class="image-thumb">
-							<img src="assets/images/third-trainer.jpg" alt="">
+							<img
+								src="/spring-mvc/template/web/assets/images/third-trainer.jpg"
+								alt="">
 						</div>
 						<div class="down-content">
 							<span>Power Trainer</span>
