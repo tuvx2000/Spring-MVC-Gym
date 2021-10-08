@@ -17,6 +17,9 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="google-signin-client_id"
+	content="841081615376-3hbsvqkqpj1u4p943gpj93v0ki62tmjo.apps.googleusercontent.com">
+
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
 	rel="stylesheet">
@@ -52,7 +55,7 @@ https://templatemo.com/tm-548-training-studio
 
 
 </head>
-<body style="background-color:#c7ecee;">
+<body style="background-color: #c7ecee;">
 
 	<%@ include file="/common/web/header.jsp"%>
 
@@ -62,7 +65,8 @@ https://templatemo.com/tm-548-training-studio
 
 
 	<%@ include file="/common/web/footer.jsp"%>
-
+<!-- google -->
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 
 	<!-- jQuery -->

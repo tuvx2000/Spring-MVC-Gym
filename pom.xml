@@ -20,6 +20,7 @@
 		<hibernate.version>4.3.6.Final</hibernate.version>
 		<spring.data>1.11.5.RELEASE</spring.data>
 		<springsecurity.version>3.2.8.RELEASE</springsecurity.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 
 
@@ -186,6 +187,20 @@
 			<version>1.11.1000</version>
 		</dependency>
 
+		<!-- Google login lib -->
+
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.31.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>source-map-loader</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -197,6 +212,8 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+
 				</configuration>
 			</plugin>
 		</plugins>

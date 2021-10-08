@@ -1,9 +1,23 @@
 package com.xuantujava.controller.web;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,10 +33,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.xuantujava.DTO.MyUser;
 import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.DTO.UserDTO;
+import com.xuantujava.constant.SystemConstant;
 import com.xuantujava.model.NewsModel;
 import com.xuantujava.service.ICategoryService;
 import com.xuantujava.service.INewService;
 import com.xuantujava.service.IUserService;
+import com.xuantujava.service.impl.ManagementGoogleUserService;
+
+import io.netty.util.Constant;
 
 ////comprehened imports
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -36,6 +54,12 @@ import com.amazonaws.services.comprehend.model.DetectSentimentResult;
 ///end ////comprehened imports
 
 
+////google SignIn
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.gson.GsonFactory;
 
 
 
@@ -53,67 +77,60 @@ public class HomeController {
 	@Autowired
 	IUserService userService;
 	
+	@Autowired
+	ManagementGoogleUserService managementGoogleUserService;
 	
-	///for comprehened
-	@RequestMapping(value = "/comprehened", method = RequestMethod.GET)
-	public ModelAndView comprehenedPage(HttpServletRequest request, HttpServletResponse response) {
-		//start comprehened
-		
-		 String text = "oh my god!!! i love this course";	
-		
-		 AWSCredentialsProvider awsCreds = DefaultAWSCredentialsProviderChain.getInstance();
-		 
-	        AmazonComprehend comprehendClient =
-	            AmazonComprehendClientBuilder.standard()
-	                                         .withCredentials(awsCreds)
-	                                         .withRegion("ap-northeast-1")
-	                                         .build();
-	                                         
-	   // Call detectSentiment API
-	        System.out.println("Calling DetectSentiment");
-	        DetectSentimentRequest detectSentimentRequest = new DetectSentimentRequest().withText(text)
-	                                                                                    .withLanguageCode("en");
-	        DetectSentimentResult detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
-	        System.out.println(detectSentimentResult);
-	        System.out.println("End of DetectSentiment\n");
-	        System.out.println( "Done" );
-		
-		////// end
-		
-		NewsModel newsModel = new NewsModel();
-		newsModel.setTitle(detectSentimentResult.toString());
+	
+	///////////////////////////////////////////////////////////////////////////////////////////for comprehened
+			@RequestMapping(value = "/comprehened", method = RequestMethod.GET)
+			public ModelAndView comprehenedPage(HttpServletRequest request, HttpServletResponse response) {
+				//start comprehened
+				
+				 String text = "oh my shiet!!!this cousse is wort";	
+				
+				 AWSCredentialsProvider awsCreds = DefaultAWSCredentialsProviderChain.getInstance();
+				 
+			        AmazonComprehend comprehendClient =
+			            AmazonComprehendClientBuilder.standard()
+			                                         .withCredentials(awsCreds)
+			                                         .withRegion("ap-northeast-1")
+			                                         .build();
+			                                         
+			   // Call detectSentiment API
+			        System.out.println("Calling DetectSentiment");
+			        DetectSentimentRequest detectSentimentRequest = new DetectSentimentRequest().withText(text)
+			                                                                                    .withLanguageCode("en");
+			        DetectSentimentResult detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
+			        System.out.println(detectSentimentResult);
+			        System.out.println("End of DetectSentiment\n");
+			        System.out.println( "Done" );
+				
+				////// end
+				
+				NewsModel newsModel = new NewsModel();
+				newsModel.setTitle(detectSentimentResult.toString());
 
-		request.setAttribute("model1",newsModel);
+				request.setAttribute("model1",newsModel);
+				
+				
+				
+				
+				ModelAndView mav = new ModelAndView("web/home");
+				return mav;
+				}	
+	
+	
+	//////////////////////////////////////////////////////////////// google sign-in
+
+	@RequestMapping(value = "/google-dang-nhap", method = RequestMethod.POST)
+	public ModelAndView googleSignInPage(HttpServletRequest request, HttpServletResponse response) throws GeneralSecurityException, IOException {
+
+		request = managementGoogleUserService.GoogleSignInAndRegister(request,response);
 		
+		ModelAndView mav = new ModelAndView("GoogleLogingOnLoading");
 		
-		
-		
-		ModelAndView mav = new ModelAndView("web/home");
 		return mav;
-		}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
 	/////////////////////////////////////////////////////
 
 
@@ -125,9 +142,10 @@ public class HomeController {
 		Long categoryId = 1L;	
 		
 		NewsModel newsModel = new NewsModel();
-		newsModel.setTitle(title);
+		newsModel.setTitle(request.getParameter("googleSignIn")+request.getParameter("googleSignIn1"));
 		newsModel.setContent(content);
 		newsModel.setCategoryId(categoryId);
+		String x = request.getParameter("googleSignIn")+request.getParameter("googleSignIn1");
 		//newService.save(newsModel);
 		request.setAttribute("model",newsModel);
 		
@@ -220,6 +238,37 @@ public class HomeController {
 		return mav;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
 }
 
 

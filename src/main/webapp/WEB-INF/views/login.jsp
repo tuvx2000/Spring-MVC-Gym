@@ -9,6 +9,19 @@
 
 </head>
 <body>
+	<!-- 			Login POST -->
+
+	<h1>xxxxxa</h1>
+	<div>
+		<form action="<c:url value='/google-dang-nhap'/>" method="post">
+			<input id="IdToken" type="text" name="IdToken">xxx </input> <input
+				id="SubIdToken" type="submit" /> xxx</input>
+		</form>
+	</div>
+	<h1>xxxxxa</h1>
+
+<a href="#" onclick="signOut();">Sign out</a>
+
 	<div class="container">
 		<!-- <h1 class="form-heading">login Form</h1> -->
 
@@ -20,8 +33,8 @@
 				<h2 id="holder"></h2>
 			</h1>
 			<div class="g-signin2" data-onsuccess="onSignIn"></div>
-	
-	
+
+
 			<hr>
 			<c:if test="${param.incorrectAccount != null}">
 				<div class="alert alert-danger">Username or Password is
@@ -47,8 +60,6 @@
 	</div>
 	</div>
 
-
-
 	<script>
 		function onSignIn(googleUser) {
 			var profile = googleUser.getBasicProfile();
@@ -62,7 +73,20 @@
 			// The ID token you need to pass to your backend:
 			var id_token = googleUser.getAuthResponse().id_token;
 			console.log("ID Token: " + id_token);
+
+			document.getElementById("IdToken").value = googleUser
+					.getAuthResponse().id_token;
+ 			document.getElementById("SubIdToken").click();
 		}
+		
+		
+		
+		function signOut() {
+		    var auth2 = gapi.auth2.getAuthInstance();
+		    auth2.signOut().then(function () {
+		      console.log('User signed out.');
+		    });
+		  }
 	</script>
 
 

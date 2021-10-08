@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.xuantujava.DTO.UserDTO;
+import com.xuantujava.constant.SystemConstant;
 import com.xuantujava.entity.RoleEntity;
 import com.xuantujava.entity.UserEntity;
 import com.xuantujava.repository.RoleRepository;
@@ -26,9 +27,22 @@ public class UserService implements IUserService {
 	@Autowired
     private RoleRepository roleRepository;
 	
-
+	
+	public int checkUserExisted (String userName, int status) {
+		
+		if(userRepository.findOneByUserNameAndStatus(userName, status) == null)
+			return 0;
+		
+		return 1;
+	}
+	
+	
+	
 	@Override
 	public void RegisterNewUser(UserDTO userDTO) {
+		if(checkUserExisted(userDTO.getUserName(),SystemConstant.ACTIVE_STATUS) == 1) return;
+		
+		
 		
 		UserEntity userEntity = new UserEntity();
 		

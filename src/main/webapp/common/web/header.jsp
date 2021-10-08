@@ -32,13 +32,15 @@
 						<li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
 
 						<security:authorize  access="isAnonymous()">
-						<li class="main-button"><a href="#">Sign Up</a></li>
-						<li class="main-button"><a href="#">Sign In</a></li>
+						<li class="main-button"><a href="<c:url value='/dang-ky'/>">Sign Up</a></li>
+						<li class="main-button"><a href="<c:url value='/dang-nhap'/>">Sign In</a></li>
 						</security:authorize >
 
 						<security:authorize  access="isAuthenticated()">
 						<li class="main-button"><a href="#">Wellcome <%= SecurityUtils.getPrincipal().getFullName() %></a></li>
 						<li class="main-button"  onclick="signOut();" ><a href="<c:url value='/dang-xuat'/>">Sign Out</a></li>
+						<div hidden="true" class="g-signin2" data-onsuccess="onSignIn"></div>
+						
 						</security:authorize >
 
 

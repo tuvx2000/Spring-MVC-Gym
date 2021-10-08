@@ -16,6 +16,10 @@
 	<decorator name="registration" page="login.jsp">
 		<pattern>/dang-ky</pattern>
 	</decorator>
+	
+	<decorator name="GoogleLogingOnLoading" page="login.jsp">
+		<pattern>/google-dang-nhap</pattern>
+	</decorator>
 
 
 </decorators>
