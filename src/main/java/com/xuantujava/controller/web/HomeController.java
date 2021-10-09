@@ -125,17 +125,7 @@ public class HomeController {
 	@RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 
-		String title = "bai viet so 5";
-		String content = "bai viet so 5";
-		Long categoryId = 1L;
-
-		NewsModel newsModel = new NewsModel();
-		newsModel.setTitle(request.getParameter("googleSignIn") + request.getParameter("googleSignIn1"));
-		newsModel.setContent(content);
-		newsModel.setCategoryId(categoryId);
-		String x = request.getParameter("googleSignIn") + request.getParameter("googleSignIn1");
-		// newService.save(newsModel);
-		request.setAttribute("model", newsModel);
+	
 
 		ModelAndView mav = new ModelAndView("web/home");
 		return mav;

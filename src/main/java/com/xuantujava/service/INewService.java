@@ -2,12 +2,8 @@ package com.xuantujava.service;
 
 import java.util.List;
 
-
-
-import com.xuantujava.dao.INewDAO;
-import com.xuantujava.model.CategoryModel;
-import com.xuantujava.model.NewsModel;
+import com.xuantujava.entity.NewEntity;
 
 public interface INewService {
-	List<NewsModel> findAll();
+	List<NewEntity> findAll();
 }
