@@ -19,8 +19,8 @@ public class NewController {
 	@RequestMapping(value = "/quan-tri/bai-viet/danh-sach", method = RequestMethod.GET)
 	public ModelAndView showList(@ModelAttribute("model") NewsModel model) {
 		ModelAndView mav = new ModelAndView("admin/new/list");
-		model.setListResult(newService.findAll());
-		mav.addObject("model", model);
+//		model.setListResult(newService.findAll());
+//		mav.addObject("model", model);
 		return mav;
 	}
 	
