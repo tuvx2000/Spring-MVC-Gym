@@ -34,6 +34,15 @@
 <%--     <script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script> --%>
 
 <!-- <script src="<c:url value='/ckeditor/ckeditor.js' />"></script>   -->
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
+
+x
 </head>
 <body class="no-skin">
 	<!-- header -->
@@ -64,6 +73,10 @@
 	</div>
 
 
+	<script
+		src="<c:url value='/template/admin/paging/jquery.twbsPagination.js' />"></script>
+	<script
+		src="<c:url value='/template/admin/paging/jquery.twbsPagination.min.js' />"></script>
 	<script
 		src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
 	<script

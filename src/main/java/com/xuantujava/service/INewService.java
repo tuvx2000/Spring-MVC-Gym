@@ -2,8 +2,11 @@ package com.xuantujava.service;
 
 import java.util.List;
 
-import com.xuantujava.entity.NewEntity;
+import org.springframework.data.domain.Pageable;
+
+import com.xuantujava.DTO.NewDTO;
 
 public interface INewService {
-	List<NewEntity> findAll();
+	int getTotalItem();
+	List<NewDTO> findAll(Pageable pageable);
 }
