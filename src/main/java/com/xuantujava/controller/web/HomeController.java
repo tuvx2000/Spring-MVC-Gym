@@ -2,69 +2,35 @@ package com.xuantujava.controller.web;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.xuantujava.DTO.MyUser;
-import com.xuantujava.DTO.NewDTO;
-import com.xuantujava.DTO.UserDTO;
-import com.xuantujava.constant.SystemConstant;
-import com.xuantujava.model.NewsModel;
-import com.xuantujava.service.ICategoryService;
-import com.xuantujava.service.INewService;
-import com.xuantujava.service.IUserService;
-import com.xuantujava.service.impl.ManagementGoogleUserService;
-
-import io.netty.util.Constant;
 
 ////comprehened imports
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.comprehend.AmazonComprehend;
 import com.amazonaws.services.comprehend.AmazonComprehendClientBuilder;
-import com.amazonaws.services.comprehend.model.DetectDominantLanguageRequest;
-import com.amazonaws.services.comprehend.model.DetectDominantLanguageResult;
 import com.amazonaws.services.comprehend.model.DetectSentimentRequest;
 import com.amazonaws.services.comprehend.model.DetectSentimentResult;
 ///end ////comprehened imports
-
-////google SignIn
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
-import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.gson.GsonFactory;
+import com.xuantujava.DTO.UserDTO;
+import com.xuantujava.service.INewService;
+import com.xuantujava.service.IUserService;
+import com.xuantujava.service.impl.ManagementGoogleUserService;
 
 @Controller(value = "homeControllerOfWeb")
 public class HomeController {
-
-	@Autowired
-	ICategoryService categoryService;
 
 	@Autowired
 	INewService newService;
@@ -99,10 +65,7 @@ public class HomeController {
 
 		////// end
 
-		NewsModel newsModel = new NewsModel();
-		newsModel.setTitle(detectSentimentResult.toString());
-
-		request.setAttribute("model1", newsModel);
+		
 
 		ModelAndView mav = new ModelAndView("web/home");
 		return mav;

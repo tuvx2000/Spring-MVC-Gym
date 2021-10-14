@@ -1,13 +1,16 @@
 	package com.xuantujava.controller.web;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.xuantujava.model.UserModel;
 
 /////////////// Youtube API scrape comment
 
@@ -16,19 +19,9 @@ import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.util.Data;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.CommentThread;
 import com.google.api.services.youtube.model.CommentThreadListResponse;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 
 
 
@@ -136,11 +129,7 @@ public class CovidClassController {
 		Long categoryId = 1L; 
 		
 		
-		//start static parameter
-		UserModel userModel = new UserModel();
-		userModel.setFullName("Vo Xuan Tu");
-		request.setAttribute("model",userModel);
-
+	
 
 		ModelAndView mav = new ModelAndView("web/covidClass");
 		return mav;

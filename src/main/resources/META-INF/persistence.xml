@@ -4,6 +4,7 @@
         <class>com.xuantujava.entity.NewEntity</class>
         <class>com.xuantujava.entity.RoleEntity</class>
         <class>com.xuantujava.entity.UserEntity</class>
+        <class>com.xuantujava.entity.FreeCourseEntity</class>
         
 
     </persistence-unit>

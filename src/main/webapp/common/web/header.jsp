@@ -27,7 +27,7 @@
 					<ul class="nav">
 						
 						<li class="active" class="scroll-to-section"><a href="<c:url value='/comprehened'/>">About</a></li>
-						<li class="scroll-to-section"><a href="#our-classes">Classes</a></li>
+						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-mien-phi'/>">Classes</a></li>
 						<li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
 						<li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
 
