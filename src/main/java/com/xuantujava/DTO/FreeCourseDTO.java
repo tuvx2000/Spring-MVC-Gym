@@ -7,6 +7,16 @@ public class FreeCourseDTO extends AbstractDTO<FreeCourseDTO> {
 	private String thumbnail;
 	private String topic;
 	private String description;
+	
+	private String sentiment;
+
+	
+	public String getSentiment() {
+		return sentiment;
+	}
+	public void setSentiment(String sentiment) {
+		this.sentiment = sentiment;
+	}
 	public String getName() {
 		return name;
 	}

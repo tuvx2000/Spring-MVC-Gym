@@ -22,6 +22,19 @@ public class FreeCourseEntity extends BaseEntity {
 
 	@Column(name = "description", columnDefinition = "TEXT")
 	private String description;
+	
+	@Column(name = "sentiment", columnDefinition = "TEXT")
+	private String sentiment;
+
+	
+	
+	public String getSentiment() {
+		return sentiment;
+	}
+
+	public void setSentiment(String sentiment) {
+		this.sentiment = sentiment;
+	}
 
 	public String getName() {
 		return name;

@@ -16,14 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-////comprehened imports
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
-import com.amazonaws.services.comprehend.AmazonComprehend;
-import com.amazonaws.services.comprehend.AmazonComprehendClientBuilder;
-import com.amazonaws.services.comprehend.model.DetectSentimentRequest;
-import com.amazonaws.services.comprehend.model.DetectSentimentResult;
-///end ////comprehened imports
+
 import com.xuantujava.DTO.UserDTO;
 import com.xuantujava.service.INewService;
 import com.xuantujava.service.IUserService;
@@ -45,25 +38,7 @@ public class HomeController {
 	/////////////////////////////////////////////////////////////////////////////////////////// comprehened
 	@RequestMapping(value = "/comprehened", method = RequestMethod.GET)
 	public ModelAndView comprehenedPage(HttpServletRequest request, HttpServletResponse response) {
-		// start comprehened
-
-		String text = "oh my shiet!!!this cousse is wort";
-
-		AWSCredentialsProvider awsCreds = DefaultAWSCredentialsProviderChain.getInstance();
-
-		AmazonComprehend comprehendClient = AmazonComprehendClientBuilder.standard().withCredentials(awsCreds)
-				.withRegion("ap-northeast-1").build();
-
-		// Call detectSentiment API
-		System.out.println("Calling DetectSentiment");
-		DetectSentimentRequest detectSentimentRequest = new DetectSentimentRequest().withText(text)
-				.withLanguageCode("en");
-		DetectSentimentResult detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
-		System.out.println(detectSentimentResult);
-		System.out.println("End of DetectSentiment\n");
-		System.out.println("Done");
-
-		////// end
+		
 
 		
 
