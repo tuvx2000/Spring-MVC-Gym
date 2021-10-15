@@ -35,7 +35,7 @@ public class FreeCourseController {
 
 		mav.addObject("model", centerDTO);
 
-		freeCourseService.UpdateVideoSentimentAll();
+//		freeCourseService.UpdateVideoSentimentAll();
 		return mav;
 	}
 
