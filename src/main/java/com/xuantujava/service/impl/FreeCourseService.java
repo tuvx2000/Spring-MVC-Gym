@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.xuantujava.DTO.FreeCourseDTO;
 import com.xuantujava.entity.FreeCourseEntity;
+import com.xuantujava.entity.UserEntity;
 import com.xuantujava.repository.FreeCourseRepository;
 import com.xuantujava.repository.UserRepository;
 import com.xuantujava.service.IFreeCourseService;
@@ -16,12 +17,8 @@ import com.xuantujava.service.IFreeCourseService;
 public class FreeCourseService implements IFreeCourseService {
 
 	@Autowired
-	static
 	FreeCourseRepository freeCourseRepository;
-	
-	@Autowired
-	static 
-	UserRepository userRepository;
+
 
 	@Override
 	public List<FreeCourseDTO> findAll() {
@@ -49,20 +46,18 @@ public class FreeCourseService implements IFreeCourseService {
 
 	public void UpdateVideoSentimentAll() {
 		List<FreeCourseEntity> listEntity = freeCourseRepository.findAll();
+		
+		for (FreeCourseEntity itemEntity : listEntity) {
+			UpdateVideoSentiment(GetVideoYoutubeId(itemEntity.getLinkyoutube()));
+		}
 
 	}
 	
-    public static void main(String[] args) {
 
-//    		UpdateVideoSentiment("Wy85Th3Myws");
-//    	System.out.println(freeCourseRepository.findOneByLinkyoutube("https://www.youtube.com/watch?v=Wy85Th3Myws").getName());
-    	
-//    	System.out.println(userRepository.findOne(0L).getName());
-        }
     
     
 
-	public static  void UpdateVideoSentiment(String videoId) {
+	public void UpdateVideoSentiment(String videoId) {
 
 		List<String> sentimentResult = new ArrayList<>();
 		List<String> listComments = YoutubeService.GetCommentsYoutube(videoId);
@@ -73,7 +68,7 @@ public class FreeCourseService implements IFreeCourseService {
 //		statusComment.add("NEUTRAL");
 	//	statusComment.add("NEGATIVE");
 		int countPositive = 0,countNeutral = 0,countNegative = 0;
-		
+		String finalSentiment = "";
 		
 		
 		
@@ -90,15 +85,22 @@ public class FreeCourseService implements IFreeCourseService {
 		}
 		
 	    if (countPositive >= countNeutral && countPositive>= countNegative)
-	    	System.out.println("POSITIVE");
+	    	finalSentiment = "POSITIVE";
 	    else if (countNeutral >= countPositive && countNeutral>= countNegative)
-	    	System.out.println("NEUTRAL");
+	    	finalSentiment = "NEUTRAL";
 	    else
-	    	System.out.println("NEGATIVE");
+	    	finalSentiment = "NEGATIVE";
 
 		
-	    System.out.println(freeCourseRepository.findOneByLinkyoutube("https://www.youtube.com/watch?v=Wy85Th3Myws").getName());
-		System.out.println("x"+ countPositive + "x" +countNeutral+ "x" +countNegative);
+//	    System.out.println(freeCourseRepository.findOneByLinkyoutube("https://www.youtube.com/watch?v=Wy85Th3Myws").getName());
+//		System.out.println("x"+ countPositive + "x" +countNeutral+ "x" +countNegative);
+	    
+	    FreeCourseEntity itemPrepareForUpdate = freeCourseRepository.findOneByLinkyoutube("https://www.youtube.com/watch?v=Wy85Th3Myws");
+	    
+	    itemPrepareForUpdate.setSentiment(finalSentiment); 
+	    
+	    freeCourseRepository.save(itemPrepareForUpdate);
+	    
 	}
 
 	public String GetVideoYoutubeId(String rawLinkYoutube) {
@@ -107,7 +109,11 @@ public class FreeCourseService implements IFreeCourseService {
 		String part1 = parts[0]; // frefix
 		String part2 = parts[1]; // videoId
 
-		return "HnoPHqrdXQ8";
+		return part2;
 	}
+	
+	
+	
+
 
 }
