@@ -48,7 +48,7 @@ public class FreeCourseService implements IFreeCourseService {
 		List<FreeCourseEntity> listEntity = freeCourseRepository.findAll();
 		
 		for (FreeCourseEntity itemEntity : listEntity) {
-			UpdateVideoSentiment(GetVideoYoutubeId(itemEntity.getLinkyoutube()));
+			UpdateVideoSentiment(itemEntity.getLinkyoutube());
 		}
 
 	}
@@ -57,11 +57,11 @@ public class FreeCourseService implements IFreeCourseService {
     
     
 
-	public void UpdateVideoSentiment(String videoId) {
+	public void UpdateVideoSentiment(String videoLink) {
 
 		List<String> sentimentResult = new ArrayList<>();
-		List<String> listComments = YoutubeService.GetCommentsYoutube(videoId);
-		System.out.println(listComments);
+		List<String> listComments = YoutubeService.GetCommentsYoutube(GetVideoYoutubeId(videoLink));
+//		System.out.println(listComments);
 		
 //		List<String> statusComment = new ArrayList<>();
 //		statusComment.add("POSITIVE");
@@ -95,7 +95,7 @@ public class FreeCourseService implements IFreeCourseService {
 //	    System.out.println(freeCourseRepository.findOneByLinkyoutube("https://www.youtube.com/watch?v=Wy85Th3Myws").getName());
 //		System.out.println("x"+ countPositive + "x" +countNeutral+ "x" +countNegative);
 	    
-	    FreeCourseEntity itemPrepareForUpdate = freeCourseRepository.findOneByLinkyoutube("https://www.youtube.com/watch?v=Wy85Th3Myws");
+	    FreeCourseEntity itemPrepareForUpdate = freeCourseRepository.findOneByLinkyoutube(videoLink);
 	    
 	    itemPrepareForUpdate.setSentiment(finalSentiment); 
 	    
