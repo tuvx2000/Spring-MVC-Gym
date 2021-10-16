@@ -32,6 +32,24 @@ public class UserEntity extends BaseEntity {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"), 
 								  inverseJoinColumns = @JoinColumn(name = "roleid"))
 	private List<RoleEntity> roles = new ArrayList<>();
+	
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "comment", joinColumns = @JoinColumn(name = "userid"), 
+								  inverseJoinColumns = @JoinColumn(name = "courseid"))
+	private List<PaidCourseEntity> paidCourse = new ArrayList<>();
+	
+	
+	
+	
+
+	public List<PaidCourseEntity> getPaidCourse() {
+		return paidCourse;
+	}
+
+	public void setPaidCourse(List<PaidCourseEntity> paidCourse) {
+		this.paidCourse = paidCourse;
+	}
 
 	public String getUserName() {
 		return userName;

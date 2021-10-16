@@ -5,6 +5,8 @@
         <class>com.xuantujava.entity.RoleEntity</class>
         <class>com.xuantujava.entity.UserEntity</class>
         <class>com.xuantujava.entity.FreeCourseEntity</class>
+        <class>com.xuantujava.entity.PaidCourseEntity</class>
+        <class>com.xuantujava.entity.CommentEntity</class>
         
 
     </persistence-unit>
