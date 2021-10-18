@@ -2,6 +2,7 @@ package com.xuantujava.controller.web;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.xuantujava.DTO.CommentDTO;
 import com.xuantujava.DTO.UserDTO;
-import com.xuantujava.service.INewService;
+import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.IUserService;
 import com.xuantujava.service.impl.ManagementGoogleUserService;
 
@@ -26,26 +27,95 @@ import com.xuantujava.service.impl.ManagementGoogleUserService;
 public class HomeController {
 
 	@Autowired
-	INewService newService;
-
-	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	ICommentService commentService;
 
 	@Autowired
 	ManagementGoogleUserService managementGoogleUserService;
 
-	/////////////////////////////////////////////////////////////////////////////////////////// for
-	/////////////////////////////////////////////////////////////////////////////////////////// comprehened
+	///////////////////////////////////////////////////////////////////////////////////////////comment
 	@RequestMapping(value = "/comprehened", method = RequestMethod.GET)
 	public ModelAndView comprehenedPage(HttpServletRequest request, HttpServletResponse response) {
 		
+		ModelAndView mav = new ModelAndView("web/paidCourseMenu");
 
+		List<CommentDTO> listDTO = commentService.listCommentByCourseId(1L);
 		
 
-		ModelAndView mav = new ModelAndView("web/home");
+		
+		CommentDTO model = new CommentDTO();;
+		
+		model.setListResult(listDTO);
+		
+		mav.addObject("model", model);
+
+
 		return mav;
 	}
 
+	
+	@RequestMapping(value = "/post-binh-luan", method = RequestMethod.POST)
+	public ModelAndView PostComment(HttpServletRequest request, HttpServletResponse response) {
+
+//		request = managementGoogleUserService.GoogleSignInAndRegister(request, response);
+//
+//		ModelAndView mav = new ModelAndView("GoogleLogingOnLoading");
+		System.out.println("yhhhhh yeahhhh");
+
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//////////////////////////////////////////////////////////////// google sign-in
 
 	@RequestMapping(value = "/google-dang-nhap", method = RequestMethod.POST)

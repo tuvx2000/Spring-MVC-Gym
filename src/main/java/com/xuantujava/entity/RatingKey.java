@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class CommentKey implements Serializable{
+public class RatingKey implements Serializable{
 
 	
     @Column(name = "courseid")
@@ -32,7 +32,7 @@ public class CommentKey implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CommentKey other = (CommentKey) obj;
+		RatingKey other = (RatingKey) obj;
 		if (courseId == null) {
 			if (other.courseId != null)
 				return false;

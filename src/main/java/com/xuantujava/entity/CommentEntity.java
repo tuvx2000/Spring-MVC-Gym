@@ -1,62 +1,31 @@
 package com.xuantujava.entity;
 
-import javax.persistence.EmbeddedId;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
+import javax.persistence.Table;
 
 @Entity
-public class CommentEntity {
-
-	@EmbeddedId
-	CommentKey id;
-
-	@ManyToOne
-	@MapsId("userId")
-	@JoinColumn(name = "userid")
-	UserEntity student;
-
-	@ManyToOne
-	@MapsId("courseId")
-	@JoinColumn(name = "courseid")
-	PaidCourseEntity course;
+@Table(name = "comment")
+public class CommentEntity extends BaseEntity{
 	
-	
-	int levelComment;
-	
-	String comment;
+	@Column(name = "parentid")
+	private long parentId;
 
-	public CommentKey getId() {
-		return id;
+	@Column(name = "comment")
+	private String comment;
+
+	@Column(name = "userid")
+	private long userid;
+
+	@Column(name = "courseid")
+	private long courseid;
+
+	public long getParentId() {
+		return parentId;
 	}
 
-	public void setId(CommentKey id) {
-		this.id = id;
-	}
-
-	public UserEntity getStudent() {
-		return student;
-	}
-
-	public void setStudent(UserEntity student) {
-		this.student = student;
-	}
-
-	public PaidCourseEntity getCourse() {
-		return course;
-	}
-
-	public void setCourse(PaidCourseEntity course) {
-		this.course = course;
-	}
-
-	public int getLevelComment() {
-		return levelComment;
-	}
-
-	public void setLevelComment(int levelComment) {
-		this.levelComment = levelComment;
+	public void setParentId(long parentId) {
+		this.parentId = parentId;
 	}
 
 	public String getComment() {
@@ -66,8 +35,19 @@ public class CommentEntity {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
-	
+
+	public Long getUserid() {
+		return userid;
+	}
+
+
+	public long getCourseid() {
+		return courseid;
+	}
+
+	public void setCourseid(long courseid) {
+		this.courseid = courseid;
+	}
 	
 	
 }

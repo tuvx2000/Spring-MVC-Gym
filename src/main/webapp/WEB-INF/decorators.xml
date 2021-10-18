@@ -20,6 +20,10 @@
 	<decorator name="GoogleLogingOnLoading" page="login.jsp">
 		<pattern>/google-dang-nhap</pattern>
 	</decorator>
+	
+		<decorator name="paidCourseMenu" page="blank.jsp">
+		<pattern>/comprehened</pattern>
+	</decorator>
 
 
 
