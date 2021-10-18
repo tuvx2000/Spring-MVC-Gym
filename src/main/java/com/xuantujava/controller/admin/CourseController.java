@@ -41,11 +41,8 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.AmazonServiceException;
 
 @MultipartConfig
-
 @Controller(value = "courseControllerOfAdmin")
 public class CourseController {
-//	@Autowired
-//	FreeCourseService freeCourseService;
 
 
 
@@ -54,23 +51,6 @@ public class CourseController {
 			HttpServletResponse response, HttpSession session) throws IOException, ServletException {
 		System.out.println("day la get post");
 
-		/////////////////////////////////////////////////////////////////////// for upload local
-//		private static final String UPLOAD_DIRECTORY = "/images";
-//		ServletContext context = session.getServletContext();
-//		String path = context.getRealPath(UPLOAD_DIRECTORY);
-//		String filename = file.getOriginalFilename();
-
-//
-//		System.out.println(path + File.separator + filename);
-//
-//		byte[] bytes = file.getBytes();
-//		BufferedOutputStream stream = new BufferedOutputStream(
-//				new FileOutputStream(new File(path + File.separator + filename)));
-//		stream.write(bytes);
-//		stream.flush();
-//		stream.close();
-//		
-//		 File myObj = new File("C:\\Users\\PC\\OneDrive\\Desktop\\New folder\\filessssssssssname.jpg");
 		String filename = file.getOriginalFilename();
 		File xx = multipartToFile(file,filename);
 
@@ -86,17 +66,62 @@ public class CourseController {
 
 		try {
 		    s3.putObject("xuantu-spring-db", filename, xx);
-//			System.out.println(Regions.DEFAULT_REGION);   
 		} catch (AmazonServiceException e) {
 		    System.err.println(e.getErrorMessage());
 		    System.exit(1);
 		}
 
+		
+		
+		System.out.println("xuantu-spring-db"+ filename);
+		System.out.println(request.getAttribute("name"));
+		System.out.println(request.getAttribute("description"));
+		System.out.println(request.getAttribute("shortdescription"));
+		System.out.println(request.getAttribute("topic"));
+	
+		
+		
+		
+		
 		 
 
-		ModelAndView mav = new ModelAndView("admin/course/addItem");
+		ModelAndView mav = new ModelAndView("admin/course/addPaidCourse");
 		return mav;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public  static File multipartToFile(MultipartFile multipart, String fileName) throws IllegalStateException, IOException {
 	    File convFile = new File(System.getProperty("java.io.tmpdir")+"/"+fileName);
@@ -108,7 +133,7 @@ public class CourseController {
 	@RequestMapping(value = "/quan-tri/bai-hoc/them-moi", method = RequestMethod.GET)
 	public ModelAndView addCourse2() {
 		System.out.println("day la get method");
-		ModelAndView mav = new ModelAndView("admin/course/addItem");
+		ModelAndView mav = new ModelAndView("admin/course/addPaidCourse");
 		return mav;
 	}
 
