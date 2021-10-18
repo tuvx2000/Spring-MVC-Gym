@@ -1,4 +1,7 @@
 <%@include file="/common/taglib.jsp"%>
+<%@ page import="com.xuantujava.util.SecurityUtils"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +14,6 @@
 <body>
 
 
-		<%-- 			<td> / id comment: ${item.IDCOMMENT}</td> --%>
-		<%-- 			<td> / id parent comment: ${item.parentIDCOMMENT}</td> --%>
-		<%-- 			<td> / user name: ${item.userName}</td> --%>
-		<%-- 			<td> / user image: ${item.userImage}</td> --%>
-				<form action="<c:url value='/post-binh-luan'/>"  method="POST" name="frmRegister">
-					<div class="form-group">
-						<input type="text" class="form-control" id="fullName"
-							name="comment" placeholder="what are you thinking">
-					</div>
-					<button type="submit" class="btn btn-primary">Post comment</button>
-				</form>
-
-
-
 	<link
 		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 		rel="stylesheet">
@@ -32,13 +21,22 @@
 		<div class="col-md-12 bootstrap snippets">
 			<div class="panel">
 				<div class="panel-body">
-					<textarea class="form-control" rows="2"
-						placeholder="What are you thinking?"></textarea>
-					<div class="mar-top clearfix">
-						<button class="btn btn-sm btn-primary pull-right" type="submit">
-							<i class="fa fa-pencil fa-fw"></i> Post
-						</button>
+					<!-- post binh luan -->
+					<div style="width: 100%%;">
+						<form action="<c:url value='/post-binh-luan'/>" method="POST">
+							<input hidden type="text" name="userName"
+								value="<%=SecurityUtils.getPrincipal().getUsername()%>">
+							<input hidden type="text" name="parentIDCOMMENT" value="0">
+							<input hidden type="text" name="courseid" value="${courseid}">
+							<div class="form-group">
+								<input type="text" class="form-control" id="fullName"
+									name="comment" placeholder="what are you thinking">
+							</div>
+							<button type="submit" class="btn btn-primary">Post
+								comment</button>
+						</form>
 					</div>
+
 				</div>
 			</div>
 			<!-- 			 Đây là bắt đầu comment -->
@@ -46,9 +44,10 @@
 
 
 
-
 			<div class="panel">
 				<div class="panel-body">
+
+
 					<!-- Newsfeed Content -->
 					<!--===================================================-->
 					<c:forEach var="item" items="${model.listResult}">
@@ -85,16 +84,24 @@
 											</div>
 										</c:if>
 									</c:forEach>
-
+									<!-- post binh luan -->
 									<div class="panel">
 										<div class="panel-body">
-											<textarea class="form-control" rows="2"
-												placeholder="What are you thinking?"></textarea>
-											<div class="mar-top clearfix">
-												<button class="btn btn-sm btn-primary pull-right"
-													type="submit">
-													<i class="fa fa-pencil fa-fw"></i> Post
-												</button>
+											<div style="width: 100%%;">
+												<form action="<c:url value='/post-binh-luan'/>"
+													method="POST">
+													<input hidden type="text" name="userName"
+														value="<%=SecurityUtils.getPrincipal().getUsername()%>">
+													<input hidden type="text" name="parentIDCOMMENT"
+														value="${item.IDCOMMENT}"> <input hidden
+														type="text" name="courseid" value="${courseid}">
+													<div class="form-group">
+														<input type="text" class="form-control" id="fullName"
+															name="comment" placeholder="what are you thinking">
+													</div>
+													<button type="submit" class="btn btn-primary">Post
+														comment</button>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -105,39 +112,7 @@
 
 
 
-	
-					<!--===================================================-->
-					<!-- End Newsfeed Content -->
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
-					<hr>
 
-					<!-- Newsfeed Content -->
-					<!--===================================================-->
-					
-					<!--===================================================-->
-					<!-- End Newsfeed Content -->
 				</div>
 			</div>
 		</div>
@@ -216,6 +191,22 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :not
 
 
@@ -223,7 +214,23 @@ body {
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -238,7 +245,23 @@ body {
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -260,7 +283,31 @@ background-color
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -274,7 +321,31 @@ background-color
 
 
 
+
+
+
+
+
+
+
+
 #fff
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -301,6 +372,22 @@ padding
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
@@ -308,7 +395,23 @@ padding
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -323,7 +426,23 @@ px
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -332,6 +451,22 @@ px
 
 12
 px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -358,7 +493,31 @@ border-radius
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -372,8 +531,32 @@ border-radius
 
 
 
+
+
+
+
+
+
+
+
 2
 px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -400,6 +583,22 @@ border
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
@@ -407,7 +606,23 @@ border
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -422,7 +637,23 @@ px
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -436,6 +667,14 @@ solid
 
 
 
+
+
+
+
+
+
+
+
  
 
 
@@ -443,7 +682,31 @@ solid
 
 
 
+
+
+
+
+
+
+
+
 #cdd6e1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -470,7 +733,31 @@ font-size
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -484,8 +771,32 @@ font-size
 
 
 
+
+
+
+
+
+
+
+
 12
 px
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -512,7 +823,31 @@ line-height
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -526,8 +861,32 @@ line-height
 
 
 
+
+
+
+
+
+
+
+
 1
 .42857
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -554,7 +913,31 @@ vertical-align
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -568,7 +951,31 @@ vertical-align
 
 
 
+
+
+
+
+
+
+
+
 middle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -595,6 +1002,22 @@ middle
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
@@ -602,7 +1025,23 @@ middle
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -616,6 +1055,14 @@ all
 
 
 
+
+
+
+
+
+
+
+
  
 
 
@@ -623,7 +1070,31 @@ all
 
 
 
+
+
+
+
+
+
+
+
 .15s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -650,6 +1121,22 @@ transition
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
@@ -657,7 +1144,23 @@ transition
 
 
 
+
+
+
+
+
+
+
+
  
+
+
+
+
+
+
+
+
 
 
 
@@ -671,6 +1174,14 @@ all
 
 
 
+
+
+
+
+
+
+
+
  
 
 
@@ -678,7 +1189,31 @@ all
 
 
 
+
+
+
+
+
+
+
+
 .15s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

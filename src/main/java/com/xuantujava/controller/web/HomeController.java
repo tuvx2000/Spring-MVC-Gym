@@ -49,6 +49,8 @@ public class HomeController {
 		
 		model.setListResult(listDTO);
 		
+		mav.addObject("courseid", 1);;
+		
 		mav.addObject("model", model);
 
 
@@ -63,8 +65,19 @@ public class HomeController {
 //
 //		ModelAndView mav = new ModelAndView("GoogleLogingOnLoading");
 		System.out.println("yhhhhh yeahhhh");
+		
+		System.out.println("user name:" +request.getParameter("userName"));
+		System.out.println("parrent id:" +request.getParameter("parentIDCOMMENT"));
+		System.out.println("course id:" +request.getParameter("courseid"));
+		System.out.println("comment string:" + request.getParameter("comment"));
+		
+		
+		
 
-		return null;
+		ModelAndView mav = new ModelAndView("redirect:/comprehened");
+
+
+		return mav;
 	}
 	
 	
