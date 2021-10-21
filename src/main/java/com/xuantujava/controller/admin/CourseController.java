@@ -29,9 +29,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.io.Files;
+import com.xuantujava.DTO.PaidCourseDTO;
+import com.xuantujava.repository.PaidCourseRepository;
+import com.xuantujava.service.IPaidCourseService;
 import com.xuantujava.service.impl.FreeCourseService;
 //////////////
-
+import com.xuantujava.service.impl.PaidCourseService;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -45,6 +48,8 @@ import com.amazonaws.AmazonServiceException;
 @Controller(value = "courseControllerOfAdmin")
 public class CourseController {
 
+	@Autowired
+	IPaidCourseService iPaidCourseService;
 
 
 	@RequestMapping(value = "/quan-tri/bai-hoc/them-moi", method = RequestMethod.POST)
@@ -75,15 +80,22 @@ public class CourseController {
 		
 		
 		System.out.println("xuantu-spring-db"+ filename);
-		System.out.println(request.getAttribute("name"));
-		System.out.println(request.getAttribute("description"));
-		System.out.println(request.getAttribute("shortdescription"));
-		System.out.println(request.getAttribute("topic"));
-	
+		System.out.println("name: " + request.getParameter("name"));
+		System.out.println("description: "+ request.getParameter("description"));
+		System.out.println("shortdescription: "+ request.getParameter("shortdescription"));
+		System.out.println("topic: " + request.getParameter("topic"));
+		
+		PaidCourseDTO paidCourseDTO = new PaidCourseDTO();
+		paidCourseDTO.setS3Path("https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/" +filename);
+		paidCourseDTO.setName(request.getParameter("name"));
+		paidCourseDTO.setDescription(request.getParameter("description"));
+		paidCourseDTO.setShortDescription(request.getParameter("shortdescription"));
+		paidCourseDTO.setTopic(request.getParameter("topic"));
+		paidCourseDTO.setThumbnail(request.getParameter("thumbnail"));
 		
 		
 		
-		
+		iPaidCourseService.addPaidCourse(paidCourseDTO);
 		 
 
 		ModelAndView mav = new ModelAndView("admin/course/addPaidCourse");
