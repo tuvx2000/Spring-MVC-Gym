@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.xuantujava.DTO.CommentDTO;
 import com.xuantujava.DTO.UserDTO;
+import com.xuantujava.entity.CommentEntity;
 import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.IUserService;
 import com.xuantujava.service.impl.ManagementGoogleUserService;
@@ -66,12 +67,22 @@ public class HomeController {
 //		ModelAndView mav = new ModelAndView("GoogleLogingOnLoading");
 		System.out.println("yhhhhh yeahhhh");
 		
-		System.out.println("user name:" +request.getParameter("userName"));
-		System.out.println("parrent id:" +request.getParameter("parentIDCOMMENT"));
-		System.out.println("course id:" +request.getParameter("courseid"));
-		System.out.println("comment string:" + request.getParameter("comment"));
+		Long userId = userService.findUserIdByUserName(request.getParameter("userName"));
 		
+		CommentDTO commentDTO = new CommentDTO();
+		commentDTO.setUserName(request.getParameter("userName"));
+		commentDTO.setUserid(userId);
+		commentDTO.setParentIDCOMMENT(Long.parseLong(request.getParameter("parentIDCOMMENT")));
+		commentDTO.setCourseid(Long.parseLong(request.getParameter("courseid")));
+		commentDTO.setComment(request.getParameter("comment"));
+
+		System.out.println("user name:" +commentDTO.getUserName());
+		System.out.println("parrent id:" +commentDTO.getParentIDCOMMENT());
+		System.out.println("course id:" +commentDTO.getCourseid());
+		System.out.println("comment string:" + commentDTO.getComment());	
+	
 		
+		commentService.addComment(commentDTO);
 		
 
 		ModelAndView mav = new ModelAndView("redirect:/comprehened");

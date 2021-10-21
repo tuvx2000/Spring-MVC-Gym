@@ -60,8 +60,7 @@
 								<div class="media-body">
 									<div class="mar-btm">
 										<a href="#"
-											class="btn-link text-semibold media-heading box-inline">Lisa
-											D.</a>
+											class="btn-link text-semibold media-heading box-inline">${item.userName}</a>
 									</div>
 									<p>comment: ${item.comment}</p>
 									<!-- Comments -->
@@ -75,8 +74,7 @@
 													<div class="media-body">
 														<div class="mar-btm">
 															<a href="#"
-																class="btn-link text-semibold media-heading box-inline">Bobby
-																Marz</a>
+																class="btn-link text-semibold media-heading box-inline">${item.userName}</a>
 														</div>
 														<p>${item1.comment}</p>
 													</div>

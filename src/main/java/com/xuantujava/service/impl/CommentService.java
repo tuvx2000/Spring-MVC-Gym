@@ -48,5 +48,21 @@ public class CommentService implements ICommentService{
 		
 		return listDTO;
 	}
+	
+	public void addComment(CommentDTO commentDTO) {
+		
+		CommentEntity commentEntity = new CommentEntity();
+		commentEntity.setComment(commentDTO.getComment());
+		commentEntity.setUserid(commentDTO.getUserid());
+		commentEntity.setParentId(commentDTO.getParentIDCOMMENT());
+		commentEntity.setCourseid(commentDTO.getCourseid());
+		
+	
+		System.out.println("xxx:" +commentEntity.getComment() +"/"+ commentEntity.getCourseid()  +"/"+  commentEntity.getUserid()  +"/"+  commentEntity.getParentId());
+		
+		commentRepository.save(commentEntity);
+		
+	}
+	
 
 }

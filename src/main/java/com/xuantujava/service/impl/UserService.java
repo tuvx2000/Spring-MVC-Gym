@@ -36,6 +36,11 @@ public class UserService implements IUserService {
 		return 1;
 	}
 	
+	public Long findUserIdByUserName (String UserName) {
+			
+		return userRepository.findOneByUserNameAndStatus(UserName, 1).getId();
+	}
+	
 	
 	
 	@Override

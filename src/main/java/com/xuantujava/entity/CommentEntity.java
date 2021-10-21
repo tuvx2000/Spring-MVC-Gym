@@ -41,6 +41,10 @@ public class CommentEntity extends BaseEntity{
 	}
 
 
+	public void setUserid(long userid) {
+		this.userid = userid;
+	}
+
 	public long getCourseid() {
 		return courseid;
 	}

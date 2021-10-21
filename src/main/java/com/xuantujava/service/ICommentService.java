@@ -6,4 +6,5 @@ import com.xuantujava.DTO.CommentDTO;
 
 public interface ICommentService {
 	List<CommentDTO> listCommentByCourseId(Long courseId);
+	 void addComment(CommentDTO commentDTO);
 }
