@@ -6,22 +6,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xuantujava.DTO.FreeCourseDTO;
-import com.xuantujava.service.impl.FreeCourseService;
+import com.xuantujava.service.IFreeCourseService;
 
 @Controller(value ="freecourseControllerOfWeb")
 public class FreeCourseController {
 	
 	@Autowired
-	private FreeCourseService freeCourseService;
+	private IFreeCourseService freeCourseService;
 	
 	@RequestMapping(value = "/danh-sach-bai-hoc-mien-phi", method = RequestMethod.GET)
 	public ModelAndView registrationPage(HttpServletRequest request, HttpServletResponse response) {

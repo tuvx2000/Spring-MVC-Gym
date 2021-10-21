@@ -1,5 +1,8 @@
 package com.xuantujava.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,33 @@ public class PaidCourseService implements IPaidCourseService{
 		
 		paidCourseRepository.save(paidCourseEntity);
 		
+	}
+
+	@Override
+	public List<PaidCourseDTO> findAll() {
+		List<PaidCourseEntity> listEntity = paidCourseRepository.findAll();
+		List<PaidCourseDTO> listDTO = new ArrayList<>();
+
+		for (PaidCourseEntity itemEntity : listEntity) {
+			
+			
+			PaidCourseDTO itemDTO = new PaidCourseDTO();
+	
+			itemDTO.setS3Path(itemEntity.getS3Path());;
+			itemDTO.setName(itemEntity.getName());
+			itemDTO.setDescription(itemEntity.getDescription());
+			itemDTO.setTopic(itemEntity.getTopic());
+			itemDTO.setThumbnail(itemEntity.getThumbnail());
+			itemDTO.setSentiment(itemEntity.getSentiment());
+			itemDTO.setShortDescription(itemEntity.getShortDescription());
+
+			listDTO.add(itemDTO);
+			
+			
+			
+		}
+
+		return listDTO;
 	}
 
 }
