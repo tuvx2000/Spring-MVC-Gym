@@ -37,26 +37,7 @@ public class HomeController {
 	ManagementGoogleUserService managementGoogleUserService;
 
 	///////////////////////////////////////////////////////////////////////////////////////////comment
-	@RequestMapping(value = "/comprehened", method = RequestMethod.GET)
-	public ModelAndView comprehenedPage(HttpServletRequest request, HttpServletResponse response) {
-		
-		ModelAndView mav = new ModelAndView("web/paidCourseMenu");
 
-		List<CommentDTO> listDTO = commentService.listCommentByCourseId(1L);
-		
-
-		
-		CommentDTO model = new CommentDTO();;
-		
-		model.setListResult(listDTO);
-		
-		mav.addObject("courseid", 1);;
-		
-		mav.addObject("model", model);
-
-
-		return mav;
-	}
 
 	
 	@RequestMapping(value = "/post-binh-luan", method = RequestMethod.POST)

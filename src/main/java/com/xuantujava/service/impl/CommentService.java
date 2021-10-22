@@ -26,7 +26,7 @@ public class CommentService implements ICommentService{
 		System.out.println("day la lisat comment");
 		
 		
-		List<CommentEntity> listEntity = commentRepository.findAll();
+		List<CommentEntity> listEntity = commentRepository.findBycourseid(courseId);
 		List<CommentDTO> listDTO = new ArrayList<>();
 		
 		for (CommentEntity itemEntity : listEntity) {

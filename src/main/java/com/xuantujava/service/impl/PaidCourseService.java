@@ -49,7 +49,7 @@ public class PaidCourseService implements IPaidCourseService{
 			itemDTO.setThumbnail(itemEntity.getThumbnail());
 			itemDTO.setSentiment(itemEntity.getSentiment());
 			itemDTO.setShortDescription(itemEntity.getShortDescription());
-
+			itemDTO.setId(itemEntity.getId());
 			listDTO.add(itemDTO);
 			
 			
