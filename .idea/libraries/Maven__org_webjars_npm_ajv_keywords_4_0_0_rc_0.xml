@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.webjars.npm:ajv-keywords:4.0.0-rc.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/ajv-keywords/4.0.0-rc.0/ajv-keywords-4.0.0-rc.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/ajv-keywords/4.0.0-rc.0/ajv-keywords-4.0.0-rc.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/npm/ajv-keywords/4.0.0-rc.0/ajv-keywords-4.0.0-rc.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
