@@ -29,8 +29,8 @@ public class AllInOne {
         long amount = 50000;
 
         String orderInfo = "Pay With MoMo";
-        String returnURL = "https://google.com.vn";
-        String notifyURL = "https://google.com.vn";
+        String returnURL = "http://localhost:8080/spring-mvc/";
+        String notifyURL = "http://localhost:8080/spring-mvc/";
         String extraData = "";
         String bankCode = "SML";
 
@@ -41,12 +41,15 @@ public class AllInOne {
 
 //        Payment Method- Phương thức thanh toán
         CaptureMoMoResponse captureMoMoResponse = CaptureMoMo.process(environment, orderId, requestId, Long.toString(amount), orderInfo, returnURL, notifyURL, "");
-
+        System.out.println("xxxPAYURL:  "+captureMoMoResponse.getPayUrl());
+        System.out.println("-------------------------------------------------------------------------------------");
 //        Transaction Query - Kiểm tra trạng thái giao dịch
         QueryStatusTransactionResponse queryStatusTransactionResponse = QueryStatusTransaction.process(environment, orderId, requestId);
+        System.out.println("-------------------------------------------------------------------------------------");
 
 //      Process Payment Result - Xử lý kết quả thanh toán
         PayGateResponse payGateResponse = PaymentResult.process(environment,new PayGateResponse());
+        System.out.println("-------------------------------------------------------------------------------------");
 
     }
 

@@ -56,12 +56,12 @@ public class Environment {
 
             switch (target) {
                 case DEV:
-                    PartnerInfo devInfo = new PartnerInfo("MOMOLRJZ20181206", "mTCKt9W3eU1m39TW","SetA5RDnLHvt51AULf51DyauxUo3kDU6");
-                    Environment dev = new Environment(("https://test-payment.momo.vn") + subDir, devInfo, target);
+                    PartnerInfo devInfo = new PartnerInfo(prop.getProperty("DEV_PARTNER_CODE"), prop.getProperty("DEV_ACCESS_KEY"), prop.getProperty("DEV_SECRET_KEY"));
+                    Environment dev = new Environment(prop.getProperty("DEV_MOMO_ENDPOINT") + subDir, devInfo, target);
                     return dev;
                 case PROD:
-                    PartnerInfo prodInfo = new PartnerInfo("MOMOLRJZ20181206", "key", "key");
-                    Environment prod = new Environment("https://payment.momo.vn" + subDir, prodInfo, target);
+                    PartnerInfo prodInfo = new PartnerInfo(prop.getProperty("PROD_PARTNER_CODE"), prop.getProperty("PROD_ACCESS_KEY"), prop.getProperty("PROD_SECRET_KEY"));
+                    Environment prod = new Environment(prop.getProperty("PROD_MOMO_ENDPOINT") + subDir, prodInfo, target);
                     return prod;
                 default:
                     throw new IllegalArgumentException("MoMo doesnt provide other environment: dev and prod");
