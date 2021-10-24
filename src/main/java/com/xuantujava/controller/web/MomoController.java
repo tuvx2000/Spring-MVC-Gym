@@ -31,7 +31,7 @@ public class MomoController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/momo2", method = RequestMethod.GET)
+	@RequestMapping(value = "/momo2", method = RequestMethod.POST)
 	public ModelAndView homePage2(HttpServletRequest request) {
 
 
