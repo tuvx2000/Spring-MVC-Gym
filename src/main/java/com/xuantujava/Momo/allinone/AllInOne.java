@@ -30,7 +30,7 @@ public class AllInOne {
 
         String orderInfo = "Pay With MoMo";
         String returnURL = "http://localhost:8080/spring-mvc/momo1";
-        String notifyURL = "http://localhost:8080/spring-mvc/momo2";
+        String notifyURL = "http://14.245.171.225:8080/spring-mvc/momo2";
         String extraData = "";
         String bankCode = "SML";
 

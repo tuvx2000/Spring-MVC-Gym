@@ -48,9 +48,10 @@ public class JPAConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost/xuantudbspringmvc?");
-		dataSource.setUsername("root");
-		dataSource.setPassword("xuantudb");
+		dataSource.setUrl("jdbc:mysql://xuantudbspr.cmxxavfzjxrv.ap-northeast-1.rds.amazonaws.com/xuantudbspr?");
+		
+		dataSource.setUsername("xuantudbspr");
+		dataSource.setPassword("xuantudbspr");
 		return dataSource;
 	}
 	Properties  additionalProperties() {
