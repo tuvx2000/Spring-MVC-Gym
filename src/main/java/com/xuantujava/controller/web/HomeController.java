@@ -66,7 +66,7 @@ public class HomeController {
 		commentService.addComment(commentDTO);
 		
 
-		ModelAndView mav = new ModelAndView("redirect:/comprehened");
+		ModelAndView mav = new ModelAndView("redirect:/bai-hoc-tra-phi?courseid="+ commentDTO.getCourseid());
 
 
 		return mav;

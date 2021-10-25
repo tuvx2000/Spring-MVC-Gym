@@ -29,7 +29,7 @@
 						<li class="active" class="scroll-to-section"><a href="<c:url value='/comprehened'/>">About</a></li>
 						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-mien-phi'/>">Classes1</a></li>
 						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-tra-phi'/>">Classes2</a></li>
-						<li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
+						<li class="scroll-to-section"><a href="<c:url value='/mox'/>">Make Member</a></li>
 
 						<security:authorize  access="isAnonymous()">
 						<li class="main-button"><a href="<c:url value='/dang-ky'/>">Sign Up</a></li>
