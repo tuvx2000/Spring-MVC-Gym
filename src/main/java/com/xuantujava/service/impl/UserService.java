@@ -69,4 +69,13 @@ public class UserService implements IUserService {
 		
 	}
 
+	@Override
+	public void updateStatusPaid(int status, Long userId) {
+		UserEntity user =  userRepository.findOne(userId);	
+		user.setStatusPaid(status);
+		userRepository.save(user);
+	}
+
+
+
 }

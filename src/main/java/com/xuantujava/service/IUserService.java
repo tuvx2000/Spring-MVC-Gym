@@ -8,4 +8,6 @@ public interface IUserService {
 	int checkUserExisted(String string, int i);
 	
 	public Long findUserIdByUserName (String UserName);
+	
+	public void updateStatusPaid (int status, Long userId);
 }

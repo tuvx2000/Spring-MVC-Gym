@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.xuantujava.DTO.UserDTO;
 import com.xuantujava.Momo.allinone.AllInOne;
 import com.xuantujava.repository.UserRepository;
 import com.xuantujava.service.IUserService;
@@ -35,11 +36,18 @@ public class MomoController {
 		
 		String userId = userService.findUserIdByUserName(auth.getName().toString()).toString();
 		
+		
+		
+		
+		
+		
 //		System.out.println("xxxxxxxxx");
 		String hold = AllInOne.dump(userId);
 //		System.out.println("url:"+hold);
-
-	
+		
+		
+		
+		
 		ModelAndView mav = new ModelAndView("redirect:"+ hold);
 		return mav;
 	}
@@ -56,12 +64,14 @@ public class MomoController {
 		System.out.println("1111111111");
 		
 		
-		
 		/////////////// Xu ly them nguoi dung da dang ky
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println("NAME:"+ auth.getName());
 		
+		Long userId = userService.findUserIdByUserName(auth.getName().toString());
 		
+		userService.updateStatusPaid(1, userId);
 		
-
 		ModelAndView mav = new ModelAndView("web/momo/momo1");
 		return mav;
 	}

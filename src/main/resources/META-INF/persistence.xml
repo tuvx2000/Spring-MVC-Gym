@@ -7,6 +7,7 @@
         <class>com.xuantujava.entity.FreeCourseEntity</class>
         <class>com.xuantujava.entity.PaidCourseEntity</class>
         <class>com.xuantujava.entity.RatingEntity</class>
+        <class>com.xuantujava.entity.TransactionEntity</class>
         
 
     </persistence-unit>
