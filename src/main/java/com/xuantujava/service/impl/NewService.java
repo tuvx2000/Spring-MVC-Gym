@@ -30,14 +30,13 @@ public class NewService implements INewService{
 	 
 	@Override
 	public List<NewDTO> findAll(Pageable pageable) {
-		List<NewDTO> listModel = new ArrayList<>();
-		List<NewEntity> listEntitie = newRepository.findAll(pageable).getContent();
-		for( NewEntity item: listEntitie) {
-			NewDTO hold = new NewDTO();
-			hold.setTitle(item.getTitle());
-			listModel.add(hold);
+		List<NewDTO> models = new ArrayList<>();
+		List<NewEntity> entities = newRepository.findAll(pageable).getContent();
+		for (NewEntity item: entities) {
+			NewDTO newDTO = newConverter.toDto(item);
+			models.add(newDTO);
 		}
-		return listModel;
+		return models;
 	}
 
 	@Override

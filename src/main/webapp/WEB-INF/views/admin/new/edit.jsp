@@ -29,26 +29,14 @@
   										${messageResponse}
 									</div>
 						</c:if>
-                        <form id="formSubmit">
+                        <form:form id="formSubmit" modelAttribute="model" role="form">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" id="categoryCode" name="categoryCode">
-                                        <c:if test="${empty model.categoryCode}">
-                                            <option value="">Chọn loại bài viết</option>
-                                            <c:forEach var="item" items="${categories}">
-                                                <option value="${item.code}">${item.name}</option>
-                                            </c:forEach>
-                                        </c:if>
-                                        <c:if test="${not empty model.categoryCode}">
-                                            <option value="">Chọn loại bài viết</option>
-                                            <c:forEach var="item" items="${categories}">
-                                                <option value="${item.code}" <c:if test="${item.code == model.categoryCode}">selected="selected"</c:if>>
-                                                        ${item.name}
-                                                </option>
-                                            </c:forEach>
-                                        </c:if>
-                                    </select>
+										<form:select path="categoryCode" id ="categoryCode">
+											<form:option value="---Chon the Loai"></form:option>
+											<form:options items="${categories}"/>
+										</form:select>
                                 </div>
                             </div>
                             <br/>
@@ -96,7 +84,7 @@
                                 </div>
                             </div>
                             <input type="hidden" value="${model.id}" id="id" name="id"/>
-                        </form>
+                        </form:form>
                 </div>
             </div>
         </div>

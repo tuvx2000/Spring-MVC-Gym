@@ -33,37 +33,43 @@ public class NewController {
 	@RequestMapping(value = "/quan-tri/bai-viet/danh-sach", method = RequestMethod.GET)
 	public ModelAndView showList(@RequestParam("page") int page, @RequestParam("limit") int limit) {
 		NewDTO model = new NewDTO();
+		Pageable pageable = new PageRequest(page -1, limit);
 
 		
 		model.setPage(page);
 		model.setLimit(limit);
 		model.setTotalItem(newService.getTotalItem());
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
+		model.setListResult(newService.findAll(pageable));
 		
 		
 		ModelAndView mav = new ModelAndView("admin/new/list");
-		Pageable pageable = new PageRequest(page -1, limit);
 		
-		model.setListResult(newService.findAll(pageable));
 		mav.addObject("model", model);
 		return mav;
 	}
 	
 	@RequestMapping(value = "/quan-tri/bai-viet/chinh-sua", method = RequestMethod.GET)
 	public ModelAndView editNew(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+//		System.out.println("Id bai viet: "+ id);
+//		
+//		
+//		
+//		
 		ModelAndView mav = new ModelAndView("admin/new/edit");
 		NewDTO model = new NewDTO();
 		if (id != null) {
 			model = newService.findById(id);
 		}
-		if (request.getParameter("message") != null) {
-			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
-			mav.addObject("message", message.get("message"));
-			mav.addObject("alert", message.get("alert"));
-		}
+//		if (request.getParameter("message") != null) {
+//			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+//			mav.addObject("message", message.get("message"));
+//			mav.addObject("alert", message.get("alert"));
+//		}
 		mav.addObject("categories", categoryService.findAll());
 		mav.addObject("model", model);
 		return mav;
+	
 	}
 
 }
