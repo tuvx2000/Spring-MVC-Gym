@@ -9,12 +9,12 @@ import com.xuantujava.DTO.NewDTO;
 
 @RestController(value = "newAPIOfWeb")
 public class NewAPI {
-	@PostMapping("/api/new")
-	public NewDTO createNew(@RequestBody NewDTO newDTO) {
-		return newDTO;
-	}
-	@GetMapping("/api/new")
-	public String getNew() {
-		return "um ba la xi bua"; 
-	}
+	// @PostMapping("/api/new")
+	// public NewDTO createNew(@RequestBody NewDTO newDTO) {
+	// 	return newDTO;
+	// }
+	// @GetMapping("/api/new")
+	// public String getNew() {
+	// 	return "um ba la xi bua"; 
+	// }
 }

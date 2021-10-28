@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-new"/>
-<c:url var ="NewURL" value="/admin-new"/>
+<c:url var="newURL" value="/quan-tri/bai-viet/danh-sach"/>
+<c:url var ="NewAPI" value="/api/new"/>
 <html>
 <head>
     <title>Chỉnh sửa bài viết</title>
@@ -34,7 +34,7 @@
                                 <label class="col-sm-3 control-label no-padding-right">Thể loại</label>
                                 <div class="col-sm-9">
 										<form:select path="categoryCode" id ="categoryCode">
-											<form:option value="---Chon the Loai"></form:option>
+											<form:option value="---Chon the Loai---"></form:option>
 											<form:options items="${categories}"/>
 										</form:select>
                                 </div>
@@ -73,6 +73,7 @@
                             </div>
                             <br/>
                             <br/>
+                            <form:hidden path="id" id="newid"/>
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <c:if test="${not empty model.id}">
@@ -91,53 +92,62 @@
     </div>
 </div>
 <script>
-	var editor = '';
-	$(document).ready(function(){
-		editor = CKEDITOR.replace( 'content');
-	});
+console.log("xxx");
+
+// 	var editor = '';
+// 	$(document).ready(function(){
+// 		editor = CKEDITOR.replace( 'content');
+// 	});
 	
     $('#btnAddOrUpdateNew').click(function (e) {
         e.preventDefault();
         var data = {};
         var formData = $('#formSubmit').serializeArray();
-        $.each(formData, function (i, v) {
+        $.each(formData, function (i, v) { 
             data[""+v.name+""] = v.value;
         });
-        data["content"] = editor.getData();
-        var id = $('#id').val();
+//         data["content"] = editor.getData();
+        var id = $('#newid').val();
         if (id == "") {
             addNew(data);
         } else {
             updateNew(data);
         }
+    	console.log("1");
+		console.log(JSON.stringify(data));
     });
     function addNew(data) {
+    	console.log("2");
         $.ajax({
-            url: '${APIurl}',
+            url: '${NewAPI}',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-            	window.location.href = "${NewURL}?type=edit&id="+result.id+"&message=insert_success";
+            	window.location.href = "${NewURL}?page=1&limit=2";
+            	//?type=edit&id="+result.id+"&message=insert_success";
             },
             error: function (error) {
-            	window.location.href = "${NewURL}?type=list&maxPageItem=2&page=1&message=error_system";
+            	window.location.href = "${NewURL}?page=1&limit=2";
+            	//?type=list&maxPageItem=2&page=1&message=error_system";
             }
         });
     }
     function updateNew(data) {
         $.ajax({
-            url: '${APIurl}',
+            url: '${NewAPI}',
             type: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-            	window.location.href = "${NewURL}?type=edit&id="+result.id+"&message=update_success";
+            	window.location.href = "${NewURL}?page=1&limit=2";
+            	//?type=edit&id="+result.id+"&message=update_success";
             },
             error: function (error) {
-            	window.location.href = "${NewURL}?type=list&maxPageItem=2&page=1&message=error_system";
+            	window.location.href = "${NewURL}?page=1&limit=2";
+            	//?type=list&maxPageItem=2&page=1&message=error_system";
             }
         });
     }
