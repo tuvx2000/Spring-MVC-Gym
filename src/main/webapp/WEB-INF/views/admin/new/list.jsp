@@ -144,20 +144,6 @@
 					  }
 					})
 					
-					
-					
-// 					then(function(isConfirm) {
-// 					  if (!isConfirm) {
-// 						    console.log(isConfirm+ "1");
-// 							var ids = $('tbody input[type=checkbox]:checked').map(function () {
-// 					            return $(this).val();
-// 					        }).get();
-// 							deleteNew(ids);
-// 					  }else
-// 						  {			
-// 						    console.log(isConfirm + "2");
-// 						  }
-// 					});
 			} 
 			function deleteNew(data) {
 		        $.ajax({
