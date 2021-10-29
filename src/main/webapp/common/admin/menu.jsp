@@ -34,21 +34,53 @@
 			<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
 		</div>
 	</div>
-	<ul class="nav nav-list">
-		<li><a href="#" class="dropdown-toggle"> <i
-				class="menu-icon fa fa-list"></i> <span class="menu-text"></span>
-				Quản lý bài viết <b class="arrow fa fa-angle-down"></b>
-		</a> <b class="arrow"></b>
+<!-- 			0 -->
+	<ul class="nav nav-list">					
+		<li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa fa-list"></i> 
+				<span class="menu-text"> 
+					Quản lý bài viết 
+				</span>
+				<b></b>
+			</a> 
+			<b class="arrow"></b>
 			<ul class="submenu">
-				<li><a
-					href="<c:url value='/quan-tri/bai-viet/danh-sach?page=1&limit=2' />">
-						<i class="menu-icon fa fa-caret-right"></i> DS bài viết
-				</a> <b class="arrow"></b></li>
-			</ul></li>
-		<li><a href="<c:url value='/quan-tri/bai-hoc/them-moi' />" class="dropdown-toggle"> <i
-				class="menu-icon fa fa-list"></i> <span class="menu-text"></span>
-				<a href="<c:url value='/quan-tri/bai-hoc/them-moi' />" >Quản lý paid course </a><b class="arrow fa fa-angle-down"></b>
-		</a></li>
+				<li>
+					<a href="<c:url value='/quan-tri/bai-viet/danh-sach?page=1&limit=2' />" >
+						 DS bài viết
+					</a> 
+				</li>
+			</ul>
+		</li>	
+<!-- 			1 -->
+		<li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa fa-list"></i> 
+				<span class="menu-text"> 
+					Quản lý Paid Course 
+				</span>
+				<b></b>
+			</a> 
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li>
+					<a href="<c:url value='/quan-tri/bai-hoc/them-moi' />" >
+						 DS Paid Course
+					</a> 
+				</li>
+			</ul>
+		</li>	
+<!-- 			2 -->
+			
+			
+			
+			
+			
+<%-- 		<li><a href="<c:url value='/quan-tri/bai-hoc/them-moi' />" class="dropdown-toggle"> <i --%>
+<!-- 				class="menu-icon fa fa-list"></i> <span class="menu-text"></span> -->
+<%-- 				<a href="<c:url value='/quan-tri/bai-hoc/them-moi' />" >Quản lý Paid course </a><b class="arrow fa fa-angle-down"></b> --%>
+<!-- 		</a></li> -->
 	</ul>
 	<div class="sidebar-toggle sidebar-collapse">
 		<i class="ace-icon fa fa-angle-double-left ace-save-state"
