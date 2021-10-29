@@ -40,9 +40,12 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-
-
-x
+<!--  sweet alert -->
+<script src="<c:url value='/template/admin/sweetalert/sweetalert2.min.js' />" ></script> 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
+<link rel="stylesheet" rel="<c:url value='/template/admin/sweetalert/sweetalert2.min.css' />" >
+	
 </head>
 <body class="no-skin">
 	<!-- header -->

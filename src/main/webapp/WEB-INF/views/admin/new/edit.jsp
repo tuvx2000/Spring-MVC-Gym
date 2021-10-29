@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="newURL" value="/quan-tri/bai-viet/danh-sach"/>
+<c:url var="editURL" value="/quan-tri/bai-viet/chinh-sua"/>
 <c:url var ="NewAPI" value="/api/new"/>
 <html>
 <head>
@@ -125,11 +126,11 @@ console.log("xxx");
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-            	window.location.href = "${NewURL}?page=1&limit=2";
+            	window.location.href = "${editURL}?page=1&limit=2?id=" +result.id +"&message=insert_success";
             	//?type=edit&id="+result.id+"&message=insert_success";
             },
             error: function (error) {
-            	window.location.href = "${NewURL}?page=1&limit=2";
+            	window.location.href = "${NewURL}?page=1&limit=2"+"&message=error_system";
             	//?type=list&maxPageItem=2&page=1&message=error_system";
             }
         });
@@ -142,11 +143,11 @@ console.log("xxx");
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-            	window.location.href = "${NewURL}?page=1&limit=2";
+            	window.location.href = "${editURL}?page=1&limit=2?id=" +result.id+"&message=update_success";
             	//?type=edit&id="+result.id+"&message=update_success";
             },
             error: function (error) {
-            	window.location.href = "${NewURL}?page=1&limit=2";
+            	window.location.href = "${NewURL}?page=1&limit=2"+"&message=error_system";
             	//?type=list&maxPageItem=2&page=1&message=error_system";
             }
         });

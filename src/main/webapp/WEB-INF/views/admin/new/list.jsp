@@ -28,11 +28,11 @@
 					<div class="page-content">
 						<div class="row">
 							<div class="col-xs-12">
-								<c:if test="${not empty message}">
+								 <c:if test="${not empty messageResponse}">
 									<div class="alert alert-${alert}">
-			  							${message}
+  										${messageResponse}
 									</div>
-								</c:if>
+				                 </c:if>
 								<div class="widget-box table-filter">
 									<div class="table-btn-controls">
 										<div class="pull-right tableTools-container">
@@ -46,7 +46,7 @@
 															</span>
 												</a>
 												<button id="btnDelete" type="button" onclick="warningBeforeDelete()"
-														class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa bài viết'>
+														class="dt-button buttons-html5 btn btn-white btn-primary btn-bold" data-toggle="tooltip" title='Xóa bài viết'>                      
 																<span>
 																	<i class="fa fa-trash-o bigger-110 pink"></i>
 																</span>
@@ -118,23 +118,46 @@
 		    });
 			
 			function warningBeforeDelete() {
-					swal({
-					  title: "Xác nhận xóa",
-					  text: "Bạn có chắc chắn muốn xóa hay không",
-					  type: "warning",
+				Swal.fire({
+					  title: 'Do you want to save the changes?',
+					  showDenyButton: true,
 					  showCancelButton: true,
-					  confirmButtonClass: "btn-success",
-					  cancelButtonClass: "btn-danger",
-					  confirmButtonText: "Xác nhận",
-					  cancelButtonText: "Hủy bỏ",
-					}).then(function(isConfirm) {
-					  if (isConfirm) {
-							var ids = $('tbody input[type=checkbox]:checked').map(function () {
+					  confirmButtonText: 'Save',
+					  denyButtonText: `Don't save`,
+					}).then((result) => {
+					  /* Read more about isConfirmed, isDenied below */
+					  if (result.isConfirmed) {
+					    Swal.fire('In Processing... ', '', 'success');
+					    
+					    var ids = $('tbody input[type=checkbox]:checked').map(function () {
 					            return $(this).val();
 					        }).get();
+						    console.log(ids.length+ "  1");
+
+					    if(ids.length > 0)
 							deleteNew(ids);
+					    
+					  } else if (result.isDenied) {
+					    Swal.fire('Changes are not saved', '', 'info');
+					    
+					    
 					  }
-					});
+					})
+					
+					
+					
+// 					then(function(isConfirm) {
+// 					  if (!isConfirm) {
+// 						    console.log(isConfirm+ "1");
+// 							var ids = $('tbody input[type=checkbox]:checked').map(function () {
+// 					            return $(this).val();
+// 					        }).get();
+// 							deleteNew(ids);
+// 					  }else
+// 						  {			
+// 						    console.log(isConfirm + "2");
+// 						  }
+// 					});
 			} 
 			function deleteNew(data) {
 		        $.ajax({
