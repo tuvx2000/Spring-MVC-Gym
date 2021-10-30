@@ -26,19 +26,19 @@
 					<!-- ***** Menu Start ***** -->
 					<ul class="nav">
 						
-						<li class="active" class="scroll-to-section"><a href="<c:url value='/comprehened'/>">About</a></li>
-						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-mien-phi'/>">Classes1</a></li>
-						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-tra-phi'/>">Classes2</a></li>
+						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-mien-phi'/>">Basic Course</a></li>
+						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-tra-phi'/>">Paid Course</a></li>
 						<li class="scroll-to-section"><a href="<c:url value='/mox'/>">Make Member</a></li>
 
 						<security:authorize  access="isAnonymous()">
-						<li class="main-button"><a href="<c:url value='/dang-ky'/>">Sign Up</a></li>
+						<li class="scroll-to-section"><a href="<c:url value='/dang-ky'/>">Sign Up</a></li>
 						<li class="main-button"><a href="<c:url value='/dang-nhap'/>">Sign In</a></li>
 						</security:authorize >
+						
 
 						<security:authorize  access="isAuthenticated()">
-						<li class="main-button"><a href="#">Wellcome <%= SecurityUtils.getPrincipal().getFullName() %></a></li>
-						<li class="main-button"  onclick="signOut();" ><a href="<c:url value='/dang-xuat'/>">Sign Out</a></li>
+						<li class="scroll-to-section"><a href="#">Wellcome <%= SecurityUtils.getPrincipal().getFullName() %></a></li>
+						<li class="scroll-to-section" onclick="signOut();" ><a href="<c:url value='/dang-xuat'/>">Sign Out</a></li>
 						<div hidden="true" class="g-signin2" data-onsuccess="onSignIn"></div>
 						
 						</security:authorize >

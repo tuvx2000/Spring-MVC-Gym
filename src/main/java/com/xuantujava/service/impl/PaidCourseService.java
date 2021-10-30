@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xuantujava.DTO.PaidCourseDTO;
+import com.xuantujava.entity.CategoryEntity;
+import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.PaidCourseEntity;
 import com.xuantujava.repository.PaidCourseRepository;
 import com.xuantujava.service.IPaidCourseService;
@@ -58,5 +60,30 @@ public class PaidCourseService implements IPaidCourseService{
 
 		return listDTO;
 	}
+
+	@Override
+	public void save(PaidCourseDTO PaidCourseDTO) {
+		PaidCourseEntity oldNew = paidCourseRepository.findOne(PaidCourseDTO.getId());
+		paidCourseRepository.save(oldNew);
+		
+	}
+
+//	@Override
+//	public void save(PaidCourseDTO PaidCourseDTO) {
+//		
+//		PaidCourseEntity paidCourseEntity = new PaidCourseEntity();
+//		if (PaidCourseDTO.getId() != null) {
+//			PaidCourseEntity oldNew = paidCourseRepository.findOne(PaidCourseDTO.getId());
+//
+//			System.out.println("need update PaidCourse/ Service");
+//		} else {
+//			paidCourseEntity.setCategory(category);
+//			paidCourseEntity.setDescription(description);
+//			paidCourseEntity.setS3Path(s3Path);
+//			
+//		}
+//		return newConverter.toDto(newRepository.save(newEntity));
+//	}
+//	}
 
 }

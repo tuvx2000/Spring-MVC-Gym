@@ -16,14 +16,6 @@
 </head>
 
 <body>
-	${model.title } 
-	
-	<hr><hr><hr><hr><hr><hr><hr>
-	<hr>
-		<hr><hr><hr><hr><hr><hr><hr>
-	<hr>
-	${model1.title }
-
 	<!-- ***** Main Banner Area Start ***** -->
 	<div class="main-banner" id="top">
 		<video autoplay muted loop id="bg-video">
@@ -62,9 +54,7 @@
 						<img
 							src="<c:url value='/template/web/assets/images/line-dec.png'/>"
 							alt="waves">
-						<p>Training Studio is free CSS template for gyms and fitness
-							centers. You are allowed to use this layout for your business
-							website.</p>
+						<p>Let's Choose Program suitable for you.</p>
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -76,9 +66,9 @@
 									alt="First One">
 							</div>
 							<div class="right-content">
-								<h4>Basic Fitness</h4>
-								<p>Please do not re-distribute this template ZIP file on any
-									template collection website. This is not allowed.</p>
+								<h4>Basic Fitness SERIES</h4>
+								<p>Free course for all user. This provide all information for beginer, let jump on it....
+								</p>
 								<a href="#" class="text-button">Discover More</a>
 							</div>
 						</li>
@@ -90,9 +80,9 @@
 									alt="second one">
 							</div>
 							<div class="right-content">
-								<h4>New Gym Training</h4>
-								<p>If you wish to support TemplateMo website via PayPal,
-									please feel free to contact us. We appreciate it a lot.</p>
+								<h4>New Gym Training SERIES</h4>
+								<p>Free course for all user. This provide all information for beginer, let jump on it....
+								</p>
 								<a href="#" class="text-button">Discover More</a>
 							</div>
 						</li>
@@ -103,11 +93,9 @@
 									alt="third gym training">
 							</div>
 							<div class="right-content">
-								<h4>Basic Muscle Course</h4>
+								<h4>Basic Muscle Course SERIES</h4>
 								<p>
-									Credit goes to <a rel="nofollow" href="https://www.pexels.com"
-										target="_blank">Pexels website</a> for images and video
-									background used in this HTML template.
+									Free course for all user. This provide all information for beginer, let jump on it....
 								</p>
 								<a href="#" class="text-button">Discover More</a>
 							</div>
@@ -123,13 +111,9 @@
 									alt="fourth muscle">
 							</div>
 							<div class="right-content">
-								<h4>Advanced Muscle Course</h4>
+								<h4>Advanced Muscle Course SERIES</h4>
 								<p>
-									You may want to browse through <a rel="nofollow"
-										href="https://templatemo.com/tag/digital-marketing"
-										target="_parent">Digital Marketing</a> or <a
-										href="https://templatemo.com/tag/corporate">Corporate</a> HTML
-									CSS templates on our website.
+									This series provide more information for only Register member. Let's Register now.....
 								</p>
 								<a href="#" class="text-button">Discover More</a>
 							</div>
@@ -141,9 +125,9 @@
 									alt="training fifth">
 							</div>
 							<div class="right-content">
-								<h4>Yoga Training</h4>
-								<p>This template is built on Bootstrap v4.3.1 framework. It
-									is easy to adapt the columns and sections.</p>
+								<h4>Advanced Yoga Training SERIES</h4>
+								<p>This series provide more information for only Register member. Let's Register now.....
+								</p>
 								<a href="#" class="text-button">Discover More</a>
 							</div>
 						</li>
@@ -154,9 +138,9 @@
 									alt="gym training">
 							</div>
 							<div class="right-content">
-								<h4>Body Building Course</h4>
-								<p>Suspendisse fringilla et nisi et mattis. Curabitur sed
-									finibus nisi. Integer nibh sapien, vehicula et auctor.</p>
+								<h4> Advanced Body Building Course SERIES</h4>
+								<p>This series provide more information for only Register member. Let's Register now.....
+								</p>
 								<a href="#" class="text-button">Discover More</a>
 							</div>
 						</li>
@@ -176,9 +160,7 @@
 						<h2>
 							Don’t <em>think</em>, begin <em>today</em>!
 						</h2>
-						<p>Ut consectetur, metus sit amet aliquet placerat, enim est
-							ultricies ligula, sit amet dapibus odio augue eget libero. Morbi
-							tempus mauris a nisi luctus imperdiet.</p>
+						<p>10Real Gymcenter</p>
 						<div class="main-button scroll-to-section">
 							<a href="#our-classes">Become a member</a>
 						</div>
@@ -196,13 +178,11 @@
 				<div class="col-lg-6 offset-lg-3">
 					<div class="section-heading">
 						<h2>
-							Our <em>Classes</em>
+							Our <em>Recommend for Gymmer.</em>
 						</h2>
 						<img src="/spring-mvc/template/web/assets/images/line-dec.png"
 							alt="">
-						<p>Nunc urna sem, laoreet ut metus id, aliquet consequat
-							magna. Sed viverra ipsum dolor, ultricies fermentum massa
-							consequat eu.</p>
+						<p>10Real Gymcenter.</p>
 					</div>
 				</div>
 			</div>
@@ -211,18 +191,18 @@
 					<ul>
 						<li><a href='#tabs-1'><img
 								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
-								alt="">First Training Class</a></li>
+								alt="">First Recommend</a></li>
 						<li><a href='#tabs-2'><img
 								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
-								alt="">Second Training Class</a></a></li>
+								alt="">Second Recommend</a></a></li>
 						<li><a href='#tabs-3'><img
 								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
-								alt="">Third Training Class</a></a></li>
+								alt="">Third Recommend</a></a></li>
 						<li><a href='#tabs-4'><img
 								src="/spring-mvc/template/web/assets/images/tabs-first-icon.png"
-								alt="">Fourth Training Class</a></a></li>
+								alt="">Fourth Recommend</a></a></li>
 						<div class="main-rounded-button">
-							<a href="#">View All Schedules</a>
+							<a href="#">View Our Courses</a>
 						</div>
 					</ul>
 				</div>
@@ -232,56 +212,46 @@
 							<img
 								src="/spring-mvc/template/web/assets/images/training-image-01.jpg"
 								alt="First Class">
-							<h4>First Training Class</h4>
-							<p>Phasellus convallis mauris sed elementum vulputate. Donec
-								posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit
-								erat, sed vehicula ligula. Aliquam ut sem fermentum sem
-								tincidunt lacinia gravida aliquam nunc. Morbi quis erat
-								imperdiet, molestie nunc ut, accumsan diam.</p>
+							<h4>First Recommend</h4>
+							<p>Bodybuilding is centered around building your body’s muscles through weightlifting and nutrition.
+							Whether recreational or competitive, bodybuilding is often referred to as a lifestyle.
+							</p>
 							<div class="main-button">
-								<a href="#">View Schedule</a>
+								<a href="#">View Our Courses</a>
 							</div>
 						</article>
 						<article id='tabs-2'>
 							<img
 								src="/spring-mvc/template/web/assets/images/training-image-02.jpg"
 								alt="Second Training">
-							<h4>Second Training Class</h4>
-							<p>Integer dapibus, est vel dapibus mattis, sem mauris luctus
-								leo, ac pulvinar quam tortor a velit. Praesent ultrices erat
-								ante, in ultricies augue ultricies faucibus. Nam tellus nibh,
-								ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar
-								eros. Orci varius natoque penatibus et magnis dis parturient
-								montes, nascetur ridiculus mus.</p>
+							<h4>Second Recommend</h4>
+							<p>In order to maximize your results from the gym, you must focus on your diet, as eating the wrong foods can be detrimental to your bodybuilding goals.
+								Bodybuilding differs from powerlifting or Olympic lifting in that it’s judged on a competitor’s physical appearance rather than physical strength.</p>
 							<div class="main-button">
-								<a href="#">View Schedule</a>
+								<a href="#">View Our Courses</a>
 							</div>
 						</article>
 						<article id='tabs-3'>
 							<img
 								src="/spring-mvc/template/web/assets/images/training-image-03.jpg"
 								alt="Third Class">
-							<h4>Third Training Class</h4>
-							<p>Fusce laoreet malesuada rhoncus. Donec ultricies diam
-								tortor, id auctor neque posuere sit amet. Aliquam pharetra,
-								augue vel cursus porta, nisi tortor vulputate sapien, id
-								scelerisque felis magna id felis. Proin neque metus,
-								pellentesque pharetra semper vel, accumsan a neque.</p>
+							<h4>Third Recommend</h4>
+							<p>As such, bodybuilders aspire to develop and maintain a well-balanced, lean and muscular physique.
+									To do this, many bodybuilders start with an off-season followed by an in-season way of eating — referred to as a bulking and cutting phase, respectively.
+							</p>
 							<div class="main-button">
-								<a href="#">View Schedule</a>
+								<a href="#">View Our Courses</a>
 							</div>
 						</article>
 						<article id='tabs-4'>
 							<img
 								src="/spring-mvc/template/web/assets/images/training-image-04.jpg"
 								alt="Fourth Training">
-							<h4>Fourth Training Class</h4>
-							<p>Pellentesque habitant morbi tristique senectus et netus et
-								malesuada fames ac turpis egestas. Aenean ultrices elementum
-								odio ac tempus. Etiam eleifend orci lectus, eget venenatis ipsum
-								commodo et.</p>
+							<h4>Fourth Recommend</h4>
+							<p>Resistance training increases muscle strength and size. Muscle strength is highly correlated with a lower risk of dying from cancer, heart and kidney disease, as well as several other critical illnesses.
+							</p>
 							<div class="main-button">
-								<a href="#">View Schedule</a>
+								<a href="#">View Our Courses</a>
 							</div>
 						</article>
 					</section>
@@ -301,9 +271,7 @@
 						</h2>
 						<img src="/spring-mvc/template/web/assets/images/line-dec.png"
 							alt="">
-						<p>Nunc urna sem, laoreet ut metus id, aliquet consequat
-							magna. Sed viverra ipsum dolor, ultricies fermentum massa
-							consequat eu.</p>
+						<p>This is SCHEDULE for famous PT on weeks in our On Site</p>
 					</div>
 				</div>
 			</div>
@@ -382,9 +350,7 @@
 						</h2>
 						<img src="/spring-mvc/template/web/assets/images/line-dec.png"
 							alt="">
-						<p>Nunc urna sem, laoreet ut metus id, aliquet consequat
-							magna. Sed viverra ipsum dolor, ultricies fermentum massa
-							consequat eu.</p>
+						<p>Famous PT of our Gymcenter</p>
 					</div>
 				</div>
 			</div>
@@ -464,7 +430,7 @@
 	<section class="section" id="contact-us">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-6 col-md-6 col-xs-12">
+				<div class="col-lg-12 col-md-12 col-xs-12">
 					<div id="map">
 						<iframe
 							src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -472,44 +438,44 @@
 							allowfullscreen></iframe>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-6 col-xs-12">
-					<div class="contact-form">
-						<form id="contact" action="" method="post">
-							<div class="row">
-								<div class="col-md-6 col-sm-12">
-									<fieldset>
-										<input name="name" type="text" id="name"
-											placeholder="Your Name*" required="">
-									</fieldset>
-								</div>
-								<div class="col-md-6 col-sm-12">
-									<fieldset>
-										<input name="email" type="text" id="email"
-											pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
-									</fieldset>
-								</div>
-								<div class="col-md-12 col-sm-12">
-									<fieldset>
-										<input name="subject" type="text" id="subject"
-											placeholder="Subject">
-									</fieldset>
-								</div>
-								<div class="col-lg-12">
-									<fieldset>
-										<textarea name="message" rows="6" id="message"
-											placeholder="Message" required=""></textarea>
-									</fieldset>
-								</div>
-								<div class="col-lg-12">
-									<fieldset>
-										<button type="submit" id="form-submit" class="main-button">Send
-											Message</button>
-									</fieldset>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
+<!-- 				<div class="col-lg-6 col-md-6 col-xs-12"> -->
+<!-- 					<div class="contact-form"> -->
+<!-- 						<form id="contact" action="" method="post"> -->
+<!-- 							<div class="row"> -->
+<!-- 								<div class="col-md-6 col-sm-12"> -->
+<!-- 									<fieldset> -->
+<!-- 										<input name="name" type="text" id="name" -->
+<!-- 											placeholder="Your Name*" required=""> -->
+<!-- 									</fieldset> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-md-6 col-sm-12"> -->
+<!-- 									<fieldset> -->
+<!-- 										<input name="email" type="text" id="email" -->
+<!-- 											pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required=""> -->
+<!-- 									</fieldset> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-md-12 col-sm-12"> -->
+<!-- 									<fieldset> -->
+<!-- 										<input name="subject" type="text" id="subject" -->
+<!-- 											placeholder="Subject"> -->
+<!-- 									</fieldset> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-lg-12"> -->
+<!-- 									<fieldset> -->
+<!-- 										<textarea name="message" rows="6" id="message" -->
+<!-- 											placeholder="Message" required=""></textarea> -->
+<!-- 									</fieldset> -->
+<!-- 								</div> -->
+<!-- 								<div class="col-lg-12"> -->
+<!-- 									<fieldset> -->
+<!-- 										<button type="submit" id="form-submit" class="main-button">Send -->
+<!-- 											Message</button> -->
+<!-- 									</fieldset> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</form> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</div>
 		</div>
 	</section>
