@@ -68,6 +68,19 @@ public class PaidCourseService implements IPaidCourseService{
 		
 	}
 
+	@Override
+	public PaidCourseDTO findOne(Long courseId) {
+		PaidCourseDTO courseDTO = new PaidCourseDTO();
+		PaidCourseEntity courseEntity= paidCourseRepository.findOne(courseId);
+		courseDTO.setId(courseEntity.getId());
+		courseDTO.setS3Path(courseEntity.getS3Path());
+		courseDTO.setTopic(courseEntity.getTopic());
+		courseDTO.setThumbnail(courseEntity.getThumbnail());
+		courseDTO.setName(courseEntity.getName());
+		
+		return courseDTO;
+	}
+
 //	@Override
 //	public void save(PaidCourseDTO PaidCourseDTO) {
 //		

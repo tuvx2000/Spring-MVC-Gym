@@ -11,25 +11,14 @@
 </head>
 
 <body style="text-align: center;">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
 	<div class="table-responsive"  style="text-align: center;">
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>Tên bài viết</th>
-					<th>Mô tả ngắn</th>
-					<th>Thao tác</th>
-					<th>Chủ đề</th>
+					<th>Name Course</th>
+					<th>Short Description about the course</th>
+					<th>Topic</th>
+					<th>Illustration</th>
 				</tr>
 			</thead>
 			<tbody>

@@ -41,6 +41,11 @@ public class UserService implements IUserService {
 		return userRepository.findOneByUserNameAndStatus(UserName, 1).getId();
 	}
 	
+	public int findUserStatusPaidByUserName (String UserName) {
+		
+		return userRepository.findOneByUserNameAndStatus(UserName, 1).getStatusPaid();
+	}
+	
 	
 	
 	@Override
@@ -63,7 +68,7 @@ public class UserService implements IUserService {
 		userEntity.setRoles(roles);
 		
 		userEntity.setStatus(1);
-
+		userEntity.setStatusPaid(0);
 		
 		userRepository.save(userEntity);
 		

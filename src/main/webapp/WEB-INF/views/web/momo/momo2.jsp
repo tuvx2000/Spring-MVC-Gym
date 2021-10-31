@@ -9,6 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Thanh toan thanh cong</h1>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+	<c:if test="${textStatus == null}">
+		<h1 style="text-align:center">You Already in Membership</h1>
+	</c:if>	
+		<c:if test="${textStatus != null}">
+		<h1 style="text-align:center">Please Make Member to go into Paid Courses</h1>
+	</c:if>	
+	<br><br><br><br><br><br>
 </body>
 </html>

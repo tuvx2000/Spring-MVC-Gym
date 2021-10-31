@@ -9,5 +9,8 @@ public interface IUserService {
 	
 	public Long findUserIdByUserName (String UserName);
 	
+	public int findUserStatusPaidByUserName (String UserName);
+
+	
 	public void updateStatusPaid (int status, Long userId);
 }

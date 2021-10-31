@@ -10,4 +10,6 @@ public interface IPaidCourseService  {
 	void addPaidCourse (PaidCourseDTO PaidCourseDTO);
 	List<PaidCourseDTO> findAll();
 	void save (PaidCourseDTO PaidCourseDTO);
+	PaidCourseDTO findOne(Long courseId);
+	
 }
