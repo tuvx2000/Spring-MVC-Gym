@@ -10,14 +10,27 @@
 </head>
 <body>
 
-	${j_username} ${j_password}
-	<div class="g-signin2" data-onsuccess="onSignIn"></div>
-	<div class="container">
+
+	<div style="text-align:center;align-items:center;align-self:center;justify-items:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+		<h3>Loading....</h3>
+		<div>
+		<div class="spinner-border text-primary"></div>
+		<div class="spinner-border text-success"></div>
+		<div class="spinner-border text-info"></div>
+		<div class="spinner-border text-warning"></div>
+		<div class="spinner-border text-danger"></div>
+		<div class="spinner-border text-secondary"></div>
+		<div class="spinner-border text-dark"></div>
+		</div>
+	</div>
+
+	<div hidden class="g-signin2" data-onsuccess="onSignIn"></div>
+	<div hidden class="container">
 		<!-- <h1 class="form-heading">login Form</h1> -->
 
+	
 
-
-		<div class="main-div">
+		<div  class="main-div">
 
 			<hr>
 			<c:if test="${param.incorrectAccount != null}">

@@ -11,30 +11,22 @@
 <body>
 	<!-- 			Login POST -->
 
-	<h1>xxxxxa</h1>
-	<div>
-		<form action="<c:url value='/google-dang-nhap'/>" method="post">
-			<input id="IdToken" type="text" name="IdToken">xxx </input> <input
-				id="SubIdToken" type="submit" /> xxx</input>
+	<div style="display:none;">
+		<form hidden  action="<c:url value='/google-dang-nhap'/>" method="post">
+			<input  id="IdToken" type="text" name="IdToken">xxx </input> 
+			<input id="SubIdToken" type="submit" /> xxx</input>
 		</form>
 	</div>
-	<h1>xxxxxa</h1>
+	<a hidden href="#" onclick="signOut();">Sign out</a>
 
-<a href="#" onclick="signOut();">Sign out</a>
 
-	<div class="container">
+	<div class="container" style="text-align:center;align-items:center;align-self:center;justify-items:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
 		<!-- <h1 class="form-heading">login Form</h1> -->
-
-
-
 		<div class="main-div">
-			<h1>
-				holder:
-				<h2 id="holder"></h2>
+			<h1 hidden>
+			<h2 hidden id="holder"></h2>
 			</h1>
-			<div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-
+			<div style="width:150px;padding-left:60px;"  class="g-signin2" data-onsuccess="onSignIn"></div>
 			<hr>
 			<c:if test="${param.incorrectAccount != null}">
 				<div class="alert alert-danger">Username or Password is
