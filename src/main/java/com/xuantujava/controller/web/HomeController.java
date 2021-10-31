@@ -46,7 +46,7 @@ public class HomeController {
 //		request = managementGoogleUserService.GoogleSignInAndRegister(request, response);
 //
 //		ModelAndView mav = new ModelAndView("GoogleLogingOnLoading");
-		System.out.println("yhhhhh yeahhhh");
+		//System.out.println("yhhhhh yeahhhh");
 		
 		Long userId = userService.findUserIdByUserName(request.getParameter("userName"));
 		
@@ -57,10 +57,10 @@ public class HomeController {
 		commentDTO.setCourseid(Long.parseLong(request.getParameter("courseid")));
 		commentDTO.setComment(request.getParameter("comment"));
 
-		System.out.println("user name:" +commentDTO.getUserName());
-		System.out.println("parrent id:" +commentDTO.getParentIDCOMMENT());
-		System.out.println("course id:" +commentDTO.getCourseid());
-		System.out.println("comment string:" + commentDTO.getComment());	
+		//System.out.println("user name:" +commentDTO.getUserName());
+		//System.out.println("parrent id:" +commentDTO.getParentIDCOMMENT());
+		//System.out.println("course id:" +commentDTO.getCourseid());
+		//System.out.println("comment string:" + commentDTO.getComment());	
 	
 		
 		commentService.addComment(commentDTO);

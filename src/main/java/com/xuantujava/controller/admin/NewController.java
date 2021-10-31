@@ -57,7 +57,7 @@ public class NewController {
 	
 	@RequestMapping(value = "/quan-tri/bai-viet/chinh-sua", method = RequestMethod.GET)
 	public ModelAndView editNew(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
-//		System.out.println("Id bai viet: "+ id);
+//		//System.out.println("Id bai viet: "+ id);
 //		
 //		
 //		

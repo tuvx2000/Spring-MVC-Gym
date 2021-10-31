@@ -62,7 +62,7 @@ public class CaptureMoMo extends AbstractProcess<CaptureMoMoRequest, CaptureMoMo
                 throw new MoMoException("[CaptureMoMoResponse] [" + request.getOrderId() + "] -> Error API");
             }
 
-            System.out.println("uweryei7rye8wyreow8: "+ response.getData());
+            //System.out.println("uweryei7rye8wyreow8: "+ response.getData());
 
             CaptureMoMoResponse captureMoMoResponse = getGson().fromJson(response.getData(), CaptureMoMoResponse.class);
 

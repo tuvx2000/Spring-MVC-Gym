@@ -55,7 +55,7 @@ public class CourseController {
 	@RequestMapping(value = "/quan-tri/bai-hoc/them-moi", method = RequestMethod.POST)
 	public ModelAndView addCourse(@RequestParam("file") MultipartFile file, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException, ServletException {
-		System.out.println("day la get post");
+		//System.out.println("day la get post");
 
 		String filename = file.getOriginalFilename();
 		File xx = multipartToFile(file,filename);
@@ -66,7 +66,7 @@ public class CourseController {
 		ListObjectsV2Result result = s3.listObjectsV2("xuantu-spring-db");
 		List<S3ObjectSummary> objects = result.getObjectSummaries();
 		for (S3ObjectSummary os : objects) {
-		    System.out.println("* " + os.getKey());
+		    //System.out.println("* " + os.getKey());
 		}
 
 
@@ -79,11 +79,11 @@ public class CourseController {
 
 		
 		
-		System.out.println("xuantu-spring-db"+ filename);
-		System.out.println("name: " + request.getParameter("name"));
-		System.out.println("description: "+ request.getParameter("description"));
-		System.out.println("shortdescription: "+ request.getParameter("shortdescription"));
-		System.out.println("topic: " + request.getParameter("topic"));
+		//System.out.println("xuantu-spring-db"+ filename);
+		//System.out.println("name: " + request.getParameter("name"));
+		//System.out.println("description: "+ request.getParameter("description"));
+		//System.out.println("shortdescription: "+ request.getParameter("shortdescription"));
+		//System.out.println("topic: " + request.getParameter("topic"));
 		
 		PaidCourseDTO paidCourseDTO = new PaidCourseDTO();
 		paidCourseDTO.setS3Path("https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/" +filename);
@@ -145,7 +145,7 @@ public class CourseController {
 
 	@RequestMapping(value = "/quan-tri/bai-hoc/them-moi", method = RequestMethod.GET)
 	public ModelAndView addCourse2() {
-		System.out.println("day la get method");
+		//System.out.println("day la get method");
 		ModelAndView mav = new ModelAndView("admin/course/addPaidCourse");
 		return mav;
 	}

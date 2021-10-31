@@ -51,7 +51,7 @@ public class YoutubeService {
     	List<String> listComments = GetCommentsYoutube("Wy85Th3Myws");
     	
     	for (String item : listComments) {
-				System.out.println(item);
+				//System.out.println(item);
 		}
     	
         }
@@ -79,7 +79,7 @@ public class YoutubeService {
 	          
 	          
 	          for(CommentThread comment :listThreadComments) {
-//	        	  System.out.println(comment.getSnippet().getTopLevelComment().getSnippet().getTextDisplay());
+//	        	  //System.out.println(comment.getSnippet().getTopLevelComment().getSnippet().getTextDisplay());
 	        	  listComments.add(comment.getSnippet().getTopLevelComment().getSnippet().getTextDisplay());
 	          }
 	            	

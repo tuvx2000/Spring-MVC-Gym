@@ -37,7 +37,7 @@ public class PaidCourseController {
 	public ModelAndView listPaidCoursePage() {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println("NAME:"+ auth.getName());
+		//System.out.println("NAME:"+ auth.getName());
 		
 		
 		int statusPaid = userService.findUserStatusPaidByUserName(auth.getName().toString());
@@ -54,7 +54,7 @@ public class PaidCourseController {
 
 		List<PaidCourseDTO> listPaidCourse =  paidCourseService.findAll();
 		
-//		System.out.println(listPaidCourse.size());
+//		//System.out.println(listPaidCourse.size());
 		PaidCourseDTO centerDTO = new PaidCourseDTO();
 		centerDTO.setListResult(listPaidCourse);
 		ModelAndView mav = new ModelAndView("web/paidCourseMenu");
@@ -75,7 +75,7 @@ public class PaidCourseController {
 
 		List<CommentDTO> listDTO = commentService.listCommentByCourseId(courseid);
 		
-		System.out.println("course-ID: " + courseid);
+		//System.out.println("course-ID: " + courseid);
 		
 		CommentDTO model = new CommentDTO();;
 		

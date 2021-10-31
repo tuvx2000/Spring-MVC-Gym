@@ -88,7 +88,7 @@ public class PaidCourseService implements IPaidCourseService{
 //		if (PaidCourseDTO.getId() != null) {
 //			PaidCourseEntity oldNew = paidCourseRepository.findOne(PaidCourseDTO.getId());
 //
-//			System.out.println("need update PaidCourse/ Service");
+//			//System.out.println("need update PaidCourse/ Service");
 //		} else {
 //			paidCourseEntity.setCategory(category);
 //			paidCourseEntity.setDescription(description);

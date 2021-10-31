@@ -17,7 +17,7 @@ public class test {
          //   ResultSet rs = stmt.executeQuery("select * from emp");    
             conn.close();  
         }catch(Exception ex){
-            System.out.println(ex);
+            //System.out.println(ex);
         }  
     }
 }

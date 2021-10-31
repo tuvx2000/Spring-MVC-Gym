@@ -49,10 +49,10 @@ public class AllInOne {
 			captureMoMoResponse = CaptureMoMo.process(environment, orderId, requestId, Long.toString(amount), orderInfo,
 					returnURL, notifyURL, "");
 			
-			System.out.println("1------------------------------------------------");
+			//System.out.println("1------------------------------------------------");
 
-			System.out.println("xxxPAYURL:  " + captureMoMoResponse.getPayUrl());
-			System.out.println("2------------------------------------------------");
+			//System.out.println("xxxPAYURL:  " + captureMoMoResponse.getPayUrl());
+			//System.out.println("2------------------------------------------------");
 
 			
 			return captureMoMoResponse.getPayUrl().toString();
@@ -84,17 +84,17 @@ public class AllInOne {
 //        Payment Method- Phương thức thanh toán
 		CaptureMoMoResponse captureMoMoResponse = CaptureMoMo.process(environment, orderId, requestId,
 				Long.toString(amount), orderInfo, returnURL, notifyURL, "");
-		System.out.println("xxxPAYURL:  " + captureMoMoResponse.getPayUrl());
-		System.out.println(" ");
-		System.out.println("-------------------------------------------------------------------------------------");
+		//System.out.println("xxxPAYURL:  " + captureMoMoResponse.getPayUrl());
+		//System.out.println(" ");
+		//System.out.println("-------------------------------------------------------------------------------------");
 //        Transaction Query - Kiểm tra trạng thái giao dịch
 		QueryStatusTransactionResponse queryStatusTransactionResponse = QueryStatusTransaction.process(environment,
 				orderId, requestId);
-		System.out.println("-------------------------------------------------------------------------------------");
+		//System.out.println("-------------------------------------------------------------------------------------");
 
 //      Process Payment Result - Xử lý kết quả thanh toán
 		PayGateResponse payGateResponse = PaymentResult.process(environment, new PayGateResponse());
-		System.out.println("-------------------------------------------------------------------------------------");
+		//System.out.println("-------------------------------------------------------------------------------------");
 
 	}
 

@@ -69,7 +69,7 @@ public class ManagementGoogleUserService implements IManagementGoogleUserService
 				}
 
 			} else {
-				System.out.println("Invalid ID token.");
+				//System.out.println("Invalid ID token.");
 			}
 
 		} catch (GeneralSecurityException e) {

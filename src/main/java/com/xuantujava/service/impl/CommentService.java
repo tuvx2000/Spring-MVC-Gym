@@ -23,7 +23,7 @@ public class CommentService implements ICommentService{
 	UserRepository userRepository;
 	
 	public List<CommentDTO> listCommentByCourseId(Long courseId){
-		System.out.println("day la lisat comment");
+		//System.out.println("day la lisat comment");
 		
 		
 		List<CommentEntity> listEntity = commentRepository.findBycourseid(courseId);
@@ -58,7 +58,7 @@ public class CommentService implements ICommentService{
 		commentEntity.setCourseid(commentDTO.getCourseid());
 		
 	
-		System.out.println("xxx:" +commentEntity.getComment() +"/"+ commentEntity.getCourseid()  +"/"+  commentEntity.getUserid()  +"/"+  commentEntity.getParentId());
+		//System.out.println("xxx:" +commentEntity.getComment() +"/"+ commentEntity.getCourseid()  +"/"+  commentEntity.getUserid()  +"/"+  commentEntity.getParentId());
 		
 		commentRepository.save(commentEntity);
 		

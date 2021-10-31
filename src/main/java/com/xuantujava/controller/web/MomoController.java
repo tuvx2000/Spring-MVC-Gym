@@ -32,7 +32,7 @@ public class MomoController {
 		
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println("NAME:"+ auth.getName());
+		//System.out.println("NAME:"+ auth.getName());
 		
 		
 		int statusPaid = userService.findUserStatusPaidByUserName(auth.getName().toString());
@@ -54,9 +54,9 @@ public class MomoController {
 		
 		
 		
-//		System.out.println("xxxxxxxxx");
+//		//System.out.println("xxxxxxxxx");
 		String hold = AllInOne.dump(userId);
-//		System.out.println("url:"+hold);
+//		//System.out.println("url:"+hold);
 		
 		
 		
@@ -71,17 +71,17 @@ public class MomoController {
 	@RequestMapping(value = "/momo1", method = RequestMethod.GET)
 	public ModelAndView homePage(HttpServletRequest request) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		System.out.println("NAME:"+ auth.getName());
+		//System.out.println("NAME:"+ auth.getName());
 		
 		Long userId = userService.findUserIdByUserName(auth.getName().toString());
 		
-		System.out.println();
+		//System.out.println();
 		
 		
 		
 		
 		
-		System.out.println("1111111111");
+		//System.out.println("1111111111");
 		
 		
 		/////////////// Xu ly them nguoi dung da dang ky
@@ -99,7 +99,7 @@ public class MomoController {
 
 
 		
-		System.out.println("22222222222");
+		//System.out.println("22222222222");
 
 		ModelAndView mav = new ModelAndView("web/momo/momo2");
 		return mav;
@@ -110,7 +110,7 @@ public class MomoController {
 
 
 		
-		System.out.println("22222222222");
+		//System.out.println("22222222222");
 
 		ModelAndView mav = new ModelAndView("web/momo/momo2");
 		return mav;

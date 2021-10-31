@@ -16,7 +16,7 @@ public class AwsComprehenedService {
     public static void main(String[] args) {
     	String sentimentComment = AnalyzedOneLineFinal("Wy85Th3Myws").toString();
     	
-    	System.out.println(sentimentComment);
+    	//System.out.println(sentimentComment);
     	
         }
 
@@ -32,13 +32,13 @@ public class AwsComprehenedService {
 				.withRegion("ap-northeast-1").build();
 
 		// Call detectSentiment API
-//		System.out.println("Calling DetectSentiment");
+//		//System.out.println("Calling DetectSentiment");
 		DetectSentimentRequest detectSentimentRequest = new DetectSentimentRequest().withText(text)
 				.withLanguageCode("en");
 		DetectSentimentResult detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
-//		System.out.println(detectSentimentResult);
-//		System.out.println("End of DetectSentiment\n");
-//		System.out.println("Done");
+//		//System.out.println(detectSentimentResult);
+//		//System.out.println("End of DetectSentiment\n");
+//		//System.out.println("Done");
 
 		////// end
 
