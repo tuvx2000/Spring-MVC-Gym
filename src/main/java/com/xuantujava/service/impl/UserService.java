@@ -95,7 +95,7 @@ public class UserService implements IUserService {
 	@Override
 	public int getTotalItem() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (int) userRepository.count();
 	}
 
 	@Override

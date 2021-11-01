@@ -62,9 +62,9 @@
 												<thead>
 													<tr>
 														<th><input type="checkbox" id="checkAll"></th>
-														<th>Tên bài viết</th>
-														<th>Mô tả ngắn</th>
-														<th>Thao tác</th>
+														<th>User Name</th>
+														<th>Full Name</th>
+														<th>Role Id</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -73,7 +73,7 @@
 															<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
 															<td>${item.userName}</td>
 															<td>${item.fullName}</td>
-															<td>${item.password}</td>
+															<td>${item.roleId}</td>
 															<td>
 																<c:url var="updateNewURL" value="/quan-tri/bai-viet/chinh-sua">
 																	<c:param name="id" value="${item.id}"/>															
