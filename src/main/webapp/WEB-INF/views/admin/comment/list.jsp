@@ -1,8 +1,8 @@
 <%@include file="/common/taglib.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:url var="newAPI" value="/api/new"/>
-<c:url var="newURL" value="/quan-tri/bai-viet/danh-sach"/>
+<c:url var="newAPI" value="/api/comment"/>
+<c:url var="newURL" value="/quan-tri/binh-luan/danh-sach"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -37,7 +37,7 @@
 									<div class="table-btn-controls">
 										<div class="pull-right tableTools-container">
 											<div class="dt-buttons btn-overlap btn-group">
-												<c:url var="createNewURL" value="/quan-tri/bai-viet/chinh-sua"/>
+												<c:url var="createNewURL" value="/quan-tri/binh-luan/chinh-sua"/>
 												<a flag="info"
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
 												   title='Thêm bài viết' href='${createNewURL}'>
@@ -64,7 +64,7 @@
 														<th><input type="checkbox" id="checkAll"></th>
 														<th>Comment</th>
 														<th>UserName</th>
-														<th>CourseId</th>
+														<th>UserId</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -74,8 +74,10 @@
 															<td>${item.comment}</td>
 															<td>${item.userName}</td>
 															<td>${item.userid}</td>
+															<td>${item.id}</td>
+															
 															<td>
-																<c:url var="updateNewURL" value="/quan-tri/bai-viet/chinh-sua">
+																<c:url var="updateNewURL" value="/quan-tri/binh-luan/chinh-sua">
 																	<c:param name="id" value="${item.id}"/>															
 																</c:url>																
 																<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"

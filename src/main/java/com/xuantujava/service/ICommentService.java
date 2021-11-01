@@ -14,5 +14,9 @@ public interface ICommentService {
 	 
 	 List<CommentDTO> findAll(Pageable pageable);
 	 int getTotalItem();
+	 
+	 public CommentDTO save(CommentDTO dto);
+	 
+	 CommentDTO findById(long id);
 
 }
