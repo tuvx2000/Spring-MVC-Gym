@@ -13,7 +13,7 @@
 
 	<body>
 		<div class="main-content">
-		<form action="<c:url value='/quan-tri/bai-viet/danh-sach'/>" id="formSubmit" method="get">
+		<form action="<c:url value='/quan-tri/bai-hoc-mien-phi/danh-sach'/>" id="formSubmit" method="get">
 			
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
