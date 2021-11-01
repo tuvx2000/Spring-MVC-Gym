@@ -93,6 +93,24 @@
 			</ul>
 		</li>	
 <!-- 			3 -->
+		<li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa fa-list"></i> 
+				<span class="menu-text"> 
+					Quản lý Comment 
+				</span>
+				<b></b>
+			</a> 
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li>
+					<a href="<c:url value='/quan-tri/binh-luan/danh-sach?page=1&limit=5' />" >
+						 DS Comment
+					</a> 
+				</li>
+			</ul>
+		</li>	
+<!-- 			4 -->
 			
 			
 			
