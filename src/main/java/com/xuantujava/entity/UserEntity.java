@@ -46,6 +46,7 @@ public class UserEntity extends BaseEntity {
     private List transaction;  
 
 
+	
 	public void setTransaction(List transaction) {
 		this.transaction = transaction;
 	}

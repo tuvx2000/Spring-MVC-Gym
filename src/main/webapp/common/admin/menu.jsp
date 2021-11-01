@@ -111,6 +111,24 @@
 			</ul>
 		</li>	
 <!-- 			4 -->
+<li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa fa-list"></i> 
+				<span class="menu-text"> 
+					Quản lý User 
+				</span>
+				<b></b>
+			</a> 
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li>
+					<a href="<c:url value='/quan-tri/nguoi-dung/danh-sach?page=1&limit=5' />" >
+						 DS User
+					</a> 
+				</li>
+			</ul>
+		</li>	
+<!-- 			4 -->
 			
 			
 			

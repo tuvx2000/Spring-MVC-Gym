@@ -1,14 +1,19 @@
 package com.xuantujava.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.xuantujava.DTO.CommentDTO;
 import com.xuantujava.DTO.FreeCourseDTO;
 import com.xuantujava.entity.CommentEntity;
 import com.xuantujava.entity.FreeCourseEntity;
+import com.xuantujava.service.IUserService;
 
 @Component
 public class CommentConverter {
+	
+	@Autowired
+	IUserService userService;
 	
 	public CommentDTO toDto(CommentEntity entity) {
 		CommentDTO result = new CommentDTO();
@@ -17,6 +22,7 @@ public class CommentConverter {
 		result.setUserid(entity.getUserid());
 		result.setParentIDCOMMENT(entity.getParentId());
 		result.setCourseid(entity.getCourseid());
+		result.setUserName(userService.findUserNameByUserId(entity.getUserid()));
 		
 		return result;
 	}
@@ -28,6 +34,9 @@ public class CommentConverter {
 		result.setUserid(dto.getUserid());
 		result.setParentId(dto.getParentIDCOMMENT());
 		result.setCourseid(dto.getCourseid());
+		
+		result.setUserid(dto.getUserid());
+
 		
 		return result;
 	}

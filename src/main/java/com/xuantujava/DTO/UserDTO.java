@@ -10,6 +10,16 @@ public class UserDTO extends AbstractDTO<UserDTO>  {
 	private String password;
 	private int status;
 	private Long roleId;
+	private Integer statusPaid;
+
+	
+	
+	public Integer getStatusPaid() {
+		return statusPaid;
+	}
+	public void setStatusPaid(Integer statusPaid) {
+		this.statusPaid = statusPaid;
+	}
 	public String getUserName() {
 		return userName;
 	}
