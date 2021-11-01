@@ -65,13 +65,34 @@
 			<b class="arrow"></b>
 			<ul class="submenu">
 				<li>
-					<a href="<c:url value='/quan-tri/bai-hoc/them-moi' />" >
+<%-- 					<a href="<c:url value='/quan-tri/bai-hoc-tra-phi/them-moi' />" > --%>
+<!-- 						 DS Paid Course -->
+<!-- 					</a>  -->
+						<a href="<c:url value='/quan-tri/bai-hoc-tra-phi/danh-sach?page=1&limit=2' />" >
 						 DS Paid Course
 					</a> 
 				</li>
 			</ul>
 		</li>	
 <!-- 			2 -->
+		<li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa fa-list"></i> 
+				<span class="menu-text"> 
+					Quản lý Free Course 
+				</span>
+				<b></b>
+			</a> 
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li>
+					<a href="<c:url value='/quan-tri/bai-hoc-mien-phi/danh-sach?page=1&limit=2' />" >
+						 DS Free Course
+					</a> 
+				</li>
+			</ul>
+		</li>	
+<!-- 			3 -->
 			
 			
 			

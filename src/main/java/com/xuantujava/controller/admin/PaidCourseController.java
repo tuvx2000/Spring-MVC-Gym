@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,12 +32,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.io.Files;
+import com.xuantujava.DTO.FreeCourseDTO;
 import com.xuantujava.DTO.PaidCourseDTO;
 import com.xuantujava.repository.PaidCourseRepository;
 import com.xuantujava.service.IPaidCourseService;
 import com.xuantujava.service.impl.FreeCourseService;
 //////////////
 import com.xuantujava.service.impl.PaidCourseService;
+import com.xuantujava.util.MessageUtil;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -46,13 +51,61 @@ import com.amazonaws.AmazonServiceException;
 
 @MultipartConfig
 @Controller(value = "courseControllerOfAdmin")
-public class CourseController {
+public class PaidCourseController {
 
 	@Autowired
-	IPaidCourseService iPaidCourseService;
+	IPaidCourseService paidCourseService;
+	
+	@Autowired
+	private MessageUtil messageUtil;
+	
+	
+	//list
+	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/danh-sach", method = RequestMethod.GET)
+	public ModelAndView showList(@RequestParam("page") int page, @RequestParam("limit") int limit, HttpServletRequest request) {
+		PaidCourseDTO model = new PaidCourseDTO();
+		Pageable pageable = new PageRequest(page -1, limit);
+		ModelAndView mav = new ModelAndView("admin/paidCourse/list");
+
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("messageResponse", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		
+		
+		model.setPage(page);
+		model.setLimit(limit);
+		
+		
+		model.setTotalItem(paidCourseService.getTotalItem());
+		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
+		model.setListResult(paidCourseService.findAll(pageable));
+		
+		
+		
+		mav.addObject("model", model);
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//add
+	
+	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/them-moi", method = RequestMethod.GET)
+	public ModelAndView addCourseget() {
+		ModelAndView mav = new ModelAndView("admin/paidCourse/addPaidCourse");
+		return mav;
+	}
 
 
-	@RequestMapping(value = "/quan-tri/bai-hoc/them-moi", method = RequestMethod.POST)
+	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/them-moi", method = RequestMethod.POST)
 	public ModelAndView addCourse(@RequestParam("file") MultipartFile file, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException, ServletException {
 		//System.out.println("day la get post");
@@ -95,10 +148,10 @@ public class CourseController {
 		
 		
 		
-		iPaidCourseService.addPaidCourse(paidCourseDTO);
+		paidCourseService.addPaidCourse(paidCourseDTO);
 		 
 
-		ModelAndView mav = new ModelAndView("admin/course/addPaidCourse");
+		ModelAndView mav = new ModelAndView("admin/paidCourse/addPaidCourse");
 		return mav;
 	}
 	

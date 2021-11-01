@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.xuantujava.DTO.FreeCourseDTO;
 import com.xuantujava.DTO.PaidCourseDTO;
+import com.xuantujava.converter.PaidCourseConverter;
 import com.xuantujava.entity.CategoryEntity;
+import com.xuantujava.entity.FreeCourseEntity;
 import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.PaidCourseEntity;
 import com.xuantujava.repository.PaidCourseRepository;
@@ -17,6 +21,9 @@ import com.xuantujava.service.IPaidCourseService;
 public class PaidCourseService implements IPaidCourseService{
 	@Autowired
 	PaidCourseRepository paidCourseRepository;
+	
+	@Autowired
+	PaidCourseConverter paidCourseConverter;
 	
 	@Override
 	public void addPaidCourse(PaidCourseDTO paidcourseDTO) {
@@ -79,6 +86,23 @@ public class PaidCourseService implements IPaidCourseService{
 		courseDTO.setName(courseEntity.getName());
 		
 		return courseDTO;
+	}
+
+	@Override
+	public int getTotalItem() {
+		// TODO Auto-generated method stub
+		return (int) paidCourseRepository.count();
+	}
+
+	@Override
+	public List<PaidCourseDTO> findAll(Pageable pageable) {
+		List<PaidCourseDTO> models = new ArrayList<>();
+		List<PaidCourseEntity> entities = paidCourseRepository.findAll(pageable).getContent();
+		for (PaidCourseEntity item: entities) {
+			PaidCourseDTO freeCourseDTO = paidCourseConverter.toDto(item);
+			models.add(freeCourseDTO);
+		}
+		return models;
 	}
 
 //	@Override

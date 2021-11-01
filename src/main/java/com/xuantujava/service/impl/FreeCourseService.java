@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.xuantujava.DTO.FreeCourseDTO;
+import com.xuantujava.DTO.NewDTO;
+import com.xuantujava.converter.FreeCourseConverter;
 import com.xuantujava.entity.FreeCourseEntity;
+import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.UserEntity;
 import com.xuantujava.repository.FreeCourseRepository;
 import com.xuantujava.repository.UserRepository;
@@ -19,7 +23,9 @@ public class FreeCourseService implements IFreeCourseService {
 	@Autowired
 	FreeCourseRepository freeCourseRepository;
 
-
+	@Autowired
+	FreeCourseConverter freeCourseConverter;
+	
 	@Override
 	public List<FreeCourseDTO> findAll() {
 
@@ -110,6 +116,22 @@ public class FreeCourseService implements IFreeCourseService {
 		String part2 = parts[1]; // videoId
 
 		return part2;
+	}
+
+	@Override
+	public int getTotalItem() {
+		return (int) freeCourseRepository.count();
+	}
+
+	@Override
+	public List<FreeCourseDTO> findAll(Pageable pageable) {
+		List<FreeCourseDTO> models = new ArrayList<>();
+		List<FreeCourseEntity> entities = freeCourseRepository.findAll(pageable).getContent();
+		for (FreeCourseEntity item: entities) {
+			FreeCourseDTO freeCourseDTO = freeCourseConverter.toDto(item);
+			models.add(freeCourseDTO);
+		}
+		return models;
 	}
 	
 	
