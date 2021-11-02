@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xuantujava.DTO.CommentDTO;
+import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.DTO.PaidCourseDTO;
 import com.xuantujava.service.ICommentService;
 import com.xuantujava.util.MessageUtil;
@@ -53,4 +54,36 @@ public class CommentController {
 		mav.addObject("model", model);
 		return mav;
 	}
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/quan-tri/binh-luan/chinh-sua", method = RequestMethod.GET)
+	public ModelAndView editNew(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+//		//System.out.println("Id bai viet: "+ id);
+//		
+//		
+//		
+//		
+		ModelAndView mav = new ModelAndView("admin/comment/edit");
+		CommentDTO model = new CommentDTO();
+		if (id != null) {
+			model = commentService.findById(id);
+			System.out.println("comment id: "+ id + " / " + model.getUserName());
+		}
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("messageResponse", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		mav.addObject("model", model);
+		return mav;
+	
+	}
+	
+	
+	
+	
+	
 }

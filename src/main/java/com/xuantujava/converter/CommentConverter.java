@@ -5,8 +5,10 @@ import org.springframework.stereotype.Component;
 
 import com.xuantujava.DTO.CommentDTO;
 import com.xuantujava.DTO.FreeCourseDTO;
+import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.entity.CommentEntity;
 import com.xuantujava.entity.FreeCourseEntity;
+import com.xuantujava.entity.NewEntity;
 import com.xuantujava.service.IUserService;
 
 @Component
@@ -18,6 +20,8 @@ public class CommentConverter {
 	public CommentDTO toDto(CommentEntity entity) {
 		CommentDTO result = new CommentDTO();
 		
+		result.setIDCOMMENT(entity.getId());
+		result.setId(entity.getId());
 		result.setComment(entity.getComment());
 		result.setUserid(entity.getUserid());
 		result.setParentIDCOMMENT(entity.getParentId());
@@ -40,4 +44,18 @@ public class CommentConverter {
 		
 		return result;
 	}
+	
+	
+	public CommentEntity toEntity(CommentEntity result, CommentDTO dto) {
+		result.setComment(dto.getComment());
+		result.setUserid(dto.getUserid());
+		result.setParentId(dto.getParentIDCOMMENT());
+		result.setCourseid(dto.getCourseid());
+		
+		result.setUserid(dto.getUserid());
+		return result;
+	}
+	
+	
+	
 }
