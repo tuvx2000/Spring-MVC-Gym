@@ -19,8 +19,8 @@ public class CommentAPI {
 	
 	@PostMapping("/api/comment")
 	public CommentDTO createComment(@RequestBody CommentDTO addComment) {
-		System.out.println("comment API(add):"+ addComment.getComment());
-		System.out.println("comment ID API(add):"+ addComment.getId());
+//		System.out.println("comment API(add):"+ addComment.getComment());
+//		System.out.println("comment ID API(add):"+ addComment.getId());
 		
 		commentService.save(addComment);
 		

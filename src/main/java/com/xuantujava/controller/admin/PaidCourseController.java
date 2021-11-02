@@ -32,6 +32,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.io.Files;
+import com.xuantujava.DTO.CommentDTO;
 import com.xuantujava.DTO.FreeCourseDTO;
 import com.xuantujava.DTO.PaidCourseDTO;
 import com.xuantujava.repository.PaidCourseRepository;
@@ -89,26 +90,41 @@ public class PaidCourseController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	//add
 	
-	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/them-moi", method = RequestMethod.GET)
-	public ModelAndView addCourseget() {
+	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/chinh-sua", method = RequestMethod.GET)
+	public ModelAndView addCourseget( HttpServletRequest request,
+			@RequestParam(value = "id", required = false) Long id) {
 		ModelAndView mav = new ModelAndView("admin/paidCourse/addPaidCourse");
+
+		
+		PaidCourseDTO model = new PaidCourseDTO();
+		if (id != null) {
+			model = paidCourseService.findById(id);
+			System.out.println("comment id: "+ id + " / " + model.getS3Path());
+		}
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("messageResponse", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		System.out.println("here is the get method");
+		mav.addObject("model", model);
 		return mav;
 	}
 
 
-	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/them-moi", method = RequestMethod.POST)
+	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/chinh-sua", method = RequestMethod.POST)
 	public ModelAndView addCourse(@RequestParam("file") MultipartFile file, HttpServletRequest request,
+			@RequestParam(value = "id", required = false) Long id,
 			HttpServletResponse response, HttpSession session) throws IOException, ServletException {
-		//System.out.println("day la get post");
+		System.out.println("step1");
+		ModelAndView mav = new ModelAndView("admin/paidCourse/addPaidCourse");
+
+		if(id != null) {
+			System.out.println("step2");
+			
+		//day la them moi
 
 		String filename = file.getOriginalFilename();
 		File xx = multipartToFile(file,filename);
@@ -131,13 +147,6 @@ public class PaidCourseController {
 		}
 
 		
-		
-		//System.out.println("xuantu-spring-db"+ filename);
-		//System.out.println("name: " + request.getParameter("name"));
-		//System.out.println("description: "+ request.getParameter("description"));
-		//System.out.println("shortdescription: "+ request.getParameter("shortdescription"));
-		//System.out.println("topic: " + request.getParameter("topic"));
-		
 		PaidCourseDTO paidCourseDTO = new PaidCourseDTO();
 		paidCourseDTO.setS3Path("https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/" +filename);
 		paidCourseDTO.setName(request.getParameter("name"));
@@ -147,11 +156,22 @@ public class PaidCourseController {
 		paidCourseDTO.setThumbnail(request.getParameter("thumbnail"));
 		
 		
-		
 		paidCourseService.addPaidCourse(paidCourseDTO);
-		 
 
-		ModelAndView mav = new ModelAndView("admin/paidCourse/addPaidCourse");
+		}
+		//day la het them moi
+
+		System.out.println("step3");
+
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("messageResponse", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		
+		
+
+		
 		return mav;
 	}
 	

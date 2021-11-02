@@ -3,6 +3,8 @@ package com.xuantujava.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import com.xuantujava.DTO.FreeCourseDTO;
 import com.xuantujava.DTO.PaidCourseDTO;
 import com.xuantujava.converter.PaidCourseConverter;
 import com.xuantujava.entity.CategoryEntity;
+import com.xuantujava.entity.CommentEntity;
 import com.xuantujava.entity.FreeCourseEntity;
 import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.PaidCourseEntity;
@@ -69,9 +72,30 @@ public class PaidCourseService implements IPaidCourseService{
 	}
 
 	@Override
-	public void save(PaidCourseDTO PaidCourseDTO) {
-		PaidCourseEntity oldNew = paidCourseRepository.findOne(PaidCourseDTO.getId());
-		paidCourseRepository.save(oldNew);
+	public PaidCourseDTO save(PaidCourseDTO dto) {
+		
+		PaidCourseEntity paidCourseEntity = new PaidCourseEntity();
+		if (dto.getId() != null) {
+			PaidCourseEntity oldPaidCourse = paidCourseRepository.findOne(dto.getId());
+			paidCourseEntity = paidCourseConverter.toEntity(oldPaidCourse, dto);
+		} else {
+			paidCourseEntity = paidCourseConverter.toEntity(dto);
+		}
+		
+		return paidCourseConverter.toDto(paidCourseRepository.save(paidCourseEntity));
+		
+		
+		
+//		
+//		
+//		PaidCourseEntity oldNew = paidCourseRepository.findOne(PaidCourseDTO.getId());
+//		paidCourseRepository.save(oldNew);
+//		
+		
+		
+		
+		
+		
 		
 	}
 
@@ -104,6 +128,25 @@ public class PaidCourseService implements IPaidCourseService{
 		}
 		return models;
 	}
+	
+	
+	
+	@Override
+	@Transactional
+	public void delete(long[] ids) {
+		for (long id: ids) {
+			paidCourseRepository.delete(id);
+		}
+	}
+
+	@Override
+	public PaidCourseDTO findById(Long id) {
+		// TODO Auto-generated method stub
+		return findOne(id);
+	}
+	
+	
+	
 
 //	@Override
 //	public void save(PaidCourseDTO PaidCourseDTO) {

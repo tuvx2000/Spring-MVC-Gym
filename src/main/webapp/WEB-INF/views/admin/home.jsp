@@ -7,6 +7,9 @@
 </head>
 <body>
 <div class="main-content">
+	<h4>Sentiment Chart(DEMO)</h4>
+	<img alt="" src="https://chartio.com/assets/25c0ab/tutorials/charts/pie-charts/8f2915ab9024902155c5d27d430831be813de071853c69d778102722a4d0efbf/pie-chart-example-1.png">
+
     <div class="main-content-inner">
         <div class="breadcrumbs ace-save-state" id="breadcrumbs">
             <ul class="breadcrumb">
