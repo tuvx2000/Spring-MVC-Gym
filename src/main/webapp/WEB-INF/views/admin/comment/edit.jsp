@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="newURL" value="/quan-tri/bai-viet/danh-sach"/>
-<c:url var="editURL" value="/quan-tri/bai-viet/chinh-sua"/>
+<c:url var="newURL" value="/quan-tri/binh-luan/danh-sach"/>
+<c:url var="editURL" value="/quan-tri/binh-luan/chinh-sua"/>
 <c:url var ="NewAPI" value="/api/comment"/>
 <html>
 <head>

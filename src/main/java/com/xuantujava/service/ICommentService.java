@@ -18,5 +18,6 @@ public interface ICommentService {
 	 public CommentDTO save(CommentDTO dto);
 	 
 	 CommentDTO findById(long id);
+	void delete(long[] ids);
 
 }

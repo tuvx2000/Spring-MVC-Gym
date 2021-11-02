@@ -20,7 +20,7 @@ public class CommentAPI {
 	@PostMapping("/api/comment")
 	public CommentDTO createComment(@RequestBody CommentDTO addComment) {
 		System.out.println("comment API(add):"+ addComment.getComment());
-		
+		System.out.println("comment ID API(add):"+ addComment.getId());
 		
 		commentService.save(addComment);
 		
@@ -36,6 +36,6 @@ public class CommentAPI {
 	
 	@DeleteMapping("/api/comment")
 	public void deleteComment(@RequestBody long[] ids) {	
-//		commentService.delete(ids);
+		commentService.delete(ids);
 	}
 }

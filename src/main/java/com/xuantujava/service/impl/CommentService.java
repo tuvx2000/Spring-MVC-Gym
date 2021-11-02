@@ -114,5 +114,13 @@ public class CommentService implements ICommentService{
 		return commentConverter.toDto(entity);
 	}
 	
+	@Override
+	@Transactional
+	public void delete(long[] ids) {
+		for (long id: ids) {
+			commentRepository.delete(id);
+		}
+	}
+	
 
 }
