@@ -433,7 +433,7 @@
 				<div class="col-lg-12 col-md-12 col-xs-12">
 					<div id="map">
 						<iframe
-							src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15268.11161757036!2d107.0811267!3d16.9239157!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9ebf2ed7367f1a7!2zUXXDoW4gVHV54bq_dCDEkGVu!5e0!3m2!1sen!2s!4v1636008639087!5m2!1sen!2s"
 							width="100%" height="600px" frameborder="0" style="border: 0"
 							allowfullscreen></iframe>
 					</div>

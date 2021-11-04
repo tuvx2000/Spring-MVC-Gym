@@ -1,8 +1,8 @@
 <%@include file="/common/taglib.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:url var="newAPI" value="/api/new"/>
-<c:url var="newURL" value="/quan-tri/bai-viet/danh-sach"/>
+<c:url var="newAPI" value="/api/freecourse"/>
+<c:url var="newURL" value="/quan-tri/bai-hoc-mien-phi/danh-sach"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -37,7 +37,7 @@
 									<div class="table-btn-controls">
 										<div class="pull-right tableTools-container">
 											<div class="dt-buttons btn-overlap btn-group">
-												<c:url var="createNewURL" value="/quan-tri/bai-viet/chinh-sua"/>
+												<c:url var="createNewURL" value="/quan-tri/bai-hoc-mien-phi/chinh-sua"/>
 												<a flag="info"
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
 												   title='Thêm bài viết' href='${createNewURL}'>
@@ -62,9 +62,9 @@
 												<thead>
 													<tr>
 														<th><input type="checkbox" id="checkAll"></th>
-														<th>Tên bài viết</th>
-														<th>Mô tả ngắn</th>
-														<th>Thao tác</th>
+														<th>Course's Name</th>
+														<th>Link Youtube</th>
+														<th>Id</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -75,7 +75,7 @@
 															<td>${item.linkyoutube}</td>
 															<td>${item.id}</td>
 															<td>
-																<c:url var="updateNewURL" value="/quan-tri/bai-viet/chinh-sua">
+																<c:url var="updateNewURL" value="/quan-tri/bai-hoc-mien-phi/chinh-sua">
 																	<c:param name="id" value="${item.id}"/>															
 																</c:url>																
 																<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
@@ -109,7 +109,7 @@
 		            startPage: currentPage,
 		            onPageClick: function (event, page) {
 		            	if (currentPage != page) {
-		            		$('#limit').val(2);
+		            		$('#limit').val(5);
 							$('#page').val(page);
 							$('#formSubmit').submit();
 						}
@@ -152,10 +152,10 @@
 		            contentType: 'application/json',
 		            data: JSON.stringify(data),
 		            success: function (result) {
-		                window.location.href = "${newURL}?page=1&limit=2&message=delete_success";
+		                window.location.href = "${newURL}?page=1&limit=5&message=delete_success";
 		            },
 		            error: function (error) {
-		            	window.location.href = "${newURL}?page=1&limit=2&message=error_system";
+		            	window.location.href = "${newURL}?page=1&limit=5&message=error_system";
 		            }
 		        });
 		    }

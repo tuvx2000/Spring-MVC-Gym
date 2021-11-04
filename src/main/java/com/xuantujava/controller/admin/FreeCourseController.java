@@ -55,4 +55,37 @@ public class FreeCourseController {
 		mav.addObject("model", model);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/quan-tri/bai-hoc-mien-phi/chinh-sua", method = RequestMethod.GET)
+	public ModelAndView editNew(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+//		//System.out.println("Id bai viet: "+ id);
+//		
+//		
+//		
+//		
+		ModelAndView mav = new ModelAndView("admin/freeCourse/edit");
+		FreeCourseDTO model = new FreeCourseDTO();
+		if (id != null) {
+			System.out.println("not null");
+			model = freeCourseService.findById(id);
+			System.out.println("topic"+model.getTopic());
+
+		}else
+			System.out.println("isss null");
+//			System.out.println("isss null");
+
+		
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("messageResponse", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		
+		mav.addObject("model", model);
+		
+		return mav;
+	
+	}
+
+	
 }

@@ -3,6 +3,8 @@ package com.xuantujava.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.xuantujava.DTO.FreeCourseDTO;
 import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.converter.FreeCourseConverter;
+import com.xuantujava.entity.CategoryEntity;
 import com.xuantujava.entity.FreeCourseEntity;
 import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.UserEntity;
@@ -50,6 +53,8 @@ public class FreeCourseService implements IFreeCourseService {
 		return listDTO;
 	}
 
+	@Override
+	@Transactional
 	public void UpdateVideoSentimentAll() {
 		List<FreeCourseEntity> listEntity = freeCourseRepository.findAll();
 		
@@ -63,6 +68,7 @@ public class FreeCourseService implements IFreeCourseService {
     
     
 
+	@Transactional
 	public void UpdateVideoSentiment(String videoLink) {
 
 		List<String> sentimentResult = new ArrayList<>();
@@ -132,6 +138,35 @@ public class FreeCourseService implements IFreeCourseService {
 			models.add(freeCourseDTO);
 		}
 		return models;
+	}
+
+	@Override
+	@Transactional
+	public FreeCourseDTO save(FreeCourseDTO dto) {
+
+		FreeCourseEntity freeCourseEntity = new FreeCourseEntity();
+		if (dto.getId() != null) {
+			FreeCourseEntity oldCourse = freeCourseRepository.findOne(dto.getId());
+
+			freeCourseEntity = freeCourseConverter.toEntity(oldCourse, dto);
+		} else {
+			freeCourseEntity = freeCourseConverter.toEntity(dto);
+		}
+		return freeCourseConverter.toDto(freeCourseRepository.save(freeCourseEntity));
+	}
+
+	@Override
+	@Transactional
+	public void delete(long[] ids) {
+		for (long id: ids) {
+			freeCourseRepository.delete(id);
+		}
+	}
+
+	@Override
+	public FreeCourseDTO findById(long id) {
+		FreeCourseEntity entity = freeCourseRepository.findOne(id);
+		return freeCourseConverter.toDto(entity);
 	}
 	
 	
