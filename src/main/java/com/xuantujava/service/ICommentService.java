@@ -14,10 +14,12 @@ public interface ICommentService {
 	 
 	 List<CommentDTO> findAll(Pageable pageable);
 	 int getTotalItem();
+	 public List<Long> listCommentIdByCourseId(Long courseId);
 	 
 	 public CommentDTO save(CommentDTO dto);
 	 
 	 CommentDTO findById(long id);
 	void delete(long[] ids);
+	void deleteCommentsByCoursesId(long[] ids);
 
 }

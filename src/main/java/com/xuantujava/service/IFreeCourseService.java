@@ -9,6 +9,7 @@ import com.xuantujava.DTO.NewDTO;
 
 public interface IFreeCourseService {
 	List<FreeCourseDTO> findAll();
+	public void UpdateVideoSentimentAll();
 	
 	int getTotalItem();
 	List<FreeCourseDTO> findAll(Pageable pageable);

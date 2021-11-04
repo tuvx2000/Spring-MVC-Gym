@@ -34,6 +34,27 @@ public class CommentService implements ICommentService{
 	@Autowired
 	CommentConverter commentConverter;
 	
+	public List<Long> listCommentIdByCourseId(Long courseId){
+		List<Long> IdCommentList = new ArrayList<>();
+		List<CommentEntity> listEntity = commentRepository.findBycourseid(courseId);
+		
+		for (CommentEntity itemEntity : listEntity) {
+			IdCommentList.add(itemEntity.getId());
+		}
+		return IdCommentList;
+	}
+
+	@Override
+	@Transactional
+	public void deleteCommentsByCoursesId (long[] ids) {
+		for (long id : ids) {
+			List<Long> listIdComment = listCommentIdByCourseId(id);
+			for (long idcomment : listIdComment) {
+				commentRepository.delete(idcomment);
+			}
+		}		
+	}
+	
 	public List<CommentDTO> listCommentByCourseId(Long courseId){
 		//System.out.println("day la lisat comment");
 		
@@ -49,7 +70,7 @@ public class CommentService implements ICommentService{
 			itemDTO.setUserName(userRepository.findOne(itemEntity.getUserid()).getFullName());
 			itemDTO.setUserImage("dang hoan thien");
 			itemDTO.setIDCOMMENT(itemEntity.getId());
-			
+			itemDTO.setId(itemEntity.getId());
 
 
 			listDTO.add(itemDTO);
