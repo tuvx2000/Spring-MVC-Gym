@@ -23,6 +23,8 @@ public class FreeCourseController {
 	@RequestMapping(value = "/danh-sach-bai-hoc-mien-phi", method = RequestMethod.GET)
 	public ModelAndView registrationPage(HttpServletRequest request, HttpServletResponse response) {
 
+		System.out.println("hello");
+		
 		List<FreeCourseDTO> listFreeCourse =  freeCourseService.findAll();
 		
 		FreeCourseDTO centerDTO = new FreeCourseDTO();
@@ -33,6 +35,7 @@ public class FreeCourseController {
 		mav.addObject("model", centerDTO);
 
 //		freeCourseService.UpdateVideoSentimentAll();
+		
 		return mav;
 	}
 

@@ -32,21 +32,27 @@ public class FreeCourseService implements IFreeCourseService {
 	@Override
 	public List<FreeCourseDTO> findAll() {
 
+		System.out.println("xxx findAll Free Course");
+		
+		
+		
 		List<FreeCourseEntity> listEntity = freeCourseRepository.findAll();
 		List<FreeCourseDTO> listDTO = new ArrayList<>();
 
 		for (FreeCourseEntity itemEntity : listEntity) {
-			FreeCourseDTO itemDTO = new FreeCourseDTO();
+			FreeCourseDTO itemDTO = freeCourseConverter.toDto(itemEntity);
+				
+			itemDTO.setLinkyoutube(GetVideoYoutubeId(itemEntity.getLinkyoutube()));
 
-			String videoId = GetVideoYoutubeId(itemEntity.getLinkyoutube());
-
-			itemDTO.setLinkyoutube(videoId);
-			itemDTO.setName(itemEntity.getName());
-			itemDTO.setDescription(itemEntity.getDescription());
-			itemDTO.setTopic(itemEntity.getTopic());
-			itemDTO.setThumbnail(itemEntity.getThumbnail());
-			itemDTO.setSentiment(itemEntity.getSentiment());
-
+//			String videoId = GetVideoYoutubeId(itemEntity.getLinkyoutube());
+//
+//			itemDTO.setLinkyoutube(videoId);
+//			itemDTO.setName(itemEntity.getName());
+//			itemDTO.setDescription(itemEntity.getDescription());
+//			itemDTO.setTopic(itemEntity.getTopic());
+//			itemDTO.setThumbnail(itemEntity.getThumbnail());
+//			itemDTO.setSentiment(itemEntity.getSentiment());
+			System.out.println("link: " + itemDTO.getLinkyoutube());
 			listDTO.add(itemDTO);
 		}
 

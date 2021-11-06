@@ -18,6 +18,7 @@
 					<th>Name Course</th>
 					<th>Short Description about the course</th>
 					<th>Topic</th>
+					<th>Link Youtube</th>
 					<th>Illustration</th>
 				</tr>
 			</thead>
@@ -27,6 +28,7 @@
 						<td>${item.name}</td>
 						<td>${item.description}</td>
 						<td>${item.topic}</td>
+						<td>${item.linkyoutube}</td>
 						<td>
 						
 						<iframe width="560" height="315"
