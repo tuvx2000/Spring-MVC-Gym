@@ -10,8 +10,8 @@
 </head>
 
 <body>
-<!-- style="transform: scale(0.7,0.7)" -->
-<div class="container" >
+
+<div class="container" style="transform: scale(0.7,0.7)">
 <canvas id="myChart" ></canvas>
 </div>
 
@@ -46,15 +46,6 @@ const myChart = new Chart(ctx, {
             y: {
                 beginAtZero: true
             }
-        },
-        plugins: {
-            legend: {
-                position: 'top',
-              },
-              title: {
-                display: true,
-                text: 'User Sentiment Chart'
-              }
         }
     }
 });

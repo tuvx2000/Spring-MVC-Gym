@@ -16,5 +16,16 @@ public class HomeController {
 		
 		return mav;
 	}
+	
+	
+	
+	@RequestMapping(value = "/quan-tri/trang-chuxxxx", method = RequestMethod.GET)
+	public ModelAndView homePagex() {
+		ModelAndView mav = new ModelAndView("admin/xxxxx");
+		
+		
+		return mav;
+	}
+
 
 }
