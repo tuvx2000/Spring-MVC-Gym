@@ -176,7 +176,27 @@ public class FreeCourseService implements IFreeCourseService {
 	}
 	
 	
-	
+	@Override
+	public List<Integer> getChartSentimentOverall() {
+		List<Integer> listSentiment = new ArrayList<>();
+		List<FreeCourseEntity> listEntity = freeCourseRepository.findAll();
+		int a=0,b=0,c=0;
+		
+		for (FreeCourseEntity freeCourseEntity : listEntity) {
+			if (freeCourseEntity.getSentiment().equals("POSITIVE")) {
+				a++;
+			}else if (freeCourseEntity.getSentiment().equals("NEUTRAL")){
+				b++;
+			}else
+				c++;
+		}	
+		listSentiment.add(a);
+		listSentiment.add(b);
+		listSentiment.add(c);
+
+		
+		return listSentiment;
+	}
 
 
 }
