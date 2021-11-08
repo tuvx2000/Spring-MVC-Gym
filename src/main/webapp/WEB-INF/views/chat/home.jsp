@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<%@ page import= "com.xuantujava.util.SecurityUtils" %>
+<c:url var ="userName" value="<%= SecurityUtils.getPrincipal().getFullName() %>"/>
+
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -34,7 +38,11 @@ function myFunction() {
     } else {
         wsUrl = 'wss://';
     }
-    var ws = new WebSocket(wsUrl + window.location.host + "/spring-mvc/chat");
+    console.log("usURL: " + wsUrl);
+    
+    var ws = new WebSocket(wsUrl + window.location.host + "/spring-mvc/chat/${userName}");
+       
+    console.log("ws: " + ws);
         
     ws.onmessage = function(event) {
       var mySpan = document.getElementById("chat");
