@@ -35,6 +35,19 @@ public class HomeController {
 
 	@Autowired
 	ManagementGoogleUserService managementGoogleUserService;
+	
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	public ModelAndView homePagex(HttpServletRequest request) {
+
+	
+
+		ModelAndView mav = new ModelAndView("chat/home");
+		return mav;
+	}
+	
+	
+	
+	
 
 	///////////////////////////////////////////////////////////////////////////////////////////comment
 
