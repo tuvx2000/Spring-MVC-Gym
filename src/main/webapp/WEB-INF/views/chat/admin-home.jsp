@@ -7,27 +7,36 @@
 
 <!DOCTYPE html>
 <html>
-<body style="background-color: #c7ecee">
-<h1>USER PAGE</h1>
+<body style="background-color:#bdc3c7 ">
+<h1>ADMIN PAGE</h1>
 
 <br><br><br>
 
 <h1>The DEMO LiveStream Class</h1>
 
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/s8taXR3mYa8?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/s8taXR3mYa8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
 
-<video id="myvid" width="560" height="315" autoplay >
+<video id="myVideo" width="560" height="315" controls>
   <source src="https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/Snaptik_7007967422011493638_ach.mp4" type="video/mp4">
 </video>
 
 <h1 id="cc">cccc</h1>
 
-<img alt="" src="https://kenh14cdn.com/thumb_w/600/pr/2020/1607432797539-0-111-669-1181-crop-1607432803997-63743074283293.jpg">
+
+
+
+
+
+
+
+
+
+
+'<img alt="" src="https://kenh14cdn.com/thumb_w/600/pr/2020/1607432797539-0-111-669-1181-crop-1607432803997-63743074283293.jpg">
 
    <h1>Live Chat updates</h1>
 
 <div>
-
     <div id="chat" class="chat"></div>
     <div>
 	<input type="text" name="msg" id="msg" placeholder="Enter message here"/>
@@ -39,8 +48,21 @@
 
 
 <script>
+var vid = document.getElementById("myVideo");
+vid.onplay = (event) => {
+  document.getElementById("cc").innerHTML = "onplay: "+ vid.currentTime;
+ 	var message = "adminOnPlay=" + vid.currentTime;
+  
+  ws.send(message);
 
+};
 
+vid.onpause = (event) => {
+ 	var message = "adminOnPause=" + vid.currentTime;
+ 	  ws.send(message);
+
+};
+//// RESPONE
     var wsUrl;
     if (window.location.protocol == 'http:') {
         wsUrl = 'ws://';
@@ -49,10 +71,11 @@
     }
     console.log("usURL: " + wsUrl);
     
-    var ws = new WebSocket(wsUrl + window.location.host + "/spring-mvc/chat/${userName}");
+    var ws = new WebSocket(wsUrl + window.location.host + "/spring-mvc/chat/ADMIN");
        
     console.log("ws: " + ws);
-        ///// ONMESSAGE
+        
+    ///// ONMESSAGE
     ws.onmessage = function(event) {
         	
         	
@@ -88,13 +111,6 @@
         }
         document.getElementById("msg").value="";
     }
-    
-    
-    function isNumeric(str) {
-    	  if (typeof str != "string") return false // we only process strings!  
-    	  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-    	         !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
-    	}  
 </script>
 
 </body>

@@ -1,4 +1,4 @@
-package com.xuantujava;
+package com.xuantujava.chatroom;
 
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
@@ -45,7 +45,7 @@ public class ChatServlet {
 //		String UserName = auth.getName();
         for(Session ses : userSessions)
         {
-        	System.out.println("on Message userSession: " + message);
+            	System.out.println("on Message userSession(RAW): " + message);
 
             ses.getAsyncRemote().sendText(clientId + " : " + message);
         }

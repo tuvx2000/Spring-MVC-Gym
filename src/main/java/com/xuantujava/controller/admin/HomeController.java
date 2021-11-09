@@ -2,6 +2,8 @@ package com.xuantujava.controller.admin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,42 @@ public class HomeController {
 
 	@Autowired
 	IFreeCourseService freeCourseService;
+	
+	
+	
+	
+	@RequestMapping(value = "/quan-tri/chat", method = RequestMethod.GET)
+	public ModelAndView homePagex(HttpServletRequest request) {
+
+	
+
+		ModelAndView mav = new ModelAndView("chat/admin-home");
+		return mav;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/////
 
 	@RequestMapping(value = "/quan-tri/trang-chu", method = RequestMethod.GET)
 	public ModelAndView homePage() {
