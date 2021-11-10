@@ -48,7 +48,8 @@
         wsUrl = 'wss://';
     }
     console.log("usURL: " + wsUrl);
-    
+    console.log(wsUrl + window.location.host + "/spring-mvc/chat/${userName}");
+
     var ws = new WebSocket(wsUrl + window.location.host + "/spring-mvc/chat/${userName}");
        
     console.log("ws: " + ws);
