@@ -23,6 +23,8 @@ public class VideoServlet {
 	@OnOpen
 	public void whenOpening(Session session) throws IOException, EncodeException {
 		System.out.println("Open!xxxxxxxxxxxxxxxxxxxxxxxxx");
+		System.out.println("Open!session: "+ session);
+
 		// Add websocket session to a global set to use in OnMessage.
 		sessions.add(session);
 	}
