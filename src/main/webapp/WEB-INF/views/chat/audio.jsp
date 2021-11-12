@@ -43,20 +43,12 @@
  
  
  <script>
- var peerConnection;
+ 
+ var arrayPeerConnection = new Array();;
+// var peerConnection;//// arrayPeerConnection[currentCount]
+var currentCount = 0;
+ 
 
- /*
-  * Setup 'leaveButton' button function.
-  */
- const leaveButton = document.getElementById('leaveButton');
- leaveButton.addEventListener('click', leave);
-
- function leave() {
-     console.log('Ending call');
-     peerConnection.close();
-     signalingWebsocket.close();
-     window.location.href = './index.html';
- };
 
  /*
   * Prepare websocket for signaling server endpoint.
@@ -73,8 +65,115 @@
   console.log(wsUrl + window.location.host + "/spring-mvc/signal");
   
   var signalingWebsocket = new WebSocket(wsUrl + window.location.host + "/spring-mvc/signal");
+  
+  
+  signalingWebsocket.onopen = init();
 
+  /*
+   * Initialize
+   */
+  function init() {
+      console.log("Connected to signaling endpoint. Now initializing.");    
+      preparePeerConnection();
+      displayLocalStreamAndSignal(true);
+	  
+  }; 
+  
 
+  /*
+   * Prepare RTCPeerConnection & setup event handlers.
+   */
+  function preparePeerConnection() {
+      
+       // Using free public google STUN server.
+      const configuration = {
+          iceServers: [{
+              urls: 'stun:stun.l.google.com:19302'
+          }]
+      };
+
+      // Prepare peer connection object
+      arrayPeerConnection[currentCount] = new RTCPeerConnection(configuration);
+      arrayPeerConnection[currentCount].onnegotiationneeded = async () => {
+          console.log('onnegotiationneeded');
+          sendOfferSignal();
+      };
+      arrayPeerConnection[currentCount].onicecandidate = function(event) {
+          if (event.candidate) {
+          	sendSignal(event);
+          }
+      };
+      
+      /*
+  	 * Track other participant's remote stream & display in UI when available.
+  	 * 
+  	 * This is how other participant's video & audio will start showing up on my
+  	 * browser as soon as his local stream added to track of peer connection in
+  	 * his UI.
+  	 */
+  	arrayPeerConnection[currentCount].addEventListener('track', displayRemoteStream);
+
+  };  
+  
+
+  /*
+   * Display my local webcam & audio on UI.
+   */
+  async function displayLocalStreamAndSignal(firstTime) {
+      console.log('Requesting local stream');
+      const localVideo = document.getElementById('localVideo');
+      let localStream;
+      try {
+          console.log('Received local stream1');
+
+          // Capture local video & audio stream & set to local <video> DOM
+          // element
+          const stream = await navigator.mediaDevices.getUserMedia({
+              audio: true,
+              video: false
+          });
+          console.log('Received local stream2');
+          localVideo.srcObject = stream;
+          localStream = stream;
+          logVideoAudioTrackInfo(localStream);
+
+          // For first time, add local stream to peer connection.
+          if (firstTime) {
+              setTimeout(
+                  function() {
+                      addLocalStreamToPeerConnection(localStream);
+                  }, 2000);
+          }
+
+          // Send offer signal to signaling server endpoint.
+          sendOfferSignal();
+
+      } catch (e) {
+          alert(`getUserMedia() error: ${e.name}`);
+          throw e;
+      }
+      console.log('Start complete');
+  };
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+//// START  ONMESSAGE
  signalingWebsocket.onmessage = function(msg) {
      console.log("Got message", msg.data);
      var signal = JSON.parse(msg.data);
@@ -95,7 +194,6 @@
      }
  };
 
- signalingWebsocket.onopen = init();
 
  function sendSignal(signal) {
      if (signalingWebsocket.readyState == 1) {
@@ -103,89 +201,8 @@
      }
  };
 
- /*
-  * Initialize
-  */
- function init() {
-     console.log("Connected to signaling endpoint. Now initializing.");    
-     preparePeerConnection();
-     displayLocalStreamAndSignal(true);
+ 
 
- };
-
- /*
-  * Prepare RTCPeerConnection & setup event handlers.
-  */
- function preparePeerConnection() {
-     
-      // Using free public google STUN server.
-     const configuration = {
-         iceServers: [{
-             urls: 'stun:stun.l.google.com:19302'
-         }]
-     };
-
-     // Prepare peer connection object
-     peerConnection = new RTCPeerConnection(configuration);
-     peerConnection.onnegotiationneeded = async () => {
-         console.log('onnegotiationneeded');
-         sendOfferSignal();
-     };
-     peerConnection.onicecandidate = function(event) {
-         if (event.candidate) {
-         	sendSignal(event);
-         }
-     };
-     
-     /*
- 	 * Track other participant's remote stream & display in UI when available.
- 	 * 
- 	 * This is how other participant's video & audio will start showing up on my
- 	 * browser as soon as his local stream added to track of peer connection in
- 	 * his UI.
- 	 */
-     peerConnection.addEventListener('track', displayRemoteStream);
-
- };
-
- /*
-  * Display my local webcam & audio on UI.
-  */
- async function displayLocalStreamAndSignal(firstTime) {
-     console.log('Requesting local stream');
-     const localVideo = document.getElementById('localVideo');
-     let localStream;
-     try {
-         console.log('Received local stream1');
-
-         // Capture local video & audio stream & set to local <video> DOM
-         // element
-         const stream = await navigator.mediaDevices.getUserMedia({
-             audio: true,
-             video: false
-         });
-         console.log('Received local stream2');
-         localVideo.srcObject = stream;
-         localStream = stream;
-         logVideoAudioTrackInfo(localStream);
-
-         // For first time, add local stream to peer connection.
-         if (firstTime) {
-             setTimeout(
-                 function() {
-                     addLocalStreamToPeerConnection(localStream);
-                 }, 2000);
-         }
-
-         // Send offer signal to signaling server endpoint.
-         sendOfferSignal();
-
-     } catch (e) {
-         alert(`getUserMedia() error: ${e.name}`);
-         throw e;
-     }
-     console.log('Start complete');
- };
 
  /*
   * Add local webcam & audio stream to peer connection so that other
@@ -196,7 +213,7 @@
   */
  async function addLocalStreamToPeerConnection(localStream) {
      console.log('Starting addLocalStreamToPeerConnection');
-     localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+     localStream.getTracks().forEach(track => arrayPeerConnection[currentCount].addTrack(track, localStream));
      console.log('localStream tracks added');
  };
 
@@ -218,9 +235,9 @@
   * view & hear me using 'track' event.
   */
  function sendOfferSignal() {
-     peerConnection.createOffer(function(offer) {
+	 arrayPeerConnection[currentCount].createOffer(function(offer) {
          sendSignal(offer);
-         peerConnection.setLocalDescription(offer);
+         arrayPeerConnection[currentCount].setLocalDescription(offer);
      }, function(error) {
          alert("Error creating an offer");
      });
@@ -231,13 +248,17 @@
   * handshake.
   */
  function handleOffer(offer) {
-     peerConnection
-         .setRemoteDescription(new RTCSessionDescription(offer));
+	 
+	 
+	 
+	 arrayPeerConnection[currentCount].setRemoteDescription(new RTCSessionDescription(offer));
 
      // create and send an answer to an offer
-     peerConnection.createAnswer(function(answer) {
-         peerConnection.setLocalDescription(answer);
+     arrayPeerConnection[currentCount].createAnswer(function(answer) {
+    	 arrayPeerConnection[currentCount].setLocalDescription(answer);
          sendSignal(answer);
+         
+         currentCount++;
      }, function(error) {
          alert("Error creating an answer");
      });
@@ -251,7 +272,7 @@
   * hear each other.
   */
  function handleAnswer(answer) {
-     peerConnection.setRemoteDescription(new RTCSessionDescription(
+	 arrayPeerConnection[currentCount].setRemoteDescription(new RTCSessionDescription(
          answer));
      console.log("connection established successfully!!");
  };
@@ -279,6 +300,51 @@
          console.log(`Using audio device: ${audioTracks[0].label}`);
      }
  };
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ /*
+  * Setup 'leaveButton' button function.
+  */
+ const leaveButton = document.getElementById('leaveButton');
+ leaveButton.addEventListener('click', leave);
+
+ function leave() {
+     console.log('Ending call');
+     peerConnection.close();
+     signalingWebsocket.close();
+     window.location.href = './index.html';
+ };
+
+ 
+ 
+ 
+ 
  </script>
 </body>
 </html>
