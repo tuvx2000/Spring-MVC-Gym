@@ -24,6 +24,15 @@
 		<decorator name="paidCourseMenu" page="blank.jsp">
 		<pattern>/comprehened</pattern>
 	</decorator>
+	
+	<decorator name="chat" page="blank.jsp">
+		<pattern>/chat</pattern>
+	</decorator>
+	
+	
+		<decorator name="chatvideo" page="blank.jsp">
+		<pattern>/chatvideo</pattern>
+	</decorator>
 
 
 
