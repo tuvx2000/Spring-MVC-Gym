@@ -12,6 +12,7 @@
 <title>WebRTC Video Conferencing Application</title>
 </head>
 <body>
+<button onClick="clearStream()">Clear</button>
 	<!-- Title & header of demo aplication. -->
 	<div>
 		<img style="float: left; width: auto; height: 50px"
@@ -44,7 +45,13 @@
  
  <script>
  var peerConnection;
+ var peerConnection1;
+ var peerConnection2;
+ var peerConnection3;
+ var peerConnection4;
 
+var list = new Array();
+var count = 0;
  /*
   * Setup 'leaveButton' button function.
   */
@@ -57,6 +64,17 @@
      signalingWebsocket.close();
      window.location.href = './index.html';
  };
+ 
+ function clearStream(){
+	 peerConnection1 = peerConnection;
+	 peerConnection = null;
+// 	 signalingWebsocket = null;
+	 console.log("cleared");
+	 
+// 	 signalingWebsocket = new WebSocket(wsUrl + window.location.host + "/spring-mvc/signal");
+		
+	 init();
+ }
 
  /*
   * Prepare websocket for signaling server endpoint.
@@ -73,6 +91,8 @@
   console.log(wsUrl + window.location.host + "/spring-mvc/signal");
   
   var signalingWebsocket = new WebSocket(wsUrl + window.location.host + "/spring-mvc/signal");
+  
+  signalingWebsocket.onopen = init();
 
 
  signalingWebsocket.onmessage = function(msg) {
@@ -95,7 +115,6 @@
      }
  };
 
- signalingWebsocket.onopen = init();
 
  function sendSignal(signal) {
      if (signalingWebsocket.readyState == 1) {
@@ -110,7 +129,8 @@
      console.log("Connected to signaling endpoint. Now initializing.");    
      preparePeerConnection();
      displayLocalStreamAndSignal(true);
-
+     list[count] = peerConnection;
+     console.log("count:      ------      " + count);
  };
 
  /*
@@ -231,6 +251,14 @@
   * handshake.
   */
  function handleOffer(offer) {
+	 console.log("newwwwwwwwwwwww" + count);
+
+// 	 if(count == 0){
+// 		 peerConnection = null;
+// 		 signalingWebsocket.onopen = init();
+// 	     count++;
+// 		 console.log("newwwwwwwwwwwww count:" + count);
+// 	 }
      peerConnection
          .setRemoteDescription(new RTCSessionDescription(offer));
 
