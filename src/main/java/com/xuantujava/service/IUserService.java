@@ -22,4 +22,14 @@ public interface IUserService {
 	
 	int getTotalItem();
 	List<UserDTO> findAll(Pageable pageable);
+	
+	
+	UserDTO findById(long id);
+
+	///api
+	UserDTO save(UserDTO dto);
+	void delete(long[] ids);
+
+	
+	
 }

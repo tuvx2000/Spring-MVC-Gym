@@ -1,8 +1,8 @@
 <%@include file="/common/taglib.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:url var="newAPI" value="/api/new"/>
-<c:url var="newURL" value="/quan-tri/bai-viet/danh-sach"/>
+<c:url var="newAPI" value="/api/user"/>
+<c:url var="newURL" value="/quan-tri/nguoi-dung/danh-sach"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -37,7 +37,7 @@
 									<div class="table-btn-controls">
 										<div class="pull-right tableTools-container">
 											<div class="dt-buttons btn-overlap btn-group">
-												<c:url var="createNewURL" value="/quan-tri/bai-viet/chinh-sua"/>
+												<c:url var="createNewURL" value="/quan-tri/nguoi-dung/chinh-sua"/>
 												<a flag="info"
 												   class="dt-button buttons-colvis btn btn-white btn-primary btn-bold" data-toggle="tooltip"
 												   title='Thêm bài viết' href='${createNewURL}'>
@@ -64,6 +64,8 @@
 														<th><input type="checkbox" id="checkAll"></th>
 														<th>User Name</th>
 														<th>Full Name</th>
+														<th>Status</th>
+														<th>Status Paid</th>
 														<th>Role Id</th>
 													</tr>
 												</thead>
@@ -73,13 +75,15 @@
 															<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
 															<td>${item.userName}</td>
 															<td>${item.fullName}</td>
+															<td>${item.status}</td>
+															<td>${item.statusPaid}</td>
 															<td>${item.roleId}</td>
 															<td>
-																<c:url var="updateNewURL" value="/quan-tri/bai-viet/chinh-sua">
+																<c:url var="updateNewURL" value="/quan-tri/nguoi-dung/chinh-sua">
 																	<c:param name="id" value="${item.id}"/>															
 																</c:url>																
 																<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-																   title="Cập nhật bài viết" href='${updateNewURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+																   title="Cập nhật Người dùng" href='${updateNewURL}'><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 																</a>
 															</td>
 														</tr>
@@ -109,7 +113,7 @@
 		            startPage: currentPage,
 		            onPageClick: function (event, page) {
 		            	if (currentPage != page) {
-		            		$('#limit').val(2);
+		            		$('#limit').val(5);
 							$('#page').val(page);
 							$('#formSubmit').submit();
 						}

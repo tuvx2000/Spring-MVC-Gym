@@ -13,6 +13,7 @@ import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.DTO.UserDTO;
 import com.xuantujava.constant.SystemConstant;
 import com.xuantujava.converter.UserConverter;
+import com.xuantujava.entity.FreeCourseEntity;
 import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.RoleEntity;
 import com.xuantujava.entity.UserEntity;
@@ -107,6 +108,39 @@ public class UserService implements IUserService {
 			models.add(userDTO);
 		}
 		return models;
+	}
+
+
+	@Override
+	public UserDTO findById(long id) {
+		UserEntity entity = userRepository.findOne(id);
+		return userConverter.toDto(entity);
+	}
+
+
+	@Override
+	public UserDTO save(UserDTO dto) {
+
+		UserEntity userEntity = new UserEntity();
+		if (dto.getId() != null) {
+			UserEntity oldCourse = userRepository.findOne(dto.getId());
+
+			userEntity = userConverter.toEntity(oldCourse, dto);
+		} else {
+			userEntity = userConverter.toEntity(dto);
+		}
+		return userConverter.toDto(userRepository.save(userEntity));
+	
+	}
+
+
+	@Override
+	public void delete(long[] ids) {
+		for (long id: ids) {
+			UserEntity entity = userRepository.findOne(id);
+			entity.setStatus(0);
+			userRepository.save(entity);
+		}
 	}
 
 

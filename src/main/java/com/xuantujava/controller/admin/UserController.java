@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xuantujava.DTO.CommentDTO;
+import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.DTO.UserDTO;
 import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.IUserService;
@@ -55,4 +56,28 @@ public class UserController {
 		mav.addObject("model", model);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/quan-tri/nguoi-dung/chinh-sua", method = RequestMethod.GET)
+	public ModelAndView editNew(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+
+		ModelAndView mav = new ModelAndView("admin/user/edit");
+		UserDTO model = new UserDTO();
+		if (id != null) {
+			model = userService.findById(id);
+		}
+		if (request.getParameter("message") != null) {
+			Map<String, String> message = messageUtil.getMessage(request.getParameter("message"));
+			mav.addObject("messageResponse", message.get("message"));
+			mav.addObject("alert", message.get("alert"));
+		}
+		
+		model.setPassword("");
+		mav.addObject("model", model);
+		return mav;
+	
+	}
+	
+	
+	
+	
 }

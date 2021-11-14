@@ -8,8 +8,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.xuantujava.DTO.CategoryDTO;
+import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.DTO.UserDTO;
 import com.xuantujava.entity.CategoryEntity;
+import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.RoleEntity;
 import com.xuantujava.entity.UserEntity;
 import com.xuantujava.repository.RoleRepository;
@@ -31,7 +33,7 @@ public class UserConverter {
 		result.setFullName(entity.getFullName());
 
 		result.setPassword(entity.getPassword());
-	
+		result.setId(entity.getId());
 		
 		result.setRoleId(2L);
 		result.setStatus(entity.getStatus());
@@ -51,7 +53,30 @@ public class UserConverter {
 		result.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
 		
 		List<RoleEntity> roles = new ArrayList<>();	
-		RoleEntity role = roleRepository.findOne(2l);	
+		RoleEntity role = roleRepository.findOne(dto.getRoleId());	
+		roles.add(role);
+		result.setRoles(roles);
+		
+		
+		result.setStatus(dto.getStatus());
+		result.setStatusPaid(dto.getStatusPaid());
+		return result;
+	}
+	
+	public UserEntity toEntity(UserEntity result, UserDTO dto) {
+		
+		result.setUserName(dto.getUserName());
+		result.setFullName(dto.getFullName());
+		if(dto.getPassword() != "") {
+			result.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));			
+		}else {
+		// dont change password if dto.password is null
+		}
+		
+		List<RoleEntity> roles = new ArrayList<>();	
+//		RoleEntity role = roleRepository.findOne(2l);	
+		RoleEntity role = roleRepository.findOne(dto.getRoleId());	
+
 		roles.add(role);
 		result.setRoles(roles);
 		
@@ -61,4 +86,6 @@ public class UserConverter {
 		
 		return result;
 	}
+	
+	
 }
