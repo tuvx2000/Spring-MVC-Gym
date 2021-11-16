@@ -46,32 +46,41 @@
 				</c:forEach>
 			</tbody>
 		</table>
-<!-- 		<ul class="pagination" id="pagination"></ul>	 -->
-<!-- 		<input type="hidden" value="" id="page" name="page"/> -->
-<!-- 		<input type="hidden" value="" id="limit" name="limit"/>		 -->
+		<form action="<c:url value='/danh-sach-bai-hoc-mien-phi'/>" id="formSubmit" method="get">
+		
+		<ul class="pagination" id="pagination"></ul>	
+		<input type="hidden" value="" id="page" name="page"/>
+		<input type="hidden" value="" id="limit" name="limit"/>		
+		</form>
 
-<div class="container">
-    <nav aria-label="Page navigation">
-        <ul class="pagination" id="pagination"></ul>
-    </nav>
-</div>
+<!-- <div class="container"> -->
+<!--     <nav aria-label="Page navigation"> -->
+<!--         <ul class="pagination" id="pagination"></ul> -->
+<!--     </nav> -->
+<!-- </div> -->
 
 		</div>
 
 
 		<!-- /.main-content -->
 <script type="text/javascript">
-		   $(function () {
-		        window.pagObj = $('#pagination').twbsPagination({
-		            totalPages: 35,
-		            visiblePages: 10,
-		            onPageClick: function (event, page) {
-		                console.info(page + ' (from options)');
-		            }
-		        }).on('page', function (event, page) {
-		            console.info(page + ' (from event listening)');
-		        });
-		    });
+	var totalPages =  ${model.totalPage};
+	var currentPage = ${model.page};
+	$(function () {
+	    window.pagObj = $('#pagination').twbsPagination({
+	        totalPages: totalPages,
+	        visiblePages: 10,
+	        startPage: currentPage,
+	        onPageClick: function (event, page) {
+	        	if (currentPage != page) {
+	        		$('#limit').val(2);
+					$('#page').val(page);
+					$('#formSubmit').submit();
+				}
+	        }
+	    });
+	});
+
 		</script>
 </body>
 

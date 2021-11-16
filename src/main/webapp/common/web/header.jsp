@@ -26,8 +26,8 @@
 					<!-- ***** Menu Start ***** -->
 					<ul class="nav">
 						
-						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-mien-phi'/>">Basic Course</a></li>
-						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-tra-phi'/>">Paid Course</a></li>
+						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-mien-phi?page=1&limit=5'/>">Basic Course</a></li>
+						<li class="scroll-to-section"><a href="<c:url value='/danh-sach-bai-hoc-tra-phi?page=1&limit=5'/>">Paid Course</a></li>
 						<li class="scroll-to-section"><a href="<c:url value='/mox'/>">Make Member</a></li>
 
 						<security:authorize  access="isAnonymous()">

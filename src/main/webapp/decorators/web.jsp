@@ -58,6 +58,9 @@ https://templatemo.com/tm-548-training-studio
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
 
 
 
@@ -98,8 +101,6 @@ https://templatemo.com/tm-548-training-studio
 	<script src="<c:url value='/template/web/assets/js/custom.js'/>"></script>
 
 
- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 
 	<script
 		src="<c:url value='/template/admin/paging/jquery.twbsPagination.js' />"></script>
