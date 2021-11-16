@@ -24,42 +24,6 @@ public class FreeCourseController {
 	@Autowired
 	private IFreeCourseService freeCourseService;
 	
-//	
-//	@RequestMapping(value = "/danh-sach-bai-hoc-mien-phi", method = RequestMethod.GET)
-//	public ModelAndView registrationPagex( HttpServletRequest request, HttpServletResponse response) {
-//		ModelAndView mav = new ModelAndView("web/freeCourse");
-//		
-////		System.out.println("hello");
-//		int page = 1, limit =10;
-//		
-//		List<FreeCourseDTO> listFreeCourse =  freeCourseService.findAll();
-//		
-//		Pageable pageable = new PageRequest(page -1, limit);
-//		FreeCourseDTO centerDTO = new FreeCourseDTO();
-//
-//		centerDTO.setPage(page);
-//		centerDTO.setLimit(limit);
-//		
-//		System.out.println("page=" +page + "/ litmit=" + limit);
-//		
-//
-//		centerDTO.setTotalItem(freeCourseService.getTotalItem());
-//		centerDTO.setTotalPage((int) Math.ceil((double) centerDTO.getTotalItem() / centerDTO.getLimit()));
-//		centerDTO.setListResult(freeCourseService.findAll(pageable));
-//		
-//	//	centerDTO.setListResult(listFreeCourse); list allllll
-//
-//
-//		mav.addObject("model", centerDTO);
-//
-////		freeCourseService.UpdateVideoSentimentAll();
-//		
-//		return mav;
-//	}
-//	
-//	
-	
-	
 	@RequestMapping(value = "/danh-sach-bai-hoc-mien-phi", method = RequestMethod.GET)
 	public ModelAndView registrationPage(@RequestParam("page") int page, @RequestParam("limit") int limit, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView("web/freeCourse");
@@ -75,7 +39,7 @@ public class FreeCourseController {
 		centerDTO.setPage(page);
 		centerDTO.setLimit(limit);
 		
-		System.out.println("page=" +page + "/ litmit=" + limit);
+//		System.out.println("page=" +page + "/ litmit=" + limit);
 		
 
 		centerDTO.setTotalItem(freeCourseService.getTotalItem());

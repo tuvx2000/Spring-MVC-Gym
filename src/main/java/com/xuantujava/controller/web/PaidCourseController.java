@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -34,12 +36,11 @@ public class PaidCourseController {
 	private IPaidCourseService paidCourseService;
 	
 	@RequestMapping(value = "/danh-sach-bai-hoc-tra-phi", method = RequestMethod.GET)
-	public ModelAndView listPaidCoursePage() {
+	public ModelAndView listPaidCoursePage(@RequestParam("page") int page, @RequestParam("limit") int limit , HttpServletResponse response) {
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		//System.out.println("NAME:"+ auth.getName());
 		
-		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();	
 		int statusPaid = userService.findUserStatusPaidByUserName(auth.getName().toString());
 		if( statusPaid != 1) {
 			
@@ -48,15 +49,21 @@ public class PaidCourseController {
 			return mav;
 		}
 		
+		Pageable pageable = new PageRequest(page -1, limit);
+		PaidCourseDTO centerDTO = new PaidCourseDTO();
+
+		centerDTO.setPage(page);
+		centerDTO.setLimit(limit);
 		
-		
-		
+		centerDTO.setTotalItem(paidCourseService.getTotalItem());
+		centerDTO.setTotalPage((int) Math.ceil((double) centerDTO.getTotalItem() / centerDTO.getLimit()));
+		centerDTO.setListResult(paidCourseService.findAll(pageable));
 
 		List<PaidCourseDTO> listPaidCourse =  paidCourseService.findAll();
 		
 //		//System.out.println(listPaidCourse.size());
-		PaidCourseDTO centerDTO = new PaidCourseDTO();
-		centerDTO.setListResult(listPaidCourse);
+//		PaidCourseDTO centerDTO = new PaidCourseDTO();
+//		centerDTO.setListResult(listPaidCourse);
 		ModelAndView mav = new ModelAndView("web/paidCourseMenu");
 				
 		mav.addObject("model", centerDTO);

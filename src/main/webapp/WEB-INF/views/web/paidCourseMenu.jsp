@@ -8,6 +8,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Danh sách bài học trả phí</title>
+
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="../jquery.twbsPagination.js" type="text/javascript"></script>
+
 </head>
 
 <body style="text-align: center;">
@@ -40,6 +46,34 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<form action="<c:url value='/danh-sach-bai-hoc-tra-phi'/>" id="formSubmit" method="get">
+		
+		<ul class="pagination" id="pagination"></ul>	
+		<input type="hidden" value="" id="page" name="page"/>
+		<input type="hidden" value="" id="limit" name="limit"/>		
+		</form>
+		</div>
+	
+<script type="text/javascript">
+	var totalPages =  ${model.totalPage};
+	var currentPage = ${model.page};
+	$(function () {
+	    window.pagObj = $('#pagination').twbsPagination({
+	        totalPages: totalPages,
+	        visiblePages: 10,
+	        startPage: currentPage,
+	        onPageClick: function (event, page) {
+	        	if (currentPage != page) {
+	        		$('#limit').val(2);
+					$('#page').val(page);
+					$('#formSubmit').submit();
+				}
+	        }
+	    });
+	});
+
+		</script>
 </body>
 
 </html>
