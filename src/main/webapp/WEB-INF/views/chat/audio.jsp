@@ -39,16 +39,17 @@
 	<div class="box">
 		<button id="leaveButton" style="background-color: #008CBA; color: white; ">Leave Video Conference</button>
 	</div>
- 
+<!--  end audio -->
 <!-- 	<script type="text/javascript" src="conf.js?reload=true"></script> -->
  
  
  <script>
- var peerConnection;
  var peerConnection1;
  var peerConnection2;
  var peerConnection3;
  var peerConnection4;
+
+ var peerConnection;
 
 var list = new Array();
 var count = 0;
