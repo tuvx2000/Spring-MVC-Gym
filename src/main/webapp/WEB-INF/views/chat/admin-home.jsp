@@ -7,51 +7,77 @@
 
 <!DOCTYPE html>
 <html>
-<body style="background-color:#bdc3c7 ">
-<h1>ADMIN PAGE</h1>
 
-<br><br><br>
 
-<h1>The DEMO LiveStream Class</h1>
+<body >
+	<div>
+		<h2>
+		USer Sentiment:
+			<span>
+				Positive
+			</span>
+		</h2>
+	</div>
 
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/s8taXR3mYa8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
 
-<video id="myVideo" width="560" height="315" controls>
-  <source src="https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/Snaptik_7007967422011493638_ach.mp4" type="video/mp4">
-</video>
 
-<h1 id="cc">cccc</h1>
-
-
-
-
-
-
-
-
-
-
-
-'<img alt="" src="https://kenh14cdn.com/thumb_w/600/pr/2020/1607432797539-0-111-669-1181-crop-1607432803997-63743074283293.jpg">
-
-   <h1>Live Chat updates</h1>
-
-<div>
-    <div id="chat" class="chat"></div>
-    <div>
-	<input type="text" name="msg" id="msg" placeholder="Enter message here"/>
-        <button onclick="return sendMsg();">Enter</button>
-    </div>
-</div>
-
+<div style="display: grid;grid-template-columns: auto auto auto;background-color:#bdc3c7;text-algin: center;">
+	<div style="border: 1px solid rgba(0, 0, 0, 0.8);text-algin: center;  grid-column: 1 / 3"> 
+	<!-- element1 -->
+	
+		
 
 	
-	
-	
-	<button onClick="turnOffRecording()">Turn <h4 id="audioStatus0"> OFF </H4> Micro</button>
-<!--  end audio -->
-	<h3>Audio is: <p id="audioStatus"> TURN ON</p></h3>
+	<video id="myVideo" width="100%" height="700px" controls style="background-color:#95a5a6">
+	  <source src="https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/Snaptik_7007967422011493638_ach.mp4" type="video/mp4">
+	</video>
+	</div>
 
+
+
+
+
+
+
+<div style="border: 1px solid rgba(0, 0, 0, 0.8);">
+	<!-- element2 -->
+	   <h4 style=" text-algin: center;">Live Chat Box:</h4>
+		
+		<div>
+		    <div id="chat" class="chat" 
+		    style="width:auto;height:500px;background-color:linen;	overflow:auto; display:flex; flex-direction:column-reverse;">
+	    </div>
+		</div>
+	
+	  
+	    
+	    <div style="display: grid;grid-template-columns: auto auto auto auto;">	  	   
+		    <div style="grid-column: 1 / 5;padding-top:10px;">
+			    <input style="height:100px;width:82%;" type="text" name="msg" id="msg" placeholder="Enter message here"/>	  
+			    <button style="width:16%;height:100px;" onclick="return sendMsg();">Enter</button>  
+		    </div>
+		    
+		    <div style="grid-column: 1 / 1;" >
+		  		<button onClick="turnOffRecording()" style="width:100%;height:50px;">Turn <span id="audioStatus0"> OFF</span> Micro</button>
+		    </div>
+		    
+		    <div style="grid-column: 2 / 4;text-align:center;padding-top:5px;">
+				<!--  end audio -->
+				<h3 style="width:100%;height:50px;">Audio: <span id="audioStatus"> TURN ON</span></h3> 
+		    </div>
+		       
+		</div>
+		    
+
+
+
+		
+	</div>
+
+
+</div>	
+	
 
 
 
