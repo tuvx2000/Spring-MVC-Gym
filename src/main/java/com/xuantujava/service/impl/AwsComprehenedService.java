@@ -6,26 +6,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.stereotype.Service;
+
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.comprehend.AmazonComprehend;
 import com.amazonaws.services.comprehend.AmazonComprehendClientBuilder;
 import com.amazonaws.services.comprehend.model.DetectSentimentRequest;
 import com.amazonaws.services.comprehend.model.DetectSentimentResult;
+import com.xuantujava.service.ISentimentService;
 
 ///end ////comprehened imports
-public class AwsComprehenedService {
+@Service
+public class AwsComprehenedService implements ISentimentService{
 	
-    public static void main(String[] args) throws FileNotFoundException {
-    	String sentimentComment = AnalyzedOneLineFinal("IT's so good").toString();
-    	
-    	System.out.println(sentimentComment);
+//    public static void main(String[] args) throws FileNotFoundException {
+//    	String sentimentComment = AnalyzedOneLineFinal("IT's so good").toString();
+//    	
+//    	System.out.println(sentimentComment);
+//
+//        }
 
-        }
 
 
-
-	public static DetectSentimentResult AnalyzedOneLine(String inputLine) {
+	public DetectSentimentResult AnalyzedOneLine(String inputLine) {
 
 // start comprehened
 
@@ -80,7 +84,7 @@ public class AwsComprehenedService {
 		return detectSentimentResult;
 	}
 	
-	public static String AnalyzedOneLineFinal(String inputLine) {
+	public String AnalyzedOneLineFinal(String inputLine) {
 		
 		DetectSentimentResult detectSentimentResult = AnalyzedOneLine(inputLine);
 		

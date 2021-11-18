@@ -21,6 +21,7 @@ import com.xuantujava.repository.CommentRepository;
 import com.xuantujava.repository.PaidCourseRepository;
 import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.IPaidCourseService;
+import com.xuantujava.service.ISentimentService;
 
 @Service
 public class PaidCourseService implements IPaidCourseService{
@@ -32,6 +33,9 @@ public class PaidCourseService implements IPaidCourseService{
 	
 	@Autowired
 	ICommentService commentService;
+	
+	@Autowired
+	ISentimentService sentimentService;
 	
 	@Override
 	public void addPaidCourse(PaidCourseDTO paidcourseDTO) {
@@ -195,7 +199,7 @@ public class PaidCourseService implements IPaidCourseService{
 		
 		
 		for (String comment : listComments) {
-			String statusComment = AwsComprehenedService.AnalyzedOneLineFinal(comment).toString();
+			String statusComment = sentimentService.AnalyzedOneLineFinal(comment).toString();
 
 			if(statusComment.equals("POSITIVE")) 
 				countPositive++;

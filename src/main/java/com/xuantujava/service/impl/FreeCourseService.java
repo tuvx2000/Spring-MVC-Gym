@@ -19,6 +19,7 @@ import com.xuantujava.entity.UserEntity;
 import com.xuantujava.repository.FreeCourseRepository;
 import com.xuantujava.repository.UserRepository;
 import com.xuantujava.service.IFreeCourseService;
+import com.xuantujava.service.ISentimentService;
 
 @Service
 public class FreeCourseService implements IFreeCourseService {
@@ -28,6 +29,9 @@ public class FreeCourseService implements IFreeCourseService {
 
 	@Autowired
 	FreeCourseConverter freeCourseConverter;
+	
+	@Autowired
+	ISentimentService sentimentService;
 	
 	@Override
 	public List<FreeCourseDTO> findAll() {
@@ -92,7 +96,7 @@ public class FreeCourseService implements IFreeCourseService {
 		
 		for (String comment : listComments) {
 //			sentimentResult.add(AwsComprehenedService.AnalyzedOneLineFinal(comment));
-			String statusComment = AwsComprehenedService.AnalyzedOneLineFinal(comment).toString();
+			String statusComment = sentimentService.AnalyzedOneLineFinal(comment).toString();
 
 			if(statusComment.equals("POSITIVE")) 
 				countPositive++;
