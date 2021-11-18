@@ -37,15 +37,15 @@ public class HomeController {
 	ManagementGoogleUserService managementGoogleUserService;
 	
 	
-	@RequestMapping(value = "/chatvideo", method = RequestMethod.GET)
-	public ModelAndView homePagexxx(HttpServletRequest request) {
-
-	
-
-		ModelAndView mav = new ModelAndView("chat/audio");
-		return mav;
-	}
-	
+//	@RequestMapping(value = "/chatvideo", method = RequestMethod.GET)
+//	public ModelAndView homePagexxx(HttpServletRequest request) {
+//
+//	
+//
+//		ModelAndView mav = new ModelAndView("chat/audio");
+//		return mav;
+//	}
+//	
 	
 	
 	
