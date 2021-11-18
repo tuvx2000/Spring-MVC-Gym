@@ -27,7 +27,9 @@ public class FreeCourseController {
 	@Autowired
 	private MessageUtil messageUtil;
 	
-
+	public void updateAllFreeCourseSentiment() {
+		freeCourseService.UpdateVideoSentimentAll();
+	}
 	
 	@RequestMapping(value = "/quan-tri/bai-hoc-mien-phi/danh-sach", method = RequestMethod.GET)
 	public ModelAndView showList(@RequestParam("page") int page, @RequestParam("limit") int limit, HttpServletRequest request) {
@@ -50,7 +52,7 @@ public class FreeCourseController {
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
 		model.setListResult(freeCourseService.findAll(pageable));
 		
-		
+		updateAllFreeCourseSentiment();
 		
 		mav.addObject("model", model);
 		return mav;
@@ -86,6 +88,9 @@ public class FreeCourseController {
 		return mav;
 	
 	}
+	
+	
+
 
 	
 }

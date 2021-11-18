@@ -52,7 +52,7 @@ public class FreeCourseService implements IFreeCourseService {
 //			itemDTO.setTopic(itemEntity.getTopic());
 //			itemDTO.setThumbnail(itemEntity.getThumbnail());
 //			itemDTO.setSentiment(itemEntity.getSentiment());
-			System.out.println("link: " + itemDTO.getLinkyoutube());
+//			System.out.println("link: " + itemDTO.getLinkyoutube());
 			listDTO.add(itemDTO);
 		}
 

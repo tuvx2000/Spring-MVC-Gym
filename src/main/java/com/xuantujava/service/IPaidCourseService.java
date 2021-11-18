@@ -17,4 +17,5 @@ public interface IPaidCourseService  {
 	void delete(long[] ids);
 	
 	PaidCourseDTO findById(Long id);
+	void UpdateVideoSentimentAll();
 }

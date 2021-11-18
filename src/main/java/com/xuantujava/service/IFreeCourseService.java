@@ -17,5 +17,5 @@ public interface IFreeCourseService {
 	void delete(long[] ids);
 	FreeCourseDTO findById(long id);
 	List<Integer> getChartSentimentOverall();
-
+	void UpdateVideoSentiment(String videoLink);
 }

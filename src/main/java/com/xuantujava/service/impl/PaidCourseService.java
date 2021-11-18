@@ -17,7 +17,9 @@ import com.xuantujava.entity.CommentEntity;
 import com.xuantujava.entity.FreeCourseEntity;
 import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.PaidCourseEntity;
+import com.xuantujava.repository.CommentRepository;
 import com.xuantujava.repository.PaidCourseRepository;
+import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.IPaidCourseService;
 
 @Service
@@ -27,6 +29,9 @@ public class PaidCourseService implements IPaidCourseService{
 	
 	@Autowired
 	PaidCourseConverter paidCourseConverter;
+	
+	@Autowired
+	ICommentService commentService;
 	
 	@Override
 	public void addPaidCourse(PaidCourseDTO paidcourseDTO) {
@@ -144,6 +149,17 @@ public class PaidCourseService implements IPaidCourseService{
 		// TODO Auto-generated method stub
 		return findOne(id);
 	}
+
+	@Override
+	public void UpdateVideoSentimentAll() {
+//		UpdateVideoSentiment(1L)	;	
+		List<PaidCourseEntity> listEntity = paidCourseRepository.findAll();
+		
+		
+		for (PaidCourseEntity itemEntity : listEntity) {
+			UpdateVideoSentiment(itemEntity.getId());
+		}
+	}
 	
 	
 	
@@ -166,4 +182,47 @@ public class PaidCourseService implements IPaidCourseService{
 //	}
 //	}
 
+	
+	@Transactional
+	public void UpdateVideoSentiment(long courseId) {
+
+		List<String> sentimentResult = new ArrayList<>();
+		List<String> listComments = commentService.findCommentsByCoursesId(courseId);
+
+		int countPositive = 0,countNeutral = 0,countNegative = 0;
+		String finalSentiment = "";
+		
+		
+		
+		for (String comment : listComments) {
+			String statusComment = AwsComprehenedService.AnalyzedOneLineFinal(comment).toString();
+
+			if(statusComment.equals("POSITIVE")) 
+				countPositive++;
+			else if ( statusComment.equals("NEUTRAL"))
+				countNeutral++;
+			else
+				countNegative++;
+		}
+		
+	    if (countPositive >= countNeutral && countPositive>= countNegative)
+	    	finalSentiment = "POSITIVE";
+	    else if (countNeutral >= countPositive && countNeutral>= countNegative)
+	    	finalSentiment = "NEUTRAL";
+	    else
+	    	finalSentiment = "NEGATIVE";
+
+		
+
+	    
+	    PaidCourseEntity itemPrepareForUpdate = paidCourseRepository.findOne(courseId);
+	    
+	    itemPrepareForUpdate.setSentiment(finalSentiment); 
+	    
+	    paidCourseRepository.save(itemPrepareForUpdate);
+	    
+	}
+	
+	
+	
 }
