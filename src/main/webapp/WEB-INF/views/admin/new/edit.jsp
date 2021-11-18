@@ -115,7 +115,7 @@ console.log("xxx");
             updateNew(data);
         }
     	console.log("1");
-		console.log(JSON.stringify(data));
+		console.log("JSON: "+JSON.stringify(data));
     });
     function addNew(data) {
     	console.log("2");

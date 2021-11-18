@@ -3,6 +3,7 @@
 <%@include file="/common/taglib.jsp"%>
 <%@ page import= "com.xuantujava.util.SecurityUtils" %>
 <c:url var ="userName" value="<%= SecurityUtils.getPrincipal().getFullName() %>"/>
+<c:url var ="SentimentAPI" value="/api/admin_sentiment"/>
 
 
 <!DOCTYPE html>
@@ -112,6 +113,37 @@
 	</div>
 
 <script>
+//Sentiment Livestrym
+function SentimentAPI(data) {
+	console.log("Submited");
+	
+	console.log("JSON Submited: " + JSON.stringify(data));
+
+	
+    $.ajax({
+        url: '${SentimentAPI}',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        async: !1,
+        success: function (result) {
+//         	window.location.href = "${editURL}?page=1&limit=2?id=" +result.id +"&message=insert_success";
+        	//?type=edit&id="+result.id+"&message=insert_success";
+        	console.log("Submited: " + result.userSentiment);
+        	
+        	
+        },
+        error: function (Submited) {
+//         	window.location.href = "${NewURL}?page=1&limit=2"+"&message=error_system";
+        	//?type=list&maxPageItem=2&page=1&message=error_system";
+        	console.log("Submited: " + result.userSentiment);
+
+        }
+    });
+}
+
+
 //AUDIO
 
 var peerConnection;
@@ -455,7 +487,8 @@ vid.onpause = (event) => {
 		}else{
 			mySpan.innerHTML+=text+"<br/>";
 			///+"<br/>"+checkParam+"<br/>";
-
+			var data = {usercomment: text.slice(8, 100)}
+			SentimentAPI(data);
 		}
     	
     	
