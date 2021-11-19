@@ -13,14 +13,19 @@
 <body >
 	<div>
 		<h2>
-		USer Sentiment:
+		User On Learning:
 			<span>
-				Positive
+				15
 			</span>
 		</h2>
 	</div>
 
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/s8taXR3mYa8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
+
+
+
+
+
 
 
 <div style="display: grid;grid-template-columns: auto auto auto;background-color:#bdc3c7;text-algin: center;">
@@ -41,13 +46,29 @@
 
 
 
-<div style="border: 1px solid rgba(0, 0, 0, 0.8);">
+<div style="border: 1px solid rgba(0, 0, 0, 0.8);display: grid;grid-template-columns: auto;">
 	<!-- element2 -->
+	
+	<div>
+	   <h4 style=" text-algin: center;">On Time Sentiment:</h4>
+		<div>
+			<div class="container" style="background-color: #ecf0f1;width: 250px;"> 
+<!-- 			///float: left;margin-left: 200px; -->
+				<h4>User Sentiment:</h4>
+				<canvas id="myChartx"></canvas>
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	
+	<div>
 	   <h4 style=" text-algin: center;">Live Chat Box:</h4>
 		
 		<div>
 		    <div id="chat" class="chat" 
-		    style="width:auto;height:500px;background-color:linen;	overflow:auto; display:flex; flex-direction:column-reverse;">
+		    style="width:auto;height:200px;background-color:linen;	overflow:auto; display:flex; flex-direction:column-reverse;">
 	    </div>
 		</div>
 	
@@ -69,6 +90,8 @@
 		    </div>
 		       
 		</div>
+		
+	</div>
 		    
 
 
@@ -111,8 +134,77 @@
 	</div>
 	
 	</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
+//Sentiment Livestrym CHART
+var positive = 0;
+var negative =0;
+var neutral = 0;
+
+function updateChartSentiment(input){
+	if(input == "POSITIVE"){
+		positive++;
+    	console.log("Total POSITVE: " + positive);
+
+	}else if(input == "NEGATIVE"){
+		negative++;
+    	console.log("Total NEGATIVE: " + negative);
+
+	}else{
+		neutral++;
+    	console.log("Total NEUTRAL: " + neutral);
+
+	}
+	
+ 	myChartx.data.datasets[0].data =  [negative,neutral, positive];
+    myChartx.update();
+
+}
+
+
+var ctxx = document.getElementById('myChartx');
+var myChartx = new Chart(ctxx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Negative', 'Positive', 'Neutral'],
+        datasets: [{
+            label: '# of Votes',
+            data: [0,0, 0],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'User Sentiment Chart'
+              }
+        }
+    }
+});
+
+
+
+
 //Sentiment Livestrym
 function SentimentAPI(data) {
 	console.log("Submited");
@@ -131,7 +223,7 @@ function SentimentAPI(data) {
 //         	window.location.href = "${editURL}?page=1&limit=2?id=" +result.id +"&message=insert_success";
         	//?type=edit&id="+result.id+"&message=insert_success";
         	console.log("Submited: " + result.userSentiment);
-        	
+        	updateChartSentiment(result.userSentiment);
         	
         },
         error: function (Submited) {
