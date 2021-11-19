@@ -345,7 +345,7 @@ async function displayLocalStreamAndSignal(firstTime) {
          peerConnection.setLocalDescription(answer);
          sendSignal(answer);
      }, function(error) {
-         alert("Error creating an answer");
+    //     alert("Error creating an answer");
      });
 
  };
@@ -416,7 +416,10 @@ async function displayLocalStreamAndSignal(firstTime) {
    	
     var temp = text.slice(text.indexOf("adminOnPlay=")+12,50);
     checkParam = isNumeric(temp);
+	
+    console.log("Message Received: " + temp);
 
+    
 	if(checkParam){
 		  document.getElementById("myvid").currentTime = temp;
 		  document.getElementById("myvid").play();
@@ -447,7 +450,7 @@ async function displayLocalStreamAndSignal(firstTime) {
     
     
     function isNumeric(str) {
-    	  if (typeof str != "string") return false // we only process strings!  
+    	  if (typeof str != "string") return false; // we only process strings!  
     	  return !isNaN(str) && !isNaN(parseFloat(str))  
     	  // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
 ///// ...and ensure strings of whitespace fail

@@ -25,7 +25,24 @@ public class ChatServlet {
     @OnOpen
     public void onOpen(@PathParam("clientId") String clientId,Session curSession)
     {
-    	System.out.println("Open curSession: " + curSession);
+
+        userSessions.add(curSession);
+
+    	System.out.println("Open curSession: " + curSession);   	
+    	System.out.println("CurrentSessionAmount: " + userSessions.size());
+    	
+    	int flag = 0;
+        for(Session ses : userSessions)
+        {
+          //  	System.out.println("on Message userSession(RAW): " + message);
+        	if(flag !=0 ) break;
+            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
+            flag++;
+        
+        }
+        
+        
+    	
         userSessions.add(curSession);
     }
             
@@ -33,8 +50,21 @@ public class ChatServlet {
     public void onClose(@PathParam("clientId") String clientId,Session curSession)
     {
     	System.out.println("Close curSession: " + curSession);
+        System.out.println("CurrentSessionAmount: " + userSessions.size());
 
         userSessions.remove(curSession);
+        
+    	int flag = 0;
+        for(Session ses : userSessions)
+        {
+          //  	System.out.println("on Message userSession(RAW): " + message);
+        	if(flag !=0 ) break;
+            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
+            flag++;
+        
+        }
+        
+        
     }
     
     @OnMessage
@@ -45,7 +75,7 @@ public class ChatServlet {
 //		String UserName = auth.getName();
         for(Session ses : userSessions)
         {
-            	System.out.println("on Message userSession(RAW): " + message);
+          //  	System.out.println("on Message userSession(RAW): " + message);
 
             ses.getAsyncRemote().sendText(clientId + " : " + message);
         }

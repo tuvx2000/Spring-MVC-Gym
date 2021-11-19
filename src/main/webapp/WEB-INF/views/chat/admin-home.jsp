@@ -167,19 +167,19 @@ var ctxx = document.getElementById('myChartx');
 var myChartx = new Chart(ctxx, {
     type: 'doughnut',
     data: {
-        labels: ['Negative', 'Positive', 'Neutral'],
+        labels: ['Negative', 'Neutral' ,'Positive'],
         datasets: [{
             label: '# of Votes',
             data: [0,0, 0],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
+                'rgba(140, 252, 66, 0.2)',
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
+                'rgba(92, 201, 18, 0.2)',
             ],
             borderWidth: 1
         }]
@@ -484,7 +484,7 @@ function handleOffer(offer) {
      peerConnection.setLocalDescription(answer);
      sendSignal(answer);
  }, function(error) {
-     alert("Error creating an answer");
+   //  alert("Error creating an answer");
  });
 
 };
@@ -536,7 +536,6 @@ function logVideoAudioTrackInfo(localStream) {
 
 var vid = document.getElementById("myVideo");
 vid.onplay = (event) => {
-  document.getElementById("cc").innerHTML = "onplay: "+ vid.currentTime;
  	var message = "adminOnPlay=" + vid.currentTime;
   
   ws.send(message);
@@ -571,17 +570,38 @@ vid.onpause = (event) => {
     var temp = text.slice(text.indexOf("adminOnPlay=")+12,50);
     checkParam = isNumeric(temp);
 
-	if(checkParam){
-		  document.getElementById("myvid").currentTime = temp;
-		  document.getElementById("myvid").play();
-	}else if(isNumeric(text.slice(text.indexOf("adminOnPause=")+13,50))){
-	    document.getElementById("myvid").pause();
-		}else{
-			mySpan.innerHTML+=text+"<br/>";
-			///+"<br/>"+checkParam+"<br/>";
-			var data = {usercomment: text.slice(8, 100)}
-			SentimentAPI(data);
-		}
+    
+    console.log("Received Messagel: " + text);
+
+    
+    
+    
+//	if(checkParam){
+	//	  document.getElementById("myvid").currentTime = temp;
+	//	  document.getElementById("myvid").play();
+//	}else
+	//	if(isNumeric(text.slice(text.indexOf("adminOnPause=")+13,50))){
+	 //   document.getElementById("myvid").pause();
+	//	}else 
+		
+	
+			
+			if(isNumeric(text.slice(text.indexOf("AmountUse="),50))){
+			console.log("USERRRRRR Curreent: " + text.slice(text.indexOf("AmountUse="),50));
+			}else
+				if(checkParam){
+// 					  document.getElementById("myvid").currentTime = temp;
+// 					  document.getElementById("myvid").play();
+				}else
+					if(isNumeric(text.slice(text.indexOf("adminOnPause=")+13,50))){
+// 				   document.getElementById("myvid").pause();
+					}else 
+			{
+					mySpan.innerHTML+=text+"<br/>";
+					///+"<br/>"+checkParam+"<br/>";
+					var data = {usercomment: text.slice(8, 100)}
+					SentimentAPI(data);
+				}
     	
     	
     	
