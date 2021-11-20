@@ -14,7 +14,7 @@
 	<div>
 		<h2>
 		User On Learning:
-			<span>
+			<span id="userAmount">
 				15
 			</span>
 		</h2>
@@ -588,6 +588,9 @@ vid.onpause = (event) => {
 			
 			if(isNumeric(text.slice(text.indexOf("AmountUse="),50))){
 			console.log("USERRRRRR Curreent: " + text.slice(text.indexOf("AmountUse="),50));
+			
+       	    document.getElementById("userAmount").innerHTML = text.slice(text.indexOf("AmountUse="),50);
+			userAmount
 			}else
 				if(checkParam){
 // 					  document.getElementById("myvid").currentTime = temp;
