@@ -226,6 +226,29 @@ public class PaidCourseService implements IPaidCourseService{
 	    paidCourseRepository.save(itemPrepareForUpdate);
 	    
 	}
+
+	@Override
+	public List<Integer> getChartSentimentOverall() {
+		List<Integer> listSentiment = new ArrayList<>();
+		List<PaidCourseEntity> listEntity = paidCourseRepository.findAll();
+		int a=0,b=0,c=0;
+		for (PaidCourseEntity paidCourseEntity : listEntity) {
+
+			
+			if (paidCourseEntity.getSentiment().equals("POSITIVE")) {
+				a++;
+			}else if (paidCourseEntity.getSentiment().equals("NEUTRAL")){
+				b++;
+			}else
+				c++;
+		}	
+		listSentiment.add(a);
+		listSentiment.add(b);
+		listSentiment.add(c);
+
+		
+		return listSentiment;
+	}
 	
 	
 	

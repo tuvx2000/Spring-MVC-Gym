@@ -10,14 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.xuantujava.DTO.FreeCourseDTO;
-import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.converter.FreeCourseConverter;
-import com.xuantujava.entity.CategoryEntity;
 import com.xuantujava.entity.FreeCourseEntity;
-import com.xuantujava.entity.NewEntity;
-import com.xuantujava.entity.UserEntity;
 import com.xuantujava.repository.FreeCourseRepository;
-import com.xuantujava.repository.UserRepository;
 import com.xuantujava.service.IFreeCourseService;
 import com.xuantujava.service.ISentimentService;
 
@@ -187,6 +182,8 @@ public class FreeCourseService implements IFreeCourseService {
 		int a=0,b=0,c=0;
 		
 		for (FreeCourseEntity freeCourseEntity : listEntity) {
+			System.out.println("FREE " + freeCourseEntity.getSentiment());
+
 			if (freeCourseEntity.getSentiment().equals("POSITIVE")) {
 				a++;
 			}else if (freeCourseEntity.getSentiment().equals("NEUTRAL")){
