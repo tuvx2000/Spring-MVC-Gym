@@ -61,6 +61,15 @@ public class PaidCourseController {
 	private MessageUtil messageUtil;
 	
 	
+	
+	public void updateAllPaidCourseSentiment() {
+//		paidCourseService.UpdateVideoSentimentAll();
+	}
+	
+	
+	
+	
+	
 	//list
 	@RequestMapping(value = "/quan-tri/bai-hoc-tra-phi/danh-sach", method = RequestMethod.GET)
 	public ModelAndView showList(@RequestParam("page") int page, @RequestParam("limit") int limit, HttpServletRequest request) {
@@ -84,6 +93,7 @@ public class PaidCourseController {
 		model.setListResult(paidCourseService.findAll(pageable));
 		
 		
+		updateAllPaidCourseSentiment();
 		
 		mav.addObject("model", model);
 		return mav;
@@ -174,39 +184,7 @@ public class PaidCourseController {
 		
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 
 	public  static File multipartToFile(MultipartFile multipart, String fileName) throws IllegalStateException, IOException {

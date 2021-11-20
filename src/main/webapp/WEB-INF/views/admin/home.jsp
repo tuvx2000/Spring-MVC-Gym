@@ -11,11 +11,11 @@
 
 <body>
 <div >
-	<div class="container" style="background-color: #ecf0f1;width: 500px;float: left;margin-left: 150px;">
+	<div class="container" style="background-color: #ecf0f1;width: 400px;float: left;margin-left: 150px;">
 		<h4>User Sentiment Free Courses:</h4>
 		<canvas id="myChart"  style="transform: scale(0.9,0.9);"></canvas>
 	</div>
-	<div class="container" style="background-color: #ecf0f1;width: 500px;float: left;margin-left: 200px;">
+	<div class="container" style="background-color: #ecf0f1;width: 400px;float: left;margin-left: 200px;">
 		<h4>User Sentiment Paid Courses:</h4>
 		<canvas id="myChartx"  style="transform: scale(0.9,0.9);"></canvas>
 	</div>
@@ -27,19 +27,19 @@ const ctxx = document.getElementById('myChartx');
 const myChartx = new Chart(ctxx, {
     type: 'doughnut',
     data: {
-        labels: ['Negative', 'Positive', 'Neutral'],
+        labels: ['Negative', 'Neutral' ,'Positive'],
         datasets: [{
             label: '# of Votes',
-            data: [${POSITIVE}, ${NEUTRAL}, ${NEGATIVE}],
+            data: [${POSITIVE1}, ${NEUTRAL1}, ${NEGATIVE1}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
+                'rgba(140, 252, 66, 0.2)',
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
+                'rgba(92, 201, 18, 0.2)',
             ],
             borderWidth: 1
         }]
@@ -67,19 +67,19 @@ const ctx = document.getElementById('myChart');
 const myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Negative', 'Positive', 'Neutral'],
+        labels: ['Negative', 'Neutral' ,'Positive'],
         datasets: [{
             label: '# of Votes',
             data: [${POSITIVE}, ${NEUTRAL}, ${NEGATIVE}],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
+                'rgba(140, 252, 66, 0.2)',
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
+                'rgba(92, 201, 18, 0.2)',
             ],
             borderWidth: 1
         }]

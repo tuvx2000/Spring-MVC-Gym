@@ -10,15 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.xuantujava.DTO.FreeCourseDTO;
-import com.xuantujava.DTO.NewDTO;
 import com.xuantujava.converter.FreeCourseConverter;
-import com.xuantujava.entity.CategoryEntity;
 import com.xuantujava.entity.FreeCourseEntity;
-import com.xuantujava.entity.NewEntity;
-import com.xuantujava.entity.UserEntity;
 import com.xuantujava.repository.FreeCourseRepository;
-import com.xuantujava.repository.UserRepository;
 import com.xuantujava.service.IFreeCourseService;
+import com.xuantujava.service.ISentimentService;
 
 @Service
 public class FreeCourseService implements IFreeCourseService {
@@ -28,6 +24,9 @@ public class FreeCourseService implements IFreeCourseService {
 
 	@Autowired
 	FreeCourseConverter freeCourseConverter;
+	
+	@Autowired
+	ISentimentService sentimentService;
 	
 	@Override
 	public List<FreeCourseDTO> findAll() {
@@ -52,7 +51,7 @@ public class FreeCourseService implements IFreeCourseService {
 //			itemDTO.setTopic(itemEntity.getTopic());
 //			itemDTO.setThumbnail(itemEntity.getThumbnail());
 //			itemDTO.setSentiment(itemEntity.getSentiment());
-			System.out.println("link: " + itemDTO.getLinkyoutube());
+//			System.out.println("link: " + itemDTO.getLinkyoutube());
 			listDTO.add(itemDTO);
 		}
 
@@ -92,7 +91,7 @@ public class FreeCourseService implements IFreeCourseService {
 		
 		for (String comment : listComments) {
 //			sentimentResult.add(AwsComprehenedService.AnalyzedOneLineFinal(comment));
-			String statusComment = AwsComprehenedService.AnalyzedOneLineFinal(comment).toString();
+			String statusComment = sentimentService.AnalyzedOneLineFinal(comment).toString();
 
 			if(statusComment.equals("POSITIVE")) 
 				countPositive++;
@@ -183,6 +182,8 @@ public class FreeCourseService implements IFreeCourseService {
 		int a=0,b=0,c=0;
 		
 		for (FreeCourseEntity freeCourseEntity : listEntity) {
+			System.out.println("FREE " + freeCourseEntity.getSentiment());
+
 			if (freeCourseEntity.getSentiment().equals("POSITIVE")) {
 				a++;
 			}else if (freeCourseEntity.getSentiment().equals("NEUTRAL")){

@@ -142,6 +142,17 @@ public class CommentService implements ICommentService{
 			commentRepository.delete(id);
 		}
 	}
+
+	@Override
+	public List<String> findCommentsByCoursesId(long courseId) {
+		List<String> IdCommentList = new ArrayList<>();
+		List<CommentEntity> listEntity = commentRepository.findBycourseid(courseId);
+		
+		for (CommentEntity itemEntity : listEntity) {
+			IdCommentList.add(itemEntity.getComment());
+		}
+		return IdCommentList;
+	}
 	
 
 }

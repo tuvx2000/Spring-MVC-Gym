@@ -17,8 +17,11 @@ import com.xuantujava.entity.CommentEntity;
 import com.xuantujava.entity.FreeCourseEntity;
 import com.xuantujava.entity.NewEntity;
 import com.xuantujava.entity.PaidCourseEntity;
+import com.xuantujava.repository.CommentRepository;
 import com.xuantujava.repository.PaidCourseRepository;
+import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.IPaidCourseService;
+import com.xuantujava.service.ISentimentService;
 
 @Service
 public class PaidCourseService implements IPaidCourseService{
@@ -27,6 +30,12 @@ public class PaidCourseService implements IPaidCourseService{
 	
 	@Autowired
 	PaidCourseConverter paidCourseConverter;
+	
+	@Autowired
+	ICommentService commentService;
+	
+	@Autowired
+	ISentimentService sentimentService;
 	
 	@Override
 	public void addPaidCourse(PaidCourseDTO paidcourseDTO) {
@@ -144,6 +153,17 @@ public class PaidCourseService implements IPaidCourseService{
 		// TODO Auto-generated method stub
 		return findOne(id);
 	}
+
+	@Override
+	public void UpdateVideoSentimentAll() {
+//		UpdateVideoSentiment(1L)	;	
+		List<PaidCourseEntity> listEntity = paidCourseRepository.findAll();
+		
+		
+		for (PaidCourseEntity itemEntity : listEntity) {
+			UpdateVideoSentiment(itemEntity.getId());
+		}
+	}
 	
 	
 	
@@ -166,4 +186,70 @@ public class PaidCourseService implements IPaidCourseService{
 //	}
 //	}
 
+	
+	@Transactional
+	public void UpdateVideoSentiment(long courseId) {
+
+		List<String> sentimentResult = new ArrayList<>();
+		List<String> listComments = commentService.findCommentsByCoursesId(courseId);
+
+		int countPositive = 0,countNeutral = 0,countNegative = 0;
+		String finalSentiment = "";
+		
+		
+		
+		for (String comment : listComments) {
+			String statusComment = sentimentService.AnalyzedOneLineFinal(comment).toString();
+
+			if(statusComment.equals("POSITIVE")) 
+				countPositive++;
+			else if ( statusComment.equals("NEUTRAL"))
+				countNeutral++;
+			else
+				countNegative++;
+		}
+		
+	    if (countPositive >= countNeutral && countPositive>= countNegative)
+	    	finalSentiment = "POSITIVE";
+	    else if (countNeutral >= countPositive && countNeutral>= countNegative)
+	    	finalSentiment = "NEUTRAL";
+	    else
+	    	finalSentiment = "NEGATIVE";
+
+		
+
+	    
+	    PaidCourseEntity itemPrepareForUpdate = paidCourseRepository.findOne(courseId);
+	    
+	    itemPrepareForUpdate.setSentiment(finalSentiment); 
+	    
+	    paidCourseRepository.save(itemPrepareForUpdate);
+	    
+	}
+
+	@Override
+	public List<Integer> getChartSentimentOverall() {
+		List<Integer> listSentiment = new ArrayList<>();
+		List<PaidCourseEntity> listEntity = paidCourseRepository.findAll();
+		int a=0,b=0,c=0;
+		for (PaidCourseEntity paidCourseEntity : listEntity) {
+
+			
+			if (paidCourseEntity.getSentiment().equals("POSITIVE")) {
+				a++;
+			}else if (paidCourseEntity.getSentiment().equals("NEUTRAL")){
+				b++;
+			}else
+				c++;
+		}	
+		listSentiment.add(a);
+		listSentiment.add(b);
+		listSentiment.add(c);
+
+		
+		return listSentiment;
+	}
+	
+	
+	
 }

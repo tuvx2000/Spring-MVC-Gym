@@ -15,6 +15,8 @@ public interface IPaidCourseService  {
 	int getTotalItem();
 	List<PaidCourseDTO> findAll(Pageable pageable);
 	void delete(long[] ids);
-	
+	List<Integer> getChartSentimentOverall();
+
 	PaidCourseDTO findById(Long id);
+	void UpdateVideoSentimentAll();
 }

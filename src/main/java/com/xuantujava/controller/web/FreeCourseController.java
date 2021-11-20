@@ -52,7 +52,7 @@ public class FreeCourseController {
 		mav.addObject("model", centerDTO);
 
 //		freeCourseService.UpdateVideoSentimentAll();
-		
+//		freeCourseService.UpdateVideoSentiment("https://www.youtube.com/watch?v=ZXEEkY-xA08");
 		return mav;
 	}
 
