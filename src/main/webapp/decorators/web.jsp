@@ -61,11 +61,46 @@ https://templatemo.com/tm-548-training-studio
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 
+<style>
+div.fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  border: 3px solid #73AD21;
+  z-index: 99999999999999999999;
+  
+}
+div.fixed div button {
+font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+font-weight: 500;
+font-size: 20px;color:#fff;
 
+}
+
+</style>
 
 
 </head>
 <body style="background-color: #ecf0f1;">
+	<div style="background-color:#fffa65;width:100px;float:left" class="fixed">
+		<div style="text-align:center;">
+			<button  style="background-color:#ed563b;">
+						<a style="text-decoration:none;color:white" href="<c:url value='/chat' />" >
+							Join Stream
+						</a>	
+			</button>
+		</div>
+		<div style="text-align:center;">
+			<img height="70px" width="70px" alt="" src="<c:url value='/template/images/muscle.png' />">
+		</div>
+		
+		
+		
+	</div>
+	
+
 	<div style="background-color: black;width:100%;height:70px;">
 	</div>
 	<%@ include file="/common/web/header.jsp"%>

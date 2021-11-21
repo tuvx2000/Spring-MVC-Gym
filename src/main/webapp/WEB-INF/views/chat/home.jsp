@@ -19,8 +19,8 @@
 <!-- 	<h1 class="grid-item zxz">The DEMO LiveStream Class</h1> -->
 	
 	<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/s8taXR3mYa8?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
-	
-	<video id="myvid" width="100%" height="700px" autoplay style="background-color:#95a5a6">
+<!-- 	//autoplay -->
+	<video id="myvid" width="100%" height="700px"  style="background-color:#95a5a6">
 	  <source src="https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/Snaptik_7007967422011493638_ach.mp4" type="video/mp4">
 	</video>
 	</div>
