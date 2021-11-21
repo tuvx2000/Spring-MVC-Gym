@@ -36,7 +36,7 @@ public class ChatServlet {
     	int flag = 0;
         for(Session ses : userSessions)
         {
-            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
+//            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
 
         	if(flag !=0 ) break;
         	System.out.println("Amount ADD: " + userSessions.size());
@@ -60,7 +60,7 @@ public class ChatServlet {
         for(Session ses : userSessions)
         {
         	System.out.println("Amount SUBB: " + userSessions.size());
-            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
+//            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
 
         	if(flag !=0 ) break;
             ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());

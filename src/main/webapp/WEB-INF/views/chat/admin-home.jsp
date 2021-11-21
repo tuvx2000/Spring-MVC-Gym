@@ -137,6 +137,96 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
+
+////VIDEO + CHAT
+
+
+var vid = document.getElementById("myVideo");
+vid.onplay = (event) => {
+ 	var message = "adminOnPlay=" + vid.currentTime;
+  
+  ws.send(message);
+
+};
+
+vid.onpause = (event) => {
+ 	var message = "adminOnPause=" + vid.currentTime;
+ 	  ws.send(message);
+
+};
+//// RESPONE
+    var wsUrl;
+    if (window.location.protocol == 'http:') {
+        wsUrl = 'ws://';
+    } else {
+        wsUrl = 'wss://';
+    }
+    console.log("usURL: " + wsUrl);
+    
+    var ws = new WebSocket(wsUrl + window.location.host + "/spring-mvc/chat/ADMIN");
+       
+    console.log("ws: " + ws);
+        
+    ///// ONMESSAGE
+    ws.onmessage = function(event) {
+        	
+        	
+    var mySpan = document.getElementById("chat");
+  	var text = event.data; //// respone message
+   	
+    var temp = text.slice(text.indexOf("adminOnPlay=")+12,50);
+    checkParam = isNumeric(temp);
+
+    
+    console.log("RAW Received Messagel: " + text);
+
+    if(text.slice(text.indexOf("AmountUse:"),50).length >2){
+    	var amountCurrentUsers= text.slice(text.indexOf("AmountUse:")+11,50);
+	    document.getElementById("userAmount").innerHTML = amountCurrentUsers;
+		console.log("Raw1: " + amountCurrentUsers );
+
+    }
+    
+    
+    
+				if(checkParam){
+
+				}else
+					if(isNumeric(text.slice(text.indexOf("adminOnPause=")+13,50))){
+					}else 
+			{
+					mySpan.innerHTML+=text+"<br/>";
+					var data = {usercomment: text.slice(8, 100)}
+					SentimentAPI(data);
+				}
+    	
+    	
+    	
+      
+    };
+     
+    ws.onerror = function(event){
+        console.log("Error ", event)
+    } 
+    function sendMsg() {
+        var msg = document.getElementById("msg").value;
+        if(msg)
+        {
+            ws.send(msg);
+        }
+        document.getElementById("msg").value="";
+    }
+    
+    
+    function isNumeric(str) {
+  	  if (typeof str != "string") return false // we only process strings!  
+  	  return !isNaN(str) && !isNaN(parseFloat(str))  
+  	  // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+///// ...and ensure strings of whitespace fail
+  	}  
+    
+    
+    
 //Sentiment Livestrym CHART
 var positive = 0;
 var negative =0;
@@ -317,6 +407,8 @@ signalingWebsocket.onmessage = function(msg) {
  var signal = JSON.parse(msg.data);
  switch (signal.type) {
      case "offer":
+    	 
+    	 
          handleOffer(signal);
          break;
      case "answer":
@@ -531,92 +623,7 @@ function logVideoAudioTrackInfo(localStream) {
 };
 
 
-//// VIDEO + CHAT
 
-
-var vid = document.getElementById("myVideo");
-vid.onplay = (event) => {
- 	var message = "adminOnPlay=" + vid.currentTime;
-  
-  ws.send(message);
-
-};
-
-vid.onpause = (event) => {
- 	var message = "adminOnPause=" + vid.currentTime;
- 	  ws.send(message);
-
-};
-//// RESPONE
-    var wsUrl;
-    if (window.location.protocol == 'http:') {
-        wsUrl = 'ws://';
-    } else {
-        wsUrl = 'wss://';
-    }
-    console.log("usURL: " + wsUrl);
-    
-    var ws = new WebSocket(wsUrl + window.location.host + "/spring-mvc/chat/ADMIN");
-       
-    console.log("ws: " + ws);
-        
-    ///// ONMESSAGE
-    ws.onmessage = function(event) {
-        	
-        	
-    var mySpan = document.getElementById("chat");
-  	var text = event.data; //// respone message
-   	
-    var temp = text.slice(text.indexOf("adminOnPlay=")+12,50);
-    checkParam = isNumeric(temp);
-
-    
-    console.log("RAW Received Messagel: " + text);
-
-    if(text.slice(text.indexOf("AmountUse:"),50).length >2){
-    	var amountCurrentUsers= text.slice(text.indexOf("AmountUse:")+11,50);
-	    document.getElementById("userAmount").innerHTML = amountCurrentUsers;
-		console.log("Raw1: " + amountCurrentUsers );
-
-    }
-    
-    
-    
-				if(checkParam){
-
-				}else
-					if(isNumeric(text.slice(text.indexOf("adminOnPause=")+13,50))){
-					}else 
-			{
-					mySpan.innerHTML+=text+"<br/>";
-					var data = {usercomment: text.slice(8, 100)}
-					SentimentAPI(data);
-				}
-    	
-    	
-    	
-      
-    };
-     
-    ws.onerror = function(event){
-        console.log("Error ", event)
-    } 
-    function sendMsg() {
-        var msg = document.getElementById("msg").value;
-        if(msg)
-        {
-            ws.send(msg);
-        }
-        document.getElementById("msg").value="";
-    }
-    
-    
-    function isNumeric(str) {
-  	  if (typeof str != "string") return false // we only process strings!  
-  	  return !isNaN(str) && !isNaN(parseFloat(str))  
-  	  // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-///// ...and ensure strings of whitespace fail
-  	}  
 </script>
 
 </body>
