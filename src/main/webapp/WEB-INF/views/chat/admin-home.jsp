@@ -587,10 +587,11 @@ vid.onpause = (event) => {
 	
 			
 			if(isNumeric(text.slice(text.indexOf("AmountUse="),50))){
-			console.log("USERRRRRR Curreent: " + text.slice(text.indexOf("AmountUse="),50));
+			console.log("USERRRRRR Curreent: " + text.slice(text.indexOf("AmountUse:"),50) );
+// 			if (text.indexOf("AmountUse=") != -1)
+       	    document.getElementById("userAmount1").innerHTML = text.indexOf("AmountUse:");
+       	    document.getElementById("userAmount2").innerHTML = text.slice(text.indexOf("AmountUse:"),50);
 			
-       	    document.getElementById("userAmount").innerHTML = text.slice(text.indexOf("AmountUse="),50);
-			userAmount
 			}else
 				if(checkParam){
 // 					  document.getElementById("myvid").currentTime = temp;
