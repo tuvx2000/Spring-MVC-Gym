@@ -313,7 +313,7 @@ signalingWebsocket.onopen = init();
 
 
 signalingWebsocket.onmessage = function(msg) {
- console.log("Got message", msg.data);
+// console.log("Got message", msg.data);
  var signal = JSON.parse(msg.data);
  switch (signal.type) {
      case "offer":
@@ -468,7 +468,7 @@ function sendOfferSignal() {
 * handshake.
 */
 function handleOffer(offer) {
- console.log("newwwwwwwwwwwww" + count);
+ //console.log("newwwwwwwwwwwww" + count);
 
 //	 if(count == 0){
 //		 peerConnection = null;
@@ -571,38 +571,24 @@ vid.onpause = (event) => {
     checkParam = isNumeric(temp);
 
     
-    console.log("Received Messagel: " + text);
+    console.log("RAW Received Messagel: " + text);
 
+    if(text.slice(text.indexOf("AmountUse:"),50).length >2){
+    	var amountCurrentUsers= text.slice(text.indexOf("AmountUse:")+11,50);
+	    document.getElementById("userAmount").innerHTML = amountCurrentUsers;
+		console.log("Raw1: " + amountCurrentUsers );
+
+    }
     
     
     
-//	if(checkParam){
-	//	  document.getElementById("myvid").currentTime = temp;
-	//	  document.getElementById("myvid").play();
-//	}else
-	//	if(isNumeric(text.slice(text.indexOf("adminOnPause=")+13,50))){
-	 //   document.getElementById("myvid").pause();
-	//	}else 
-		
-	
-			
-			if(isNumeric(text.slice(text.indexOf("AmountUse="),50))){
-			console.log("USERRRRRR Curreent: " + text.slice(text.indexOf("AmountUse:"),50) );
-// 			if (text.indexOf("AmountUse=") != -1)
-       	    document.getElementById("userAmount1").innerHTML = text.indexOf("AmountUse:");
-       	    document.getElementById("userAmount2").innerHTML = text.slice(text.indexOf("AmountUse:"),50);
-			
-			}else
 				if(checkParam){
-// 					  document.getElementById("myvid").currentTime = temp;
-// 					  document.getElementById("myvid").play();
+
 				}else
 					if(isNumeric(text.slice(text.indexOf("adminOnPause=")+13,50))){
-// 				   document.getElementById("myvid").pause();
 					}else 
 			{
 					mySpan.innerHTML+=text+"<br/>";
-					///+"<br/>"+checkParam+"<br/>";
 					var data = {usercomment: text.slice(8, 100)}
 					SentimentAPI(data);
 				}

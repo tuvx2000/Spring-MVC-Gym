@@ -27,8 +27,7 @@ public class ChatServlet {
     {
 
 
-    	System.out.println("Open curSession: " + curSession);   	
-    	System.out.println("CurrentSessionAmount: " + userSessions.size());
+//    	System.out.println("Open curSession: " + curSession);   	
 
     	
         userSessions.add(curSession);
@@ -37,9 +36,10 @@ public class ChatServlet {
     	int flag = 0;
         for(Session ses : userSessions)
         {
-          //  	System.out.println("on Message userSession(RAW): " + message);
+            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
+
         	if(flag !=0 ) break;
-        	int x = userSessions.size() +1;
+        	System.out.println("Amount ADD: " + userSessions.size());
             ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
             flag++;
         
@@ -52,15 +52,16 @@ public class ChatServlet {
     @OnClose
     public void onClose(@PathParam("clientId") String clientId,Session curSession)
     {
-    	System.out.println("Close curSession: " + curSession);
-        System.out.println("CurrentSessionAmount: " + userSessions.size());
+//    	System.out.println("Close curSession: " + curSession);
 
         userSessions.remove(curSession);
       
     	int flag = 0;
         for(Session ses : userSessions)
         {
-          //  	System.out.println("on Message userSession(RAW): " + message);
+        	System.out.println("Amount SUBB: " + userSessions.size());
+            ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
+
         	if(flag !=0 ) break;
             ses.getAsyncRemote().sendText("AmountUse: " + userSessions.size());
             flag++;
