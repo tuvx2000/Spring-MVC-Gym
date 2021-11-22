@@ -118,7 +118,7 @@ public class PaidCourseController {
 			mav.addObject("messageResponse", message.get("message"));
 			mav.addObject("alert", message.get("alert"));
 		}
-		System.out.println("here is the get method");
+//		System.out.println("here is the get method And Sentiment: " + model.getSentiment());
 		mav.addObject("model", model);
 		return mav;
 	}
@@ -130,8 +130,9 @@ public class PaidCourseController {
 			HttpServletResponse response, HttpSession session) throws IOException, ServletException {
 		System.out.println("step1");
 		ModelAndView mav = new ModelAndView("admin/paidCourse/addPaidCourse");
-
-		if(id != null) {
+//		System.out.println("ID IN STEP1:" + id);
+ 
+//		if(id == null) {
 			System.out.println("step2");
 			
 		//day la them moi
@@ -168,7 +169,7 @@ public class PaidCourseController {
 		
 		paidCourseService.addPaidCourse(paidCourseDTO);
 
-		}
+//		}
 		//day la het them moi
 
 		System.out.println("step3");

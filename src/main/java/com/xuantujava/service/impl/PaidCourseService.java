@@ -117,7 +117,8 @@ public class PaidCourseService implements IPaidCourseService{
 		courseDTO.setTopic(courseEntity.getTopic());
 		courseDTO.setThumbnail(courseEntity.getThumbnail());
 		courseDTO.setName(courseEntity.getName());
-		
+		courseDTO.setSentiment(courseEntity.getSentiment());
+//		System.out.println("Sentiment PaidService: "+courseEntity.getSentiment());
 		return courseDTO;
 	}
 
