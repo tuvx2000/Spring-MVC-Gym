@@ -11,56 +11,112 @@
 <title> Java File Upload Servlet Example </title> 
 </head> 
 <body>
-<hr><h1>Thêm mới Paid-Course:</h1>
-
-  <form method="post" action="<c:url value='/quan-tri/bai-hoc-tra-phi/chinh-sua'/>" enctype="multipart/form-data">
-<!--  start a unit -->
-  <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right">name</label>
-        <div class="col-sm-9">
-  			<div><input type="text" name="name"  placeholder="Course Name" /></div>
-        </div>
-  </div>
-<!--   end a unit -->
-<!--  start a unit -->
-  <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right">description</label>
-        <div class="col-sm-9">
- 			 <div> <input type="text" name="description"  placeholder="Course description" /></div>
-        </div>
-  </div>
-<!--   end a unit -->
-<!--  start a unit -->
-  <div class="form-group">
-        <label class="col-sm-3 control-label no-padding-right">description</label>
-        <div class="col-sm-9">
- 			 <div><h4>Video: </h4><input type="file" name="file"/></div>
-        </div>
-  </div>
-<!--   end a unit -->
-  <div> <input type="text" name="shortdescription"   placeholder="Course shortdescription" /></div>
-  <div>  <input type="text" name="topic"  placeholder="Course topic"  />
-  <input type="text" name="thumbnail" placeholder="Course tothumbnailpic" /></div>
-  <input type="submit" value="Upload" />
-  </form>
-<hr>
 
 
-<div class="main-content">
-    <div class="main-content-inner">
-    
-        <div class="breadcrumbs" id="breadcrumbs">
-            <script type="text/javascript">
-                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-            </script> 
-            <ul class="breadcrumb">
-                <li>
-                    <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
-                </li>
-                <li class="active">Chỉnh sửa Bình Luận</li>
-            </ul><!-- /.breadcrumb -->
-        </div>
+ 		<div class="main-content">
+		    <div class="main-content-inner">
+		    
+		        <div class="breadcrumbs" id="breadcrumbs">
+		            <script type="text/javascript">
+		                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+		            </script> 
+		            <ul class="breadcrumb">
+		                <li>
+		                    <i class="ace-icon fa fa-home home-icon"></i>
+		                    <a href="#">Trang chủ</a>
+		                </li>
+		                <li class="active">Chỉnh sửa Bình Luận</li>
+		            </ul><!-- /.breadcrumb -->
+		        </div>
+
+<div>
+<!-- ///////  ADD NEW PAID COURSE-->
+	<c:if test = "${model.id == null}">	
+	<hr><h1>Add Paid-Course:</h1>
+	<div>
+	   <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+    	               <c:if test="${not empty messageResponse}">
+							<div class="alert alert-${alert}">
+										${messageResponse}
+							</div>
+						</c:if>
+					<hr><h1>Them Paid-Course:</h1>
+						
+					 <form method="post" action="<c:url value='/quan-tri/bai-hoc-tra-phi/chinh-sua'/>" enctype="multipart/form-data">
+					<!--  start a unit -->
+					  <div class="form-group">
+					        <label class="col-sm-3 control-label no-padding-right">name</label>
+					        <div class="col-sm-9">
+					  			<input type="text" name="name" class="form-control"  placeholder="Course Name" />
+					        </div>
+					  </div>        
+					<!--   end a unit -->
+					<!--  start a unit -->
+					  <div class="form-group">
+					        <label class="col-sm-3 control-label no-padding-right">description</label>
+					        <div class="col-sm-9">
+					 			 <input type="text" name="description"  class="form-control"   placeholder="Course description" />
+					        </div>
+					  </div>
+					<!--   end a unit -->
+					
+					<!--  start a unit -->
+					  <div class="form-group">
+					        <label class="col-sm-3 control-label no-padding-right">Course shortdescription</label>
+					        <div class="col-sm-9">
+					 			 <input type="text"  class="form-control"  name="shortdescription"   placeholder="Course shortdescription" />
+					        </div>
+					  </div>
+					<!--   end a unit -->
+					<!--  start a unit -->
+					  <div class="form-group">
+					        <label class="col-sm-3 control-label no-padding-right">Course topic</label>
+					        <div class="col-sm-9">
+					 			 <input type="text"  class="form-control"  name="topic"  placeholder="Course topic"  />
+					        </div>
+					  </div>
+					<!--   end a unit -->
+					<!--  start a unit -->
+					  <div class="form-group">
+					        <label class="col-sm-3 control-label no-padding-right">Course thumbnail</label>
+					        <div class="col-sm-9">
+					 			 <input type="text"   class="form-control"  name="thumbnail" placeholder="Course thumbnail" />
+					        </div>
+					  </div>
+					<!--   end a unit -->
+<!-- 					  <div> <input type="text" name="shortdescription"   placeholder="Course shortdescription" /></div> -->
+<!-- 					  <div>  <input type="text" name="topic"  placeholder="Course topic"  /> -->
+<!-- 					  <input type="text" name="thumbnail" placeholder="Course tothumbnailpic" /></div> -->
+
+
+					<!--  start a unit -->
+					  <div class="form-group">
+					        <label class="col-sm-3 control-label no-padding-right">Up File</label>
+					        <div class="col-sm-9">
+					 			 <input type="file" width="100px" height="100px" name="file"/>
+					        </div>
+					  </div>
+					<!--   end a unit -->
+					
+						<br> <br><br><br>
+						<hr>
+					  <input type="submit" value="Upload New Paid-Course" />
+					  </form>	
+		  
+	  			</div>
+     		 </div>
+      	</div>
+	</div>
+	</c:if>
+<!-- ///////  UPDATE EXISTING PAID COURSE-->
+
+
+		        
+	<c:if test = "${model.id != null}">	
+	<hr><h1>Update Paid-Course:</h1>
+	<div>
         <div class="page-content">
             <div class="row">
                 <div class="col-xs-12">
@@ -125,11 +181,11 @@
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <c:if test="${not empty model.id}">
-                                        <input type="button" class="btn btn-white btn-warning btn-bold" value="Cập nhật Bình luận" id="btnAddOrUpdateNew"/>
+                                        <input type="button" class="btn btn-white btn-warning btn-bold" value="Cập nhật PaidCourse" id="btnAddOrUpdateNew"/>
                                     </c:if>
-                                    <c:if test="${empty model.id}">
-                                        <input type="button" class="btn btn-white btn-warning btn-bold" value="Bình luận" id="btnAddOrUpdateNew"/>
-                                    </c:if>
+<%-- 		                                    <c:if test="${empty model.id}"> --%>
+<!-- 		                                        <input type="button" class="btn btn-white btn-warning btn-bold" value="PaidCourse" id="btnAddOrUpdateNew"/> -->
+<%-- 		                                    </c:if> --%>
                                 </div>
                             </div>
                             <input type="hidden" value="${model.id}" id="id" name="id"/>
@@ -137,8 +193,15 @@
                 </div>
             </div>
         </div>
-    </div>
+	</div>
+	</c:if>	
+
+	
 </div>
+	
+	    </div>
+</div>
+
 
 
 <script>

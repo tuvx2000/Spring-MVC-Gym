@@ -47,7 +47,7 @@ public class PaidCourseService implements IPaidCourseService{
 		paidCourseEntity.setShortDescription(paidcourseDTO.getDescription());
 		paidCourseEntity.setTopic(paidcourseDTO.getTopic());
 		paidCourseEntity.setThumbnail(paidcourseDTO.getThumbnail());
-		
+		paidCourseEntity.setSentiment("NOTANALYZED");
 		
 		paidCourseRepository.save(paidCourseEntity);
 		
@@ -234,7 +234,8 @@ public class PaidCourseService implements IPaidCourseService{
 		List<PaidCourseEntity> listEntity = paidCourseRepository.findAll();
 		int a=0,b=0,c=0;
 		for (PaidCourseEntity paidCourseEntity : listEntity) {
-
+//			System.out.println("Paid " + paidCourseEntity.getSentiment().equals(null));
+			
 			
 			if (paidCourseEntity.getSentiment().equals("POSITIVE")) {
 				a++;
@@ -243,9 +244,18 @@ public class PaidCourseService implements IPaidCourseService{
 			}else
 				c++;
 		}	
+//		System.out.println("a " + a);
+//		System.out.println("b " + b);
+//		System.out.println("c " + c);
+
 		listSentiment.add(a);
 		listSentiment.add(b);
 		listSentiment.add(c);
+//		System.out.println("================");
+//
+//		System.out.println("a " + listSentiment.get(0));
+//		System.out.println("b " + listSentiment.get(1));
+//		System.out.println("c " + listSentiment.get(2));
 
 		
 		return listSentiment;

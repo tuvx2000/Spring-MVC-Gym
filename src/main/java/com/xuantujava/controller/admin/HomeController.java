@@ -66,6 +66,15 @@ public class HomeController {
 		mav.addObject("POSITIVE", listSentiment.get(0));
 		mav.addObject("NEUTRAL", listSentiment.get(1));
 		mav.addObject("NEGATIVE", listSentiment.get(2));
+		
+		
+//		System.out.println("================");
+//
+//		System.out.println("a " + listPaidSentiment.get(0));
+//		System.out.println("b " + listPaidSentiment.get(1));
+//		System.out.println("c " + listPaidSentiment.get(2));
+		
+		
 
 		mav.addObject("POSITIVE1", listPaidSentiment.get(0));
 		mav.addObject("NEUTRAL1", listPaidSentiment.get(1));

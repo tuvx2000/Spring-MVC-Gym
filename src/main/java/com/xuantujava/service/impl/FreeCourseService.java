@@ -182,7 +182,7 @@ public class FreeCourseService implements IFreeCourseService {
 		int a=0,b=0,c=0;
 		
 		for (FreeCourseEntity freeCourseEntity : listEntity) {
-			System.out.println("FREE " + freeCourseEntity.getSentiment());
+//			System.out.println("FREE " + freeCourseEntity.getSentiment());
 
 			if (freeCourseEntity.getSentiment().equals("POSITIVE")) {
 				a++;

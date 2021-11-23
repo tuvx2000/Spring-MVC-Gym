@@ -165,7 +165,7 @@ public class PaidCourseController {
 		paidCourseDTO.setShortDescription(request.getParameter("shortdescription"));
 		paidCourseDTO.setTopic(request.getParameter("topic"));
 		paidCourseDTO.setThumbnail(request.getParameter("thumbnail"));
-		
+	
 		
 		paidCourseService.addPaidCourse(paidCourseDTO);
 
