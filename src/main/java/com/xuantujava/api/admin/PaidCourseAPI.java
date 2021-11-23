@@ -16,6 +16,7 @@ import com.xuantujava.DTO.PaidCourseDTO;
 import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.INewService;
 import com.xuantujava.service.IPaidCourseService;
+import com.xuantujava.util.LivestrymUtil;
 
 @RestController(value = "paidCourseAPIOfAdmin")
 public class PaidCourseAPI {
@@ -53,4 +54,14 @@ public class PaidCourseAPI {
 		paidCourseService.delete(ids);
 		
 	}
+	
+	@PostMapping("/api/stoplivestrymAPI")
+	public String stoplivestrym(@RequestBody PaidCourseDTO addPaidCourse) {
+		LivestrymUtil.setLinkvideo("");
+		LivestrymUtil.setStatusLivestrym(0);
+		
+		return "succeed";
+			
+	}
+	
 }

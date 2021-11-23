@@ -4,7 +4,8 @@
 <%@ page import= "com.xuantujava.util.SecurityUtils" %>
 <c:url var ="userName" value="<%= SecurityUtils.getPrincipal().getFullName() %>"/>
 <c:url var ="SentimentAPI" value="/api/admin_sentiment"/>
-
+<c:url var ="stoplivestrymAPI" value="/api/stoplivestrymAPI"/>
+<c:url var ="linkvideo" value="${linkvideo}" />
 
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@
 
 	
 	<video id="myVideo" width="100%" height="700px" controls style="background-color:#95a5a6">
-	  <source src="https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/Snaptik_7007967422011493638_ach.mp4" type="video/mp4">
+	  <source src="${linkvideo}" type="video/mp4">
 	</video>
 	</div>
 
@@ -128,11 +129,29 @@
 			poster="https://img.icons8.com/fluent/48/000000/person-male.png" autoplay muted></video>
 	</div>
  
+ 	
+ 
 	<!-- Button to leave video conference. -->
 	<div class="box">
 		<button id="leaveButton" style="background-color: #008CBA; color: white; ">Leave Video Conference</button>
 	</div>
 	
+	</div>
+	<!-- Button to leave video conference. -->
+	<div class="box" 
+		  style="position: fixed;
+				  bottom: 10px;
+				  right: 10px;                
+				  width: 100px;
+				  border: 3px solid #73AD21;">
+				<button 
+					onClick="StopLivestrym()" 
+					style="width: 100px;
+						height:50px;
+                   		background-color:red;"
+					>
+				  	Stop Livestrym
+				  </button>
 	</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -324,7 +343,33 @@ function SentimentAPI(data) {
         }
     });
 }
-
+//// stop livestym
+function StopLivestrym() {
+	console.log("Submited");
+	
+	const obj = {status: "stop"};
+	
+	console.log("JSON Submited: " + JSON.stringify(obj));
+	alert("Stopped video livestrym!!! ");
+	
+    $.ajax({
+        url: '${stoplivestrymAPI}',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(obj),
+        dataType: 'json',
+        async: !1,
+        success: function (result) {
+//         	console("succeed");
+//         	alert("Succed Stop video livestym!!! ");
+        	
+        },
+        error: function (Submited) {
+//           	console("succeed");
+//         	alert("Succed Stop video livestym!!! ");
+        }
+    });
+}
 
 //AUDIO
 

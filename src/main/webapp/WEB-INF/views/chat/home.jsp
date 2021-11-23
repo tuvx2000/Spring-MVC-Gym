@@ -3,8 +3,8 @@
 <%@include file="/common/taglib.jsp"%>
 <%@ page import= "com.xuantujava.util.SecurityUtils" %>
 <c:url var ="userName" value="<%= SecurityUtils.getPrincipal().getFullName() %>"/>
-
-
+<c:url var ="linkvideo" value="${linkvideo}" />
+<c:url var ="statuslivestym" value="${statuslivestym}" />
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +12,14 @@
 
 </head>
 <body >
-<h1>USER PAGE</h1>
+	<c:if test="${statuslivestym == 1}">
+		<h1>USER PAGE</h1>
+	</c:if>
+	<c:if test="${statuslivestym == 0}">
+		<h1>NOW, It's have no Livestrym</h1>
+	</c:if>
+	
+	
 <div style="display: grid;grid-template-columns: auto auto auto;background-color:#bdc3c7;text-algin: center;">
 	<div style="border: 1px solid rgba(0, 0, 0, 0.8);text-algin: center;  grid-column: 1 / 3"> 
 	<!-- element1 -->
@@ -21,7 +28,7 @@
 	<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/s8taXR3mYa8?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
 <!-- 	//autoplay -->
 	<video id="myvid" width="100%" height="700px"  style="background-color:#95a5a6">
-	  <source src="https://xuantu-spring-db.s3.ap-southeast-1.amazonaws.com/Snaptik_7007967422011493638_ach.mp4" type="video/mp4">
+	  <source src="${linkvideo}" type="video/mp4">
 	</video>
 	</div>
 	

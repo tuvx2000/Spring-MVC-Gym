@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.xuantujava.service.IFreeCourseService;
 import com.xuantujava.service.IPaidCourseService;
+import com.xuantujava.util.LivestrymUtil;
 
 @Controller(value ="homeControllerOfAdmin")
 public class HomeController {
@@ -22,15 +23,34 @@ public class HomeController {
 	@Autowired
 	IPaidCourseService paidCourseService;	
 	
-	
-	@RequestMapping(value = "/quan-tri/chat", method = RequestMethod.GET)
-	public ModelAndView homePagex(HttpServletRequest request) {
-
-	
-
-		ModelAndView mav = new ModelAndView("chat/admin-home");
+	@RequestMapping(value = "/quan-tri/chatcreate", method = RequestMethod.GET)
+	public ModelAndView homePagexx(HttpServletRequest request) {
+		
+		ModelAndView mav = new ModelAndView("chat/audio");	
 		return mav;
 	}
+	
+//	@RequestMapping(value = "/quan-tri/chat", method = RequestMethod.GET)
+//	public ModelAndView homePagex(HttpServletRequest request) {
+//		ModelAndView mav = new ModelAndView("chat/admin-home");
+//		
+//		mav.addObject("linkvideo",LivestrymUtil.getLinkvideo());			
+//		return mav;
+//	}
+	
+	@RequestMapping(value = "/quan-tri/chat", method = RequestMethod.POST)
+	public ModelAndView homePagecreate(HttpServletRequest request) {
+		
+		
+		ModelAndView mav = new ModelAndView("chat/admin-home");
+		LivestrymUtil
+			.setLinkvideo(request.getParameter("linkvideo"));
+		LivestrymUtil.setStatusLivestrym(1);
+		
+		mav.addObject("linkvideo", LivestrymUtil.getLinkvideo());
+
+		return mav;
+	}		
 	
 	
 	

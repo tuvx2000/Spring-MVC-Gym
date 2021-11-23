@@ -23,6 +23,7 @@ import com.xuantujava.entity.CommentEntity;
 import com.xuantujava.service.ICommentService;
 import com.xuantujava.service.IUserService;
 import com.xuantujava.service.impl.ManagementGoogleUserService;
+import com.xuantujava.util.LivestrymUtil;
 
 @Controller(value = "homeControllerOfWeb")
 public class HomeController {
@@ -47,17 +48,18 @@ public class HomeController {
 //	}
 //	
 	
-	
-	
-	
+
 	
 	
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
 	public ModelAndView homePagex(HttpServletRequest request) {
-
-	
-
 		ModelAndView mav = new ModelAndView("chat/home");
+				
+		mav.addObject("linkvideo", LivestrymUtil.getLinkvideo());	
+		mav.addObject("statuslivestym", LivestrymUtil.isLivestrym());
+		
+		System.out.println("linkvideo" + LivestrymUtil.getLinkvideo());
+		System.out.println("statuslivestym" + LivestrymUtil.isLivestrym() );
 		return mav;
 	}
 	
