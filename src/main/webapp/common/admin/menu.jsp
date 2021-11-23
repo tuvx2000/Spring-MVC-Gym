@@ -130,7 +130,24 @@
 		</li>	
 <!-- 			4 -->
 			
-			
+<li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa fa-list"></i> 
+				<span class="menu-text"> 
+					Quản lý LiveStrym
+				</span>
+				<b></b>
+			</a> 
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li>
+					<a href="<c:url value='/quan-tri/chatcreate' />" >
+						 LiveStrym Page
+					</a> 
+				</li>
+			</ul>
+		</li>	
+<!-- 			4 -->			
 			
 			
 			
