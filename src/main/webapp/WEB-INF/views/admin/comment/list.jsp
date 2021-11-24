@@ -8,7 +8,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Danh sách bài viết</title>
+	<title>Comment List</title>
 	</head>
 
 	<body>
@@ -65,6 +65,8 @@
 														<th>Comment</th>
 														<th>UserName</th>
 														<th>UserId</th>
+														<th>CommentId</th>
+														<th>CourseId</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -75,7 +77,7 @@
 															<td>${item.userName}</td>
 															<td>${item.userid}</td>
 															<td>${item.id}</td>
-															
+															<td>${item.courseid}</td>
 															<td>
 																<c:url var="updateNewURL" value="/quan-tri/binh-luan/chinh-sua">
 																	<c:param name="id" value="${item.id}"/>															

@@ -8,7 +8,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Danh sách bài viết</title>
+		<title>List Free Course</title>
 	</head>
 
 	<body>
@@ -63,8 +63,11 @@
 													<tr>
 														<th><input type="checkbox" id="checkAll"></th>
 														<th>Course's Name</th>
-														<th>Link Youtube</th>
-														<th>Id</th>
+														<th>Id Youtube</th>
+														<th>Sentiment</th>
+														<th>Topic Course</th>
+														<th>Description Course</th>
+														<th>Id Course</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -73,6 +76,9 @@
 															<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}"></td>
 															<td>${item.name}</td>
 															<td>${item.linkyoutube}</td>
+															<td>${item.sentiment}</td>
+															<td>${item.topic}</td>
+															<td>${item.description}</td>
 															<td>${item.id}</td>
 															<td>
 																<c:url var="updateNewURL" value="/quan-tri/bai-hoc-mien-phi/chinh-sua">

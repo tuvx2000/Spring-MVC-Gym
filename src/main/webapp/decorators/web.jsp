@@ -10,7 +10,8 @@
 <link rel="icon"
 	href="https://previews.123rf.com/images/vectorgalaxy/vectorgalaxy1805/vectorgalaxy180500457/101156842-gym-logo-png-isolated-on-white-background-for-your-web-and-mobile-app-design-colorful-vector-icon-br.jpg">
 
-<title>10Real Gym-Center</title>
+<!-- <title>10Real Gym-Center</title> -->
+<title><dec:title default="10Real Gym-Center" /></title>
 
 
 <meta charset="utf-8">

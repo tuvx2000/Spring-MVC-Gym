@@ -52,7 +52,7 @@ public class FreeCourseController {
 		model.setTotalPage((int) Math.ceil((double) model.getTotalItem() / model.getLimit()));
 		model.setListResult(freeCourseService.findAll(pageable));
 		
-		updateAllFreeCourseSentiment();
+//		updateAllFreeCourseSentiment();
 		
 		mav.addObject("model", model);
 		return mav;

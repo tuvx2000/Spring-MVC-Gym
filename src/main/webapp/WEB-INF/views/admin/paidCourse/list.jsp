@@ -8,7 +8,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Danh sách bài viết</title>
+<title>PaidCourse List</title>
 </head>
 
 <body>
@@ -61,9 +61,13 @@
 											<thead>
 												<tr>
 													<th><input type="checkbox" id="checkAll"></th>
-													<th>Tên bài viết</th>
-													<th>Mô tả ngắn</th>
-													<th>Thao tác</th>
+													<th>Course Name</th>
+													<th>Thumbnail</th>
+													<th>Id Course</th>
+													<th>Description</th>
+													<th>Short Description</th>
+													<th>Sentiment</th>
+													<th>S3 Path</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -74,6 +78,12 @@
 														<td>${item.name}</td>
 														<td>${item.thumbnail}</td>
 														<td>${item.id}</td>
+														
+														<td>${item.description}</td>
+														<td>${item.shortDescription}</td>
+														<td>${item.sentiment}</td>
+														<td>${item.s3Path}</td>
+
 														<td><c:url var="updateNewURL"
 																value="/quan-tri/bai-hoc-tra-phi/chinh-sua">
 																<c:param name="id" value="${item.id}" />

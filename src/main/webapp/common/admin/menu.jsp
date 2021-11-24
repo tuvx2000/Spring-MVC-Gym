@@ -47,7 +47,7 @@
 			<b class="arrow"></b>
 			<ul class="submenu">
 				<li>
-					<a href="<c:url value='/quan-tri/bai-viet/danh-sach?page=1&limit=2' />" >
+					<a href="<c:url value='/quan-tri/bai-viet/danh-sach?page=1&limit=5' />" >
 						 DS bài viết
 					</a> 
 				</li>
@@ -68,7 +68,7 @@
 <%-- 					<a href="<c:url value='/quan-tri/bai-hoc-tra-phi/them-moi' />" > --%>
 <!-- 						 DS Paid Course -->
 <!-- 					</a>  -->
-						<a href="<c:url value='/quan-tri/bai-hoc-tra-phi/danh-sach?page=1&limit=2' />" >
+						<a href="<c:url value='/quan-tri/bai-hoc-tra-phi/danh-sach?page=1&limit=5' />" >
 						 DS Paid Course
 					</a> 
 				</li>
@@ -86,7 +86,7 @@
 			<b class="arrow"></b>
 			<ul class="submenu">
 				<li>
-					<a href="<c:url value='/quan-tri/bai-hoc-mien-phi/danh-sach?page=1&limit=2' />" >
+					<a href="<c:url value='/quan-tri/bai-hoc-mien-phi/danh-sach?page=1&limit=5' />" >
 						 DS Free Course
 					</a> 
 				</li>

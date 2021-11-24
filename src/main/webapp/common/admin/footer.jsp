@@ -6,7 +6,7 @@
         <div class="footer-content">
 						<span class="bigger-120">
 							<span class="blue bolder">Ace</span>
-							Xuan tu pro &copy; 
+							10Real Gym-Center &copy; 
 						</span>
 
             &nbsp; &nbsp;

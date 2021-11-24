@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Make Member</title>
 </head>
 <body>
 <br><br><br><br><br><br><br><br><br><br><br><br>
