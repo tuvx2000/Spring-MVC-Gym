@@ -11,7 +11,7 @@
 	<div class="container">
 		<!-- <h1 class="form-heading">login Form</h1> -->
 		<div class="login-form">
-			<div class="main-div">
+			<div class="main-div" style="border-radius: 20px;background-color:#ecf0f1">
 				<c:if test="${param.incorrectAccount != null}">
 					<div class="alert alert-danger">Username or Password is
 						incorrect!</div>
@@ -36,7 +36,9 @@
 						<input type="password" class="form-control" id="password"
 							name="j_password" placeholder="Mật khẩu">
 					</div>
-					<button type="submit" class="btn btn-primary">Sign Up</button>
+					<button type="submit" class="btn btn-primary" style="padding-bottom: 30px">Sign Up</button>
+					<div style="height: 20px;"></div>
+					<a  class="btn btn-info" href="<c:url value='/dang-nhap' />">Sign In</a>
 				</form>
 			</div>
 		</div>

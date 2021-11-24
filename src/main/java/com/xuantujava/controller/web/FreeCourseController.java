@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xuantujava.DTO.FreeCourseDTO;
+import com.xuantujava.entity.FreeCourseEntity;
 import com.xuantujava.service.IFreeCourseService;
 
 @Controller(value ="freecourseControllerOfWeb")
@@ -47,7 +48,13 @@ public class FreeCourseController {
 		centerDTO.setListResult(freeCourseService.findAll(pageable));
 		
 	//	centerDTO.setListResult(listFreeCourse); list allllll
-
+		
+		
+		for (FreeCourseDTO itemEntity : listFreeCourse) {
+			System.out.println("Dump YoutubeId: "+ itemEntity.getLinkyoutube());
+		}
+			
+			
 
 		mav.addObject("model", centerDTO);
 

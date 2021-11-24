@@ -33,8 +33,6 @@ public class FreeCourseService implements IFreeCourseService {
 
 		System.out.println("xxx findAll Free Course");
 		
-		
-		
 		List<FreeCourseEntity> listEntity = freeCourseRepository.findAll();
 		List<FreeCourseDTO> listDTO = new ArrayList<>();
 
@@ -42,21 +40,14 @@ public class FreeCourseService implements IFreeCourseService {
 			FreeCourseDTO itemDTO = freeCourseConverter.toDto(itemEntity);
 				
 			itemDTO.setLinkyoutube(GetVideoYoutubeId(itemEntity.getLinkyoutube()));
-
-//			String videoId = GetVideoYoutubeId(itemEntity.getLinkyoutube());
-//
-//			itemDTO.setLinkyoutube(videoId);
-//			itemDTO.setName(itemEntity.getName());
-//			itemDTO.setDescription(itemEntity.getDescription());
-//			itemDTO.setTopic(itemEntity.getTopic());
-//			itemDTO.setThumbnail(itemEntity.getThumbnail());
-//			itemDTO.setSentiment(itemEntity.getSentiment());
-//			System.out.println("link: " + itemDTO.getLinkyoutube());
+			
 			listDTO.add(itemDTO);
 		}
 
 		return listDTO;
 	}
+	
+	 
 
 	@Override
 	@Transactional
@@ -125,6 +116,9 @@ public class FreeCourseService implements IFreeCourseService {
 		String[] parts = rawLinkYoutube.split("=");
 		String part1 = parts[0]; // frefix
 		String part2 = parts[1]; // videoId
+		
+//		System.out.println("HERE 1: "+ part1 );
+//		System.out.println("HERE 2: "+ part2 );
 
 		return part2;
 	}
@@ -140,8 +134,15 @@ public class FreeCourseService implements IFreeCourseService {
 		List<FreeCourseEntity> entities = freeCourseRepository.findAll(pageable).getContent();
 		for (FreeCourseEntity item: entities) {
 			FreeCourseDTO freeCourseDTO = freeCourseConverter.toDto(item);
+			freeCourseDTO.setLinkyoutube(GetVideoYoutubeId(item.getLinkyoutube()));
+			
 			models.add(freeCourseDTO);
+						
 		}
+		
+	
+		
+		
 		return models;
 	}
 

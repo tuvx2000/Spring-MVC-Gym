@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<H1 style="text-algin:center;"> Thanh Toán Thành Công</H1>
+	<br><br><br><br><br><br>
+	<h1 style="text-align:center">Thanh Toán Thành Công</h1>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

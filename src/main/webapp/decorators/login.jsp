@@ -16,8 +16,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	
 	  <meta name="google-signin-client_id" content="841081615376-3hbsvqkqpj1u4p943gpj93v0ki62tmjo.apps.googleusercontent.com">
+	  
+	  <style type="text/css">
+body {
+  background-image: url("<c:url value='/template/images/background.jpg'/>");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}	  
+	  </style>
 </head>
 <body >
+
+	<h1 style="text-align:center;padding-top: 200px;color: #e67e22"> GYMCENTER 10Real</h1>
     <dec:body/>
     
     

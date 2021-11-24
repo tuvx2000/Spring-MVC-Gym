@@ -17,10 +17,10 @@
 </head>
 
 <body style="text-align: center;">
-	<div class="table-responsive" style="text-align: center;">
-		<table class="table table-bordered">
+	<div class="table-responsive" style="text-align:center;padding-left:30px;padding-right:30px">
+		<table class="table table-hover table-dark">
 			<thead>
-				<tr>
+				<tr style="color:#f8c291">
 					<th>Course Name</th>
 					<th>Short Description about this Course</th>
 					<th>Topic</th>
@@ -32,13 +32,13 @@
 					<form action="<c:url value='/bai-hoc-tra-phi'/>" method="get">
 						<tr>
 							<input hidden name="courseid" type="text" value="${item.id}"></input>
-							<td>${item.name}</td>
-							<td>${item.description}</td>
-							<td>${item.topic}</td>
+							<td style="padding-top:70px;font-size: 120%;">${item.name}</td>
+							<td style="padding-top:70px;font-size: 120%;">${item.description}</td>
+							<td style="padding-top:70px;font-size: 120%;">${item.topic}</td>
 
 							<td><img src="${item.thumbnail}" width="250" height="165">
 							</td>
-							<td><input  type="submit" value="Learn Now"></td>
+							<td style="padding-top:70px;"><input class="btn btn-warning" type="submit" value="Learn Now"></td>
 
 						</tr>
 					</form>
@@ -47,12 +47,23 @@
 			</tbody>
 		</table>
 		
-		<form action="<c:url value='/danh-sach-bai-hoc-tra-phi'/>" id="formSubmit" method="get">
+<%-- 		<form action="<c:url value='/danh-sach-bai-hoc-tra-phi'/>" id="formSubmit" method="get"> --%>
 		
-		<ul class="pagination" id="pagination"></ul>	
-		<input type="hidden" value="" id="page" name="page"/>
-		<input type="hidden" value="" id="limit" name="limit"/>		
-		</form>
+<!-- 		<ul class="pagination" id="pagination"></ul>	 -->
+<!-- 		<input type="hidden" value="" id="page" name="page"/> -->
+<!-- 		<input type="hidden" value="" id="limit" name="limit"/>		 -->
+<!-- 		</form> -->
+		
+		<div style="width:100px;padding-left:550px;">
+				<form style="width:100px;" action="<c:url value='/danh-sach-bai-hoc-tra-phi'/>" id="formSubmit" method="get">
+				<ul style="width:100px;"  class="pagination" id="pagination"></ul>	
+				<input type="hidden" value="" id="page" name="page"/>
+				<input type="hidden" value="" id="limit" name="limit"/>		
+				</form>			
+		</div>
+		
+		
+		
 		</div>
 	
 <script type="text/javascript">
@@ -65,7 +76,7 @@
 	        startPage: currentPage,
 	        onPageClick: function (event, page) {
 	        	if (currentPage != page) {
-	        		$('#limit').val(2);
+	        		$('#limit').val(5);
 					$('#page').val(page);
 					$('#formSubmit').submit();
 				}

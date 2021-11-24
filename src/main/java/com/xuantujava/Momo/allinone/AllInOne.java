@@ -31,7 +31,7 @@ public class AllInOne {
 		
 		String requestId = String.valueOf(userId + "N" +System.currentTimeMillis());
 		String orderId = String.valueOf(userId + "N" +System.currentTimeMillis());
-		long amount = 50000;
+		long amount = 1000;
 
 		String orderInfo = "Pay With MoMo";
 		String returnURL = "http://localhost:8080/spring-mvc/momo1";

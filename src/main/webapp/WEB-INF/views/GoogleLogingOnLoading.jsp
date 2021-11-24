@@ -12,7 +12,7 @@
 
 
 	<div style="text-align:center;align-items:center;align-self:center;justify-items:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
-		<h3>Loading....</h3>
+		<h3 style="color: #f39c12">Loading....</h3>
 		<div>
 		<div class="spinner-border text-primary"></div>
 		<div class="spinner-border text-success"></div>

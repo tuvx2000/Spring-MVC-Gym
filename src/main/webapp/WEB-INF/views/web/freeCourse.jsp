@@ -46,12 +46,18 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<form action="<c:url value='/danh-sach-bai-hoc-mien-phi'/>" id="formSubmit" method="get">
 		
-		<ul class="pagination" id="pagination"></ul>	
-		<input type="hidden" value="" id="page" name="page"/>
-		<input type="hidden" value="" id="limit" name="limit"/>		
-		</form>
+		
+		<div style="width:100px;padding-left:550px;">
+				<form style="width:100px;" action="<c:url value='/danh-sach-bai-hoc-mien-phi'/>" id="formSubmit" method="get">
+				<ul style="width:100px;"  class="pagination" id="pagination"></ul>	
+				<input type="hidden" value="" id="page" name="page"/>
+				<input type="hidden" value="" id="limit" name="limit"/>		
+				</form>			
+		</div>
+		
+		
+
 
 <!-- <div class="container"> -->
 <!--     <nav aria-label="Page navigation"> -->
@@ -73,7 +79,7 @@
 	        startPage: currentPage,
 	        onPageClick: function (event, page) {
 	        	if (currentPage != page) {
-	        		$('#limit').val(2);
+	        		$('#limit').val(5);
 					$('#page').val(page);
 					$('#formSubmit').submit();
 				}
