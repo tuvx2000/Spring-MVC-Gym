@@ -83,9 +83,9 @@ public class HomeController {
 
 		List<Integer> listPaidSentiment = paidCourseService.getChartSentimentOverall();
 
-		mav.addObject("POSITIVE", listSentiment.get(0));
+		mav.addObject("NEGATIVE", listSentiment.get(0));
 		mav.addObject("NEUTRAL", listSentiment.get(1));
-		mav.addObject("NEGATIVE", listSentiment.get(2));
+		mav.addObject("POSITIVE", listSentiment.get(2));
 		
 		
 //		System.out.println("================");
@@ -96,9 +96,9 @@ public class HomeController {
 		
 		
 
-		mav.addObject("POSITIVE1", listPaidSentiment.get(0));
+		mav.addObject("NEGATIVE1", listPaidSentiment.get(0));
 		mav.addObject("NEUTRAL1", listPaidSentiment.get(1));
-		mav.addObject("NEGATIVE1", listPaidSentiment.get(2));		
+		mav.addObject("POSITIVE1", listPaidSentiment.get(2));		
 		
 		
 		return mav;

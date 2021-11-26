@@ -159,7 +159,7 @@ public class PaidCourseService implements IPaidCourseService{
 	public void UpdateVideoSentimentAll() {
 //		UpdateVideoSentiment(1L)	;	
 		List<PaidCourseEntity> listEntity = paidCourseRepository.findAll();
-		
+		System.out.println("ANALYZED paid: " + listEntity.size());
 		
 		for (PaidCourseEntity itemEntity : listEntity) {
 			UpdateVideoSentiment(itemEntity.getId());
@@ -218,7 +218,7 @@ public class PaidCourseService implements IPaidCourseService{
 	    	finalSentiment = "NEGATIVE";
 
 		
-
+	    System.out.println("RESULT: " + finalSentiment);
 	    
 	    PaidCourseEntity itemPrepareForUpdate = paidCourseRepository.findOne(courseId);
 	    

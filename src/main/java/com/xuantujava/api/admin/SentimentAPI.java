@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xuantujava.DTO.NewDTO;
+import com.xuantujava.service.IFreeCourseService;
+import com.xuantujava.service.IPaidCourseService;
 import com.xuantujava.service.ISentimentService;
 
 @RestController(value = "sentimentAPIOfAdmin")
@@ -16,6 +18,11 @@ public class SentimentAPI {
 	@Autowired
 	ISentimentService sentimentService;
 	
+	@Autowired
+	private IPaidCourseService paidCourseService;
+	
+	@Autowired
+	private IFreeCourseService freeCourseService;
 	
 	@PostMapping("/api/admin_sentiment")
 	public String returnAnalyze(@RequestBody String userComment) {
@@ -30,4 +37,30 @@ public class SentimentAPI {
 		
 		return "{\"userSentiment\": \""+ x +"\"}";
 	}
+	
+	@PostMapping("/api/admin_sentiment_freecourses")
+	public String returnAnalyzex(@RequestBody String webparam) {
+		System.out.println("PARAM API: " + webparam); 
+		
+		freeCourseService.UpdateVideoSentimentAll();
+
+		String x = "succeed"; 
+		return "{\"userSentiment\": \""+ x +"\"}";
+
+	}
+	
+	
+	@PostMapping("/api/admin_sentiment_paidcourses")
+	public String returnAnalyzexx(@RequestBody String webparam) {
+		System.out.println("PARAM API: " + webparam); 
+
+
+		paidCourseService.UpdateVideoSentimentAll();
+		
+		
+		
+		return "{\"userSentiment\": \""+ "updateed" +"\"}";
+	}
+	
+	
 }
