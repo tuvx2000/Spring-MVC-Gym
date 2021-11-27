@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>Admin Page</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
@@ -52,7 +52,7 @@
 var timeOutId = 0;
 
 function SentimentAPIFREECOURSE() {
-	console.log("Submited");
+	console.log("Submited1");
 	document.getElementById("title1").innerHTML = "ANALYZING";
 	document.getElementById("title1").style.color = "red";
 	const data = {status: "analyzedfreeCourses"};
@@ -68,12 +68,11 @@ function SentimentAPIFREECOURSE() {
         contentType: 'application/json',
         data: JSON.stringify(data),
         dataType: 'json',
-        async: !1,
+//         async: !1,
         success: function (result) {
-//         	window.location.href = "${editURL}?page=1&limit=2?id=" +result.id +"&message=insert_success";
-        	//?type=edit&id="+result.id+"&message=insert_success";
         	console.log("Submited: " + result.userSentiment);
         	document.getElementById("title1").innerHTML = "READY";
+        	document.getElementById("title1").style.color = "green";
         	clearTimeout(timeOutId);
 //         	updateChartSentiment(result.userSentiment);
         	
@@ -88,7 +87,7 @@ function SentimentAPIFREECOURSE() {
     });
 }
 function SentimentAPIPAIDCOURSE() {
-	console.log("Submited");
+	console.log("Submited2");
 	document.getElementById("title2").innerHTML = "ANALYZING";
 	document.getElementById("title2").style.color = "red";
 	const data = {status: "analyzedpaidCourses"};
@@ -103,13 +102,14 @@ function SentimentAPIPAIDCOURSE() {
         contentType: 'application/json',
         data: JSON.stringify(data),
         dataType: 'json',
-        async: !1,
+//         async: !1,
         success: function (result) {
 //         	window.location.href = "${editURL}?page=1&limit=2?id=" +result.id +"&message=insert_success";
         	//?type=edit&id="+result.id+"&message=insert_success";
         	console.log("Submited: " + result.userSentiment);
         	clearTimeout(timeOutId);
         	document.getElementById("title2").innerHTML = "READY";
+        	document.getElementById("title2").style.color = "green";
 
 //         	updateChartSentiment(result.userSentiment);
         	
