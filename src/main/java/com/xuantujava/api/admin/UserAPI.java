@@ -42,7 +42,14 @@ public class UserAPI {
 	@PostMapping("/api/momo")
 	public TransactionDTO momo(@RequestBody TransactionDTO transactionDTO) {
 		transactionService.save(transactionDTO);
-System.out.println("ccccccccccccccccccccccc");
+		
+		if(transactionDTO.getDescription() == 1) {
+			userService.updateStatusPaid(1, transactionDTO.getUserId());
+		}
+		
+		
+		
+		System.out.println("ccccccccccccccccccccccc");
 		return transactionDTO;
 	}
 }
