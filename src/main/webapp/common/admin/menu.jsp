@@ -147,7 +147,27 @@
 				</li>
 			</ul>
 		</li>	
-<!-- 			4 -->			
+<!-- 			4 -->		
+<!-- 			4 -->
+			
+		<li>
+			<a href="#" class="dropdown-toggle"> 
+				<i class="menu-icon fa fa-list"></i> 
+				<span class="menu-text"> 
+					Quản lý Giao Dịch
+				</span>
+				<b></b>
+			</a> 
+			<b class="arrow"></b>
+			<ul class="submenu">
+				<li>
+					<a href="<c:url value='/quan-tri/momo?page=1&limit=5' />" >
+						 Transaction Page
+					</a> 
+				</li>
+			</ul>
+		</li>	
+<!-- 			4 -->		
 			
 			
 			

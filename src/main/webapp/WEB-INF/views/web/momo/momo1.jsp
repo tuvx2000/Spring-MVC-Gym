@@ -15,7 +15,7 @@
 	<br><br><br><br><br><br>
 	<h1 style="text-align:center" id="statuspayment">xxxxxxxxx</h1>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<button onClick="PopStatus()">button</button>
+<!-- 	<button onClick="PopStatus()">button</button> -->
 	
 	
 <script>
@@ -64,7 +64,7 @@
 	        }
 	    });
 	}
-// 	PopStatus() ;
+	PopStatus() ;
 	
 </script>
 </body>
