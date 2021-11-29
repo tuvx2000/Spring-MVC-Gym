@@ -10,8 +10,8 @@
 					<p>
 						@10Real Gymcenter
 					</p>
-
-					<!-- You shall support us a little via PayPal to info@templatemo.com -->
+				NEED UPDATE HERE
+					
 
 				</div>
 			</div>
