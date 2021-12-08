@@ -26,6 +26,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 		if (response.isCommitted()) {
 			return;
 		}
+		System.out.println("checked:security with targetUrl: "+ targetUrl);
 		redirectStrategy.sendRedirect(request, response, targetUrl);
 	}
 
@@ -34,10 +35,10 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 		List<String> roles = SecurityUtils.getAuthorities();
 		if (isAdmin(roles)) {
 			url = "/quan-tri/trang-chu";
-			//System.out.println("Role: ADMIN");
+			System.out.println("Role: ADMIN");
 		} else if (isUser(roles)) {
 			url = "/trang-chu";
-			//System.out.println("Role: USER");
+			System.out.println("Role: USER");
 
 		}
 		return url;
