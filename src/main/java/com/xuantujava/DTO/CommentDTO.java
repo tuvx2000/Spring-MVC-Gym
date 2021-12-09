@@ -10,8 +10,15 @@ public class CommentDTO extends AbstractDTO<CommentDTO>{
 	String userName;
 	String userImage;
 
+	String userFullName;
 	
 	
+	public String getUserFullName() {
+		return userFullName;
+	}
+	public void setUserFullName(String userFullName) {
+		this.userFullName = userFullName;
+	}
 	public String getUserName() {
 		return userName;
 	}

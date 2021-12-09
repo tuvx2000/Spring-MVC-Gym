@@ -65,11 +65,12 @@
 							<div class="media-block">
 								<a class="media-left" href="#"><img
 									class="img-circle img-sm" alt="Profile Picture"
-									src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+									src="https://bootdey.com/img/Content/avatar/avatar1.png">
+								</a>
 								<div class="media-body ">
 									<div class="mar-btm">
 										<a href="#"
-											class="btn-link text-semibold media-heading box-inline">${item.userName}</a>
+											class="btn-link text-semibold media-heading box-inline">${item.userFullName}</a>
 									</div>
 									<p> ${item.comment}</p>
 									<!-- Comments -->
@@ -83,9 +84,12 @@
 													<div class="media-body">
 														<div class="mar-btm">
 															<a href="#"
-																class="btn-link text-semibold media-heading box-inline">${item.userName}</a>
+																class="btn-link text-semibold media-heading box-inline">${item1.userFullName}</a>
 														</div>
 														<p>${item1.comment}</p>
+<%-- 														<p>${item1.userid}</p> --%>
+<%-- 														<p>${item1.parentIDCOMMENT}</p> --%>
+<%-- 														<p>${item1.IDCOMMENT}</p> --%>
 													</div>
 												</div>
 											</div>
@@ -114,6 +118,7 @@
 									</div>
 
 								</div>
+							</div>
 						</c:if>
 					</c:forEach>
 

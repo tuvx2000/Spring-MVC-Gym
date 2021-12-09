@@ -63,14 +63,18 @@ public class CommentService implements ICommentService{
 		List<CommentDTO> listDTO = new ArrayList<>();
 		
 		for (CommentEntity itemEntity : listEntity) {
-			CommentDTO itemDTO = new CommentDTO();
-			itemDTO.setComment(itemEntity.getComment());
-			itemDTO.setCourseid(itemEntity.getCourseid());
-			itemDTO.setParentIDCOMMENT(itemEntity.getParentId());
-			itemDTO.setUserName(userRepository.findOne(itemEntity.getUserid()).getFullName());
-			itemDTO.setUserImage("dang hoan thien");
-			itemDTO.setIDCOMMENT(itemEntity.getId());
-			itemDTO.setId(itemEntity.getId());
+			CommentDTO itemDTO = commentConverter.toDto(itemEntity);
+			
+//			
+//			itemDTO.setComment(itemEntity.getComment());
+//			itemDTO.setCourseid(itemEntity.getCourseid());
+//			itemDTO.setParentIDCOMMENT(itemEntity.getParentId());
+//			itemDTO.setUserName(userRepository.findOne(itemEntity.getUserid()).getFullName());
+			
+			
+//			itemDTO.setUserImage("dang hoan thien");
+//			itemDTO.setIDCOMMENT(itemEntity.getId());
+//			itemDTO.setId(itemEntity.getId());
 
 
 			listDTO.add(itemDTO);
